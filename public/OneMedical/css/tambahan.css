@@ -1,0 +1,148 @@
+/*Tambahan Css*/
+
+.openingText1{
+	font-size: 80px;
+	color: white;
+	text-align: left;
+}
+
+.quotesOpening{
+	color: #abaaaa;
+	text-align: left;
+	margin-top: -20px;
+}
+
+.text-white{
+	color: white;
+}
+
+.text-Lightgrey{
+	color:#e0e0e0;
+}
+
+.header_opening{
+	width: 100%;
+	height: 520px;
+	padding-top: 100px;
+}
+
+.daftarSekarang{
+	float: left; 
+	margin-top: 20px; 
+	background-color: #898989;
+	border:none;
+}
+
+/*--------------------------------Bagian SIgnUp------------------------------*/
+.signUp_choose{
+	width:150px;
+	background-color: #485AFF;
+	color:white;
+}
+
+/*bagian dokter*/
+
+.su-d-n-box{ /*sign up doctor name box*/
+	background-color: #E6E6E6;
+	border: 1px solid #707070;
+	padding: 20px;
+	margin: 20px;
+}
+
+.su-d-i-box{ /*sign up doctor name box*/
+	background-color: #E6E6E6;
+	border: 1px solid #707070;
+	padding: 20px;
+	margin: 20px 40px;
+}
+
+.f-md{ /*frorm medium*/
+	height: 30px;
+}
+
+.padding-su-n{ /*padding sign up name*/
+	margin: 10px 5px ;
+	width: 200px;
+}
+
+.form-text{
+	color: #7F7C7C;
+	font-size: 14px;
+}
+
+.display-img-su-d{
+	width: 100px;
+	display: block;
+	margin: auto;
+}
+
+/*--------------------------------Bagian dokter------------------------------*/
+#header_doctor{
+	position: absolute;
+	z-index: -10;
+	margin: -140px -40px;
+	width:120%;
+}
+
+.bg-darkBlue{
+	background-color: #0E1EB4;
+}
+
+.category_sidebar{
+	color: #e2dfdf;
+	margin-left: 20px;
+}
+
+.sb_icon{
+	width: 20px;
+	margin-right: 15px;
+}
+
+.info_sidebar{
+	background-color: white;
+	margin: 0px;
+	padding: 20px 10px;
+	height: 100px;
+}
+
+p.username_sb{
+	font-size: 14px;
+	font-weight: bold;
+	color: black;
+	margin: 0px 0px 0px 5px;
+}
+
+p.email_sb{
+	font-size: 10px;
+	font-weight: bold;
+	color: #6d6d6d;
+	margin: 0px 0px 0px 5px;}
+
+#sidenav-main{
+	padding: 0px;
+}
+
+.isi_sb{
+	padding: 5px 20px;
+}
+
+h1.style_header{
+	font-size: 50px;
+}
+
+h5.style_header{
+	width:450px;
+}
+
+.style_header{
+	color: white;
+	padding-bottom: 20px;
+}
+
+.rekamMedis_box{
+	background-color: #FAF9F9;
+}
+
+.date_box{
+	background-color: #FAF9F9;
+}
