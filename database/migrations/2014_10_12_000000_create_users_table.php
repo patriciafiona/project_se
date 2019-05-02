@@ -18,15 +18,15 @@ class CreateUsersTable extends Migration
             $table->string('name');
             //umur akan dihitung dari tanggal lahir
             $table->date('tanggal_lahir');
+            $table->integer('jenis_user')->comment("1.Admin, 2.Dokter, 3.Pasien");
             $table->char('jenis_kelamin',1)->comment("P: perempuan, L: laki-laki");
-            $table->integer('massa_tubuh');
             $table->integer('golongan_darah')->comment("1.Golongan A, 2.Golongan B, 3.Golongan O, 4.Golongan AB");
-            $table->string('foto')->nullable();
+            $table->string('no_ktp');
+            $table->string('foto',255);
             $table->text('alamat');
             $table->integer('no_telp');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password',255);
             $table->rememberToken();
             $table->timestamps();
         });

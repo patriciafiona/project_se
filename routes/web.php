@@ -13,12 +13,15 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/register/daftarDokter', 'daftarDokterController@index')->name('daftarDokter');
+Route::post('/register/daftarDokter/new', 'daftarDokterController@store');
+
 Route::get('/register/daftarPasien', 'daftarPasienController@index')->name('daftarPasien');
+Route::post('/register/daftarPasien/new', 'daftarPasienController@store');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);

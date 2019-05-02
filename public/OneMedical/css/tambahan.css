@@ -33,6 +33,13 @@
 	border:none;
 }
 
+.back-btn{
+	height: 15px;
+	padding: 0px;
+	margin: 0px;
+	float: left;
+}
+
 /*--------------------------------Bagian SIgnUp------------------------------*/
 .signUp_choose{
 	width:150px;
@@ -58,6 +65,10 @@
 
 .f-md{ /*frorm medium*/
 	height: 30px;
+}
+
+.f-lg{ /*frorm medium*/
+	height: 40px;
 }
 
 .padding-su-n{ /*padding sign up name*/
@@ -145,4 +156,10 @@ h5.style_header{
 
 .date_box{
 	background-color: #FAF9F9;
+}
+
+/*--------------------------------Bagian LOGIN------------------------------*/
+
+.div-botton-li{
+	margin: 30px;
 }

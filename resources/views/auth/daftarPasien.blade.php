@@ -26,42 +26,23 @@
                     <div class="col-lg-9 col-md-11">
                         <div class="card bg-secondary shadow border-0">
                             <div class="card-header bg-transparent pb-5">
+                                <div><a href="{{ route('register') }}"><img src="{{ asset('OneMedical') }}/img/icon/back.png" class="back-btn"/></a></div>
                                 <div class="text-muted text-center mt-2 mb-4"><h1>{{ __('Sign up - Patient') }}</h1></div>
 
                                 <hr/>
-                                <form action="{{ url('/signup/new') }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ url('register/daftarPasien/new') }}" method="post" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
                                     <div class="row">
                                         <!--Bagian Nama-->
                                         <div class="col-lg-6 col-md-8 su-d-n-box">
+                                            <h1>Name</h1>
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <p class="form-text">First Name</p>
+                                                    <p class="form-text">Name</p>
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="input-group input-group-alternative padding-su-n">
-                                                        <input class="form-control f-md" placeholder="{{ __('Front name') }}" type="text" name="f_name" required autofocus>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <p class="form-text">Middle Name</p>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <div class="input-group input-group-alternative padding-su-n">
-                                                        <input class="form-control f-md" placeholder="{{ __('Middle name') }}" type="text" name="m_name" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <p class="form-text">Last Name</p>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <div class="input-group input-group-alternative padding-su-n">
-                                                        <input class="form-control f-md" placeholder="{{ __('Last name') }}" type="text" name="l_name" required>
+                                                        <input class="form-control f-md" placeholder="{{ __('Your name') }}" type="text" name="name" required autofocus>
                                                     </div>
                                                 </div>
                                             </div>
@@ -88,9 +69,25 @@
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="input-group">
-                                                        <input type="radio" name="jk" value="L" checked> Laki-Laki
+                                                        <input type="radio" name="jenis_kelamin" value='L' > Laki-Laki
 
-                                                        <input type="radio" name="jk" value="P" style="margin-left: 20px; "> Perempuan
+                                                        <input type="radio" name="jenis_kelamin" value='P' style="margin-left: 20px; "> Perempuan
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <p class="form-text">Golongan darah</p>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group input-group-alternative padding-su-n">
+                                                        <select name="golongan_darah" class="form-control f-lg" >
+                                                            <option value="1">Golongan A</option>
+                                                            <option value="2">Golongan B</option>
+                                                            <option value="3">Golongan O</option>
+                                                            <option value="4">Golongan AB</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -101,7 +98,7 @@
                                                 </div>
                                                 <div class="col-sm-5">
                                                     <div class="input-group">
-                                                        <input type="text" name="tgl_lahir" class="form-control f-md" placeholder="DD/MM/YYYY">
+                                                        <input type="text" name="tanggal_lahir" class="form-control f-md" placeholder="DD/MM/YYYY" required>
                                                     </div>
                                                 </div>
 
@@ -140,26 +137,46 @@
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="input-group input-group-alternative padding-su-n">
-                                                        <textarea class="form-control f-md" name="alamat"></textarea>
+                                                        <textarea class="form-control f-md" name="alamat" required></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <p class="form-text">Telepon</p>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group input-group-alternative padding-su-n">
+                                                        <input class="form-control f-md" placeholder="{{ __('Telepon') }}" type="text" name="no_telp" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <p class="form-text">Password</p>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group input-group-alternative padding-su-n">
+                                                        <input class="form-control f-md" type="password" name="password" required>
+                                                        <input type="hidden" name="jenis_user" value="3"/>
                                                     </div>
                                                 </div>
                                             </div>
 
                                         </div>
                                     </div><!--End of row-->
-
-
+                                    
+                                    <div class="row">
+                                        <div class="col-md 8" style="margin-left: 20px;">
+                                            <p>By signing up, you agree to our Terms of Service and Privacy Policy </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button type="submit" class="btn btn-primary" style="margin-left: 70px;">Submit</button>
+                                        </div>
+                                    </div><!--End of row-->
                                 </form>
-                                
-                                <div class="row">
-                                    <div class="col-md 8" style="margin-left: 20px;">
-                                        <p>By signing up, you agree to our Terms of Service and Privacy Policy </p>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <button type="sumbit" class="btn btn-primary" style="margin-left: 70px;">Submit</button>
-                                    </div>
-                                </div><!--End of row-->
-
                             </div> 
                         </div>
                     </div>

@@ -25,18 +25,9 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-5 col-md-7">
                         <div class="card bg-secondary shadow border-0">
-                            <div class="card-header bg-transparent pb-5">
-                                <div class="text-muted text-center mt-2 mb-3"><big>{{ __('Sign in with') }}</big></div>
-                                <div class="btn-wrapper text-center">
-                                    <a href="#" class="btn btn-neutral btn-icon">
-                                        <span class="btn-inner--icon"><img src="{{ asset('argon') }}/img/icons/common/google.svg"></span>
-                                        <span class="btn-inner--text">{{ __('Google') }}</span>
-                                    </a>
-                                    <a href="#" class="btn btn-neutral btn-icon">
-                                        <span class="btn-inner--icon"><img src="{{ asset('argon') }}/img/icons/common/facebook.svg"></span>
-                                        <span class="btn-inner--text">{{ __('Facebook') }}</span>
-                                    </a>
-                                </div>
+                            <div class="card-header bg-transparent" style="padding-bottom: 10px;">
+                                <div><a href="{{ route('welcome') }}"><img src="{{ asset('OneMedical') }}/img/icon/back.png" class="back-btn"/></a></div>
+                                <div class="text-muted text-center mt-2 mb-3"><h1>{{ __('Login') }}</h1></div>
                             </div>
                             <div class="card-body px-lg-5 py-lg-5">
                                 <form role="form" method="POST" action="{{ route('login') }}">
@@ -68,17 +59,31 @@
                                             </span>
                                         @endif
                                     </div>
-                                    <div class="custom-control custom-control-alternative custom-checkbox">
-                                        <input class="custom-control-input" name="remember" id="customCheckLogin" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
-                                        <label class="custom-control-label" for="customCheckLogin">
-                                            <span class="text-muted">{{ __('Remember me') }}</span>
-                                        </label>
-                                    </div>
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-primary my-4">{{ __('Sign in') }}</button>
+                                    <div class="row">
+                                        <div class="col-md-6 custom-control custom-control-alternative custom-checkbox">
+                                            <input class="custom-control-input" name="remember" id="customCheckLogin" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
+                                            <label class="custom-control-label" for="customCheckLogin">
+                                                <span class="text-muted">{{ __('Remember me') }}</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-6 text-center">
+                                            <button type="submit" class="btn btn-primary">{{ __('Sign in') }}</button>
+                                        </div>
                                     </div>
                                 </form>
+
+                                <div class="btn-wrapper text-center div-botton-li">
+                                    <a href="#" class="btn btn-neutral btn-icon">
+                                        <span class="btn-inner--icon"><img src="{{ asset('argon') }}/img/icons/common/google.svg"></span>
+                                        <span class="btn-inner--text">{{ __('Google') }}</span>
+                                    </a>
+                                    <a href="#" class="btn btn-neutral btn-icon">
+                                        <span class="btn-inner--icon"><img src="{{ asset('argon') }}/img/icons/common/facebook.svg"></span>
+                                        <span class="btn-inner--text">{{ __('Facebook') }}</span>
+                                    </a>
+                                </div>
                             </div>
+
                         </div>
                         <div class="row mt-3">
                             <div class="col-6">

@@ -26,6 +26,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="card bg-secondary shadow border-0">
                             <div class="card-header bg-transparent pb-5">
+                                <div><a href="{{ route('welcome') }}"><img src="{{ asset('OneMedical') }}/img/icon/back.png" class="back-btn"/></a></div>
                                 <div class="text-muted text-center mt-2 mb-4"><h1>{{ __('Sign up') }}</h1></div>
                                 <hr/>
                                 <div class="text-center">
