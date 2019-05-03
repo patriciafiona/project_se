@@ -67,7 +67,7 @@
                                             </label>
                                         </div>
                                         <div class="col-md-6 text-center">
-                                            <button type="submit" class="btn btn-primary">{{ __('Sign in') }}</button>
+                                            <button type="submit" class="btn btn-primary">{{ __('Login') }}</button>
                                         </div>
                                     </div>
                                 </form>

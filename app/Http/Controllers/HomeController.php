@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\RekamMedis;
+
 class HomeController extends Controller
 {
     /**
@@ -21,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //cek apakah dia dokter, pasien, atau admin
+        $rekam_medis = RekamMedis::all();
         return view('dashboard');
     }
 }

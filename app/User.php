@@ -38,10 +38,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function setTanggalLahirAttribute($value){
-        $this->attributes['tanggal_lahir'] = DateTime::createFromFormat('d/m/Y', $value);
-    }
-
     public function getTanggalLahirAttribute($value){
         $date = new DateTime($value);
         return $date->format('d/m/Y');

@@ -87,7 +87,14 @@
 	margin: auto;
 }
 
-/*--------------------------------Bagian dokter------------------------------*/
+/*--------------------------------Bagian LOGIN------------------------------*/
+
+.div-botton-li{
+	margin: 30px;
+}
+
+
+/*--------------------------------Bagian dashboard dokter------------------------------*/
 #header_doctor{
 	position: absolute;
 	z-index: -10;
@@ -152,14 +159,94 @@ h5.style_header{
 
 .rekamMedis_box{
 	background-color: #FAF9F9;
+	padding: 20px;
 }
 
 .date_box{
 	background-color: #FAF9F9;
+	margin-left: 20px;
+	padding: 20px;
 }
 
-/*--------------------------------Bagian LOGIN------------------------------*/
+.date_lg{
+	font-size: 80px;
+}
 
-.div-botton-li{
+.btn-selengkapnya{
+	float: right;
+	display: inline-block;
+}
+
+.box-gk{ /*box grafik kesehatan*/
+	background-color: #E6E6E6;
+	padding: 20px;
+	margin: 0 auto;
+}
+
+.btnRound{
+	width: 41px;
+	height: 41px;
+	border-radius: 50%;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	padding: 0px;
+	float: right;
+}
+
+.inlineBlock{
+	display: inline-block;
+}
+
+.chart-height{
+	height: 300px;
+}
+
+.chart-height-2{
+	height: 250px;
+}
+
+.pp_img{
+	width: 90px;
 	margin: 30px;
+}
+
+.link-pp{
+	text-align: center;
+	color: #707070;
+	font-size: 14px;
+}
+
+/*--------------------------------Bagian Pasien-----------------------------*/
+.bg-lightBlue{
+	background-color: #485AFF;
+}
+
+.hasilLab-box{
+	background-color: #FAF9F9;
+	border-radius: 1px solid #7F7C7C;
+}
+
+.isi-HL-box{ /*hasil cek lab*/
+	background-color: #E6E6E6;
+	border:1px solid #707070;
+	margin: 20px auto;
+}
+ 
+.foto-HCL{ /*hasil cek lab*/
+	width:200px;
+	margin:0px auto;
+}
+
+.padding20px{
+	padding: 20px;
+}
+
+.sm-text-12{
+	font-size: 12px;
+}
+
+.icon-sm{
+	width: 20px;
+	height: 20px;
 }

@@ -23,6 +23,10 @@ Route::post('/register/daftarDokter/new', 'daftarDokterController@store');
 Route::get('/register/daftarPasien', 'daftarPasienController@index')->name('daftarPasien');
 Route::post('/register/daftarPasien/new', 'daftarPasienController@store');
 
+Route::get('/HasilCekLab', 'HasilLabController@index')->name('hasilLab');
+Route::get('/HasilCekLab/new', 'HasilLabController@create');
+Route::post('/HasilCekLab/new', 'HasilLabController@store');
+
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);

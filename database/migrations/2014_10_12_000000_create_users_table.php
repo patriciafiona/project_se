@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->integer('no_telp');
             $table->string('email')->unique();
             $table->string('password',255);
+            $table->integer('login')->comment("0.Offline, 1.Online")->default("0");
             $table->rememberToken();
             $table->timestamps();
         });

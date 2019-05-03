@@ -98,17 +98,18 @@
                                                 </div>
                                                 <div class="col-sm-5">
                                                     <div class="input-group">
-                                                        <input type="text" name="tanggal_lahir" class="form-control f-md" placeholder="DD/MM/YYYY" required>
+
+                                                        <input type="date" name="tanggal_lahir" class="form-control f-lg" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-sm-2">
                                                     <div class="input-group">
-                                                        <input type="text" name="umur" class="form-control f-md" value="0 thn" disabled>
+                                                        <input type="text" name="umur" class="form-control f-lg" value="0 thn" disabled>
                                                     </div>
                                                 </div>
                                             </div>
-
+                                            
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <p class="form-text">Email</p>
@@ -159,7 +160,7 @@
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="input-group input-group-alternative padding-su-n">
-                                                        <input class="form-control f-md" type="password" name="password" required>
+                                                        <input class="form-control f-md" type="password" name="password" value="12345" required>
                                                         <input type="hidden" name="jenis_user" value="2"/>
                                                     </div>
                                                 </div>

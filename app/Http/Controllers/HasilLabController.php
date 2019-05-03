@@ -2,26 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\RekamMedis;
+use Illuminate\Support\Facades\DB;
+use App\HasilLab;
 
-class RekamMedisController extends Controller
+class HasilLabController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
-        $rekam_medis = RekamMedis::all();
-        return view('RekamMedis.index', compact('rekam_medis'));
+        $HasilLab = HasilLab::all();
+        return view('HasilLab.index', compact('HasilLab'));
     }
 
     /**
@@ -31,7 +27,7 @@ class RekamMedisController extends Controller
      */
     public function create()
     {
-        //
+        return view('HasilLab.create');
     }
 
     /**
@@ -42,7 +38,37 @@ class RekamMedisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $HasilLab = new HasilLab();
+        $request->validate([
+            'id_pasien' => 'required',
+            'id_dokter' => 'required',
+            'judul' => 'required',
+            'foto' => 'image|mimes:jpeg,jpg,png,svg'
+        ]);
+
+        $tempat_upload = public_path('/CekLab');
+        $foto = $request->file('foto');
+
+        //cek apakah kosong atau tidak fotonya
+        if($foto!=null){
+            $ext = $foto->getClientOriginalExtension();
+            $filename = $request->id_pasien. "_" .$request->id_dokter. "_" .$request->judul. "." .$ext;
+            $foto->move($tempat_upload, $filename);
+        }else{
+            $filename="no_picture.jpg";
+        }
+        
+
+        $HasilLab->judul = $request->judul;
+        $HasilLab->keterangan = $request->keterangan;
+        $HasilLab->id_user = $request->id_pasien;
+        $HasilLab->id_dokter = $request->id_dokter;
+        $HasilLab->foto = $filename;
+        
+
+        $HasilLab->save(); 
+
+        return redirect('/HasilLab');
     }
 
     /**
