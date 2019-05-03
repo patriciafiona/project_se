@@ -250,3 +250,9 @@ h5.style_header{
 	width: 20px;
 	height: 20px;
 }
+
+.transparent-button{
+	background-color: none;
+	border:none;
+	color: blue;
+}

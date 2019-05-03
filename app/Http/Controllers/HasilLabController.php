@@ -68,7 +68,7 @@ class HasilLabController extends Controller
 
         $HasilLab->save(); 
 
-        return redirect('/HasilLab');
+        return redirect('/HasilCekLab');
     }
 
     /**
@@ -90,7 +90,8 @@ class HasilLabController extends Controller
      */
     public function edit($id)
     {
-        //
+        $HasilLab=HasilLab::find($id);
+        return view('HasilLab.edit', compact('HasilLab'));
     }
 
     /**
@@ -102,7 +103,37 @@ class HasilLabController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id_pasien' => 'required',
+            'id_dokter' => 'required',
+            'judul' => 'required',
+            'foto' => 'image|mimes:jpeg,jpg,png,svg'
+        ]);
+
+        $tempat_upload = public_path('/CekLab');
+        $foto = $request->file('foto');
+
+        //cek apakah kosong atau tidak fotonya
+        if($foto!=null){
+            $ext = $foto->getClientOriginalExtension();
+            $filename = $request->id_pasien. "_" .$request->id_dokter. "_" .$request->judul. "." .$ext;
+            $foto->move($tempat_upload, $filename);
+        }
+        
+        $HasilLab = HasilLab::find($id);
+        $HasilLab->judul = $request->judul;
+        $HasilLab->keterangan = $request->keterangan;
+        $HasilLab->id_user = $request->id_pasien;
+        $HasilLab->id_dokter = $request->id_dokter;
+
+        if($foto!=null){
+            $HasilLab->foto = $filename;
+        }
+        
+
+        $HasilLab->save(); 
+
+        return redirect('/HasilCekLab');
     }
 
     /**
@@ -113,6 +144,9 @@ class HasilLabController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $HasilLab = HasilLab::find($id);
+        $HasilLab->delete();
+
+        return redirect('/HasilCekLab');
     }
 }

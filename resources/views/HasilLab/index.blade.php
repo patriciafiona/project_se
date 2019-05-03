@@ -14,7 +14,7 @@
                             <div class="col">
                                 <h2 class="mb-0">Daftar Cek Laboratorium</h2>
                                 <br/>
-                                <a href="/HasilLab/new" class="btn btn-round btn-primary btn-md">Tambah Hasil Lab</a>
+                                <a href="/HasilCekLab/new" class="btn btn-round btn-primary btn-md">Tambah Hasil Lab</a>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                                             <p class="sm-text-12">{{$hL->keterangan}}</p>
 
                                             <div style="float: right;">
-                                                <a href="#" class="sm-text-12">
+                                                <a href="/HasilCekLab/edit/{{$hL->id}}" class="sm-text-12" >
                                                     <span>
                                                         <img src="{{ asset('OneMedical') }}/img/icon/09.png" class="icon-sm"/>
                                                     </span>
@@ -50,13 +50,15 @@
                                                     Edit
                                                 </a>
 
-                                                <a href="#" class="sm-text-12">
+                                                <form action="/HasilCekLab/delete/{{$hL->id}}" method="post">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('Delete') }}
                                                     <span>
                                                         <img src="{{ asset('OneMedical') }}/img/icon/10.png" class="icon-sm"/>
                                                     </span>
+                                                    <button type="submit" class="sm-text-12 transparent-button">Hapus</button>
+                                                </form>
 
-                                                    Delete
-                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -64,7 +66,7 @@
                                 @else
                                 
                                 <div class="col-md-8 isi-HL-box padding20px">
-                                    <img src="{{ asset('OneMedical') }}/img/no_result.png"/>
+                                    <img src="{{ asset('CekLab') }}/no_picture.jpg" width="200px" alt="Img-placeholder"/>
                                 </div>
 
                                 @endif
