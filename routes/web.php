@@ -39,5 +39,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::delete('/HasilCekLab/delete/{id}', 'HasilLabController@destroy');
 
+	//Halaman Catatan Kesehatan
+	Route::get('/CatatanKesehatan', 'CatatanKesehatanController@index')->name('catatanKesehatan');
+	Route::post('/CatatanKesehatan/new', 'CatatanKesehatanController@store');
+
 });
 

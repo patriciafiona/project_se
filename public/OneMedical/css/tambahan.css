@@ -188,6 +188,7 @@ h5.style_header{
 	height: 41px;
 	border-radius: 50%;
 	text-align: center;
+	color: white;
 	text-decoration: none;
 	display: inline-block;
 	padding: 0px;
@@ -255,4 +256,22 @@ h5.style_header{
 	background-color: none;
 	border:none;
 	color: blue;
+}
+
+.img-avatar{
+	width: 150px;
+	height: 150px;
+	box-shadow: 5px 5px 10px grey;
+	position: absolute;
+	margin: -80px 110px 0px 110px;
+}
+
+.modal-box{
+	margin-top: 150px; 
+}
+
+.link-ct{
+	font-size: 12px;
+	float: right;
+	margin: 20px 0px 10px;
 }

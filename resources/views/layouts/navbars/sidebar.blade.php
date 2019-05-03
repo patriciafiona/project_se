@@ -113,7 +113,7 @@
             <!-- Navigation - Bagian sidebar sebelah kiri yang panjang -->
             @if(auth()->user()->jenis_user =='2')       
             <ul class="navbar-nav isi_sb">
-                <li class="nav-item"><h3 class="category_sidebar">Dokter</h3></li>
+                <li class="nav-item"><a href="{{ route('home') }}"><h3 class="category_sidebar">Dokter</h3></a></li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{ route('home') }}">
                         <img src="{{ asset('OneMedical') }}/img/icon/01.png" class="sb_icon"/>{{ __('Home') }}
@@ -161,7 +161,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('home') }}">
+                    <a class="nav-link text-white" href="{{ route('hasilLab') }}">
                         <img src="{{ asset('OneMedical') }}/img/icon/05.png" class="sb_icon"/> {{ __('Cek Hasil Lab') }}
                     </a>
                 </li>
@@ -171,7 +171,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('home') }}">
+                    <a class="nav-link text-white" href="{{ route('catatanKesehatan') }}">
                         <img src="{{ asset('OneMedical') }}/img/icon/06.png" class="sb_icon"/> {{ __('Grafik Kesehatan') }}
                     </a>
                 </li>
@@ -212,7 +212,7 @@
 
 
             <ul class="navbar-nav isi_sb">
-                <li class="nav-item"><h3 class="category_sidebar">Pasien</h3></li>
+                <li class="nav-item"><a href="{{ route('home') }}"><h3 class="category_sidebar">Pasien</h3></a></li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{ route('home') }}">
                         <img src="{{ asset('OneMedical') }}/img/icon/04.png" class="sb_icon"/> {{ __('Cek Rekam Medis') }}
@@ -229,7 +229,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('home') }}">
+                    <a class="nav-link text-white" href="{{ route('catatanKesehatan') }}">
                         <img src="{{ asset('OneMedical') }}/img/icon/06.png" class="sb_icon"/> {{ __('Grafik Kesehatan') }}
                     </a>
                 </li>
