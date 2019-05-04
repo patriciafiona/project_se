@@ -12,58 +12,40 @@
                     <div class="card-header bg-transparent">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h2 class="mb-0">Ubah Hasil Lab</h2>
+                                <h2 class="mb-0">Ubah Catatan Kesehatan</h2>
                             </div>
                         </div>
                     </div>
-                    <form action="{{ url('/HasilCekLab/edit/' . $HasilLab->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ url('/CatatanKesehatan/edit/' . $CatatanKesehatan->id) }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-4">
-                                    Judul
+                                    ID Dokter
                                 </div>
 
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="judul" value="{{$HasilLab->judul}}" required />
+                                    <input type="text" class="form-control" name="id_dokter" value="{{$CatatanKesehatan->id_dokter}}" placeholder="Jika tidak ada biarkan kosong" />
                                 </div>
                             </div>
-
-                            <br/>
-
+                            <br>
                             <div class="row">
                                 <div class="col-md-4">
-                                    Rekomendasi dari Dokter
+                                    Jenis Catatan
                                 </div>
 
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="id_dokter" value="{{$HasilLab->id_dokter}}" required />
+                                    <input type="text" class="form-control" value="{{$CatatanKesehatan->jenis_catatan}}"  disabled />
                                 </div>
                             </div>
-
-                            <br/>
-                            
+                            <br>
                             <div class="row">
                                 <div class="col-md-4">
-                                    Foto Hasil Lab
+                                    Nilai
                                 </div>
 
                                 <div class="col-md-8">
-                                    <input type="file" name="foto">
-                                    <br/><br/>
-                                    <input type="text" value="{{$HasilLab->foto}}" class="form-control" disabled>
-                                </div>
-                            </div>
-
-                            <br/>
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    Keterangan
-                                </div>
-
-                                <div class="col-md-8">
-                                    <textarea class="form-control f-md" name="keterangan" required>{{$HasilLab->keterangan}}</textarea>
+                                    <input type="text" class="form-control" name="nilai" value="{{$CatatanKesehatan->nilai}}"  />
                                 </div>
                             </div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\CatatanKesehatan;
 use App\User;
 
@@ -16,9 +17,15 @@ class CatatanKesehatanController extends Controller
      */
     public function index()
     {
-        $CatatanKesehatan = CatatanKesehatan::all();
+        //query untuk menammpilkan catatan kesehatan yang berbeda
+        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','1')->get();
+        $CatatanKesehatan2 = DB::table('catatan_kesehatans')->where('jenis_catatan','2')->get();
+        $CatatanKesehatan3= DB::table('catatan_kesehatans')->where('jenis_catatan','3')->get();
+        $CatatanKesehatan4= DB::table('catatan_kesehatans')->where('jenis_catatan','4')->get();
+
+
         $User = User::all();
-        return view('CatatanKesehatan.index', compact('CatatanKesehatan', 'User'));
+        return view('CatatanKesehatan.index', compact('CatatanKesehatan', 'CatatanKesehatan2', 'CatatanKesehatan3', 'CatatanKesehatan4', 'User'));
     }
 
     /**
@@ -52,7 +59,7 @@ class CatatanKesehatanController extends Controller
 
         $CatatanKesehatan->save(); 
 
-        return redirect('home');
+        return redirect('/CatatanKesehatan');
     }
 
     /**
@@ -75,6 +82,7 @@ class CatatanKesehatanController extends Controller
     public function edit($id)
     {
         $CatatanKesehatan = CatatanKesehatan::find($id);
+        return view('CatatanKesehatan.edit', compact('CatatanKesehatan'));
     }
 
     /**
@@ -86,7 +94,15 @@ class CatatanKesehatanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $CatatanKesehatan = CatatanKesehatan::find($id);
+        $CatatanKesehatan->nilai = $request->nilai;
+        $CatatanKesehatan->id_dokter = $request->id_dokter;
+        
+
+        $CatatanKesehatan->save(); 
+
+        return redirect('/CatatanKesehatan');
     }
 
     /**
@@ -97,6 +113,9 @@ class CatatanKesehatanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $CatatanKesehatan = CatatanKesehatan::find($id);
+        $CatatanKesehatan->delete();
+
+        return redirect('/CatatanKesehatan');
     }
 }

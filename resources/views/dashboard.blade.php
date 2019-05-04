@@ -101,7 +101,7 @@
                         <div class="row align-items-center">
                             <div class="col">
                                 <h2 class="mb-0 inlineBlock">Grafik Kesehatan</h2>
-                                <a href="#" class="btn btn-md btn-primary btn-selengkapnya">Selengkapnya</a>
+                                <a href="{{ route('catatanKesehatan') }}" class="btn btn-md btn-primary btn-selengkapnya">Selengkapnya</a>
                             </div>
                         </div>
                     </div>
@@ -110,8 +110,7 @@
                             <div class="col-md-10 box-gk">
                                 <div class="card-body">
                                     <h1 class="inlineBlock">Catatan Massa Tubuh</h1>
-                                    <button class="btn btnRound btn-primary" data-toggle="modal" data-target="#modalMassaTubuh">+</button>
-                                    <br/><br/>
+                                                                        <br/><br/>
                                     <!-- Chart -->
                                     <div class="chart chart-height">
                                         <!-- Chart wrapper -->
@@ -127,7 +126,7 @@
                         <div class="row">
                             <div class="col-md-5 box-gk">
                                 <h2 class="inlineBlock">Catatan Gula Darah</h2>
-                                <button class="btn btnRound btn-primary" data-toggle="modal" data-target="#modalGulaDarah">+</button>
+                                
                                 <br/><br/>
                                 <!-- Chart -->
                                 <div class="chart chart-height-2">
@@ -140,7 +139,7 @@
                             </div>
                             <div class="col-md-5 box-gk">
                                 <h2 class="inlineBlock">Catatan Tekanan Darah</h2>
-                                <button class="btn btnRound btn-primary" data-toggle="modal" data-target="#modalTekananDarah">+</button>
+                                
                                 <br/><br/>
                                 <!-- Chart -->
                                 <div class="chart chart-height-2">
@@ -150,135 +149,6 @@
 
                                 <a href="{{ route('catatanKesehatan') }}" class="link-ct">View Data</a>
                             </div>
-                        </div>
-
-
-
-
-
-
-
-                        <!--Modal 1: Masa Tubuh Form-->
-                        <div class="modal fade" id="modalMassaTubuh" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                          aria-hidden="true">
-                          <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
-                            <!--Content-->
-                            <div class="modal-content modal-box">
-                                <img src="/foto/{{ auth()->user()->foto }}" alt="avatar" class="rounded-circle img-avatar">
-                              <!--Body-->
-                              <div class="modal-body text-center mb-1 ">
-
-                                <h1 style="margin: 70px auto 10px">
-                                    @if(auth()->user()->jenis_user =='2')         
-                                        dr. {{ auth()->user()->name }}
-                                    @else
-                                        {{ auth()->user()->name }}
-                                    @endif
-                                </h1>
-
-                                <h5>Massa Tubuh</h5>
-
-                                <hr/>
-
-                                <form action="{{ url('/CatatanKesehatan/new') }}" method="post">
-                                    {{ csrf_field() }}
-                                    <div class="md-form ml-0 mr-0">
-                                      <input type="text" class="form-control form-control-sm validate ml-0" name="nilai" placeholder="Input in Kilogram (Kg)" required>
-                                      <input type="hidden" name="jenis_catatan" value="1"/>
-                                      <input type="hidden" name="id_user" value="{{ auth()->user()->id }}"/>
-                                    </div>
-
-                                    <div class="text-center mt-4">
-                                      <button type="submit" class="btn btn-cyan mt-1">Add<i class="fas fa-sign-in ml-1"></i></button>
-                                    </div>
-                                </form>
-                              </div>
-
-                            </div>
-                            <!--/.Content-->
-                          </div>
-                        </div>
-
-                        <!--Modal 2: Gula darah Form-->
-                        <div class="modal fade" id="modalGulaDarah" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                          aria-hidden="true">
-                          <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
-                            <!--Content-->
-                            <div class="modal-content modal-box">
-                                <img src="/foto/{{ auth()->user()->foto }}" alt="avatar" class="rounded-circle img-avatar">
-                              <!--Body-->
-                              <div class="modal-body text-center mb-1 ">
-
-                                <h1 style="margin: 70px auto 10px">
-                                    @if(auth()->user()->jenis_user =='2')         
-                                        dr. {{ auth()->user()->name }}
-                                    @else
-                                        {{ auth()->user()->name }}
-                                    @endif
-                                </h1>
-
-                                <h5>Gula Darah</h5>
-
-                                <hr/>
-
-                                <form action="{{ url('/CatatanKesehatan/new') }}" method="post">
-                                    {{ csrf_field() }}
-                                    <div class="md-form ml-0 mr-0">
-                                      <input type="text" class="form-control form-control-sm validate ml-0" name="nilai" placeholder="Input nilai gula darah" required>
-                                      <input type="hidden" name="jenis_catatan" value="2"/>
-                                      <input type="hidden" name="id_user" value="{{ auth()->user()->id }}"/>
-                                    </div>
-
-                                    <div class="text-center mt-4">
-                                      <button type="submit" class="btn btn-cyan mt-1">Add<i class="fas fa-sign-in ml-1"></i></button>
-                                    </div>
-                                </form>
-                              </div>
-
-                            </div>
-                            <!--/.Content-->
-                          </div>
-                        </div>
-
-                        <!--Modal 2: Gula darah Form-->
-                        <div class="modal fade" id="modalTekananDarah" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                          aria-hidden="true">
-                          <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
-                            <!--Content-->
-                            <div class="modal-content modal-box">
-                                <img src="/foto/{{ auth()->user()->foto }}" alt="avatar" class="rounded-circle img-avatar">
-                              <!--Body-->
-                              <div class="modal-body text-center mb-1 ">
-
-                                <h1 style="margin: 70px auto 10px">
-                                    @if(auth()->user()->jenis_user =='2')         
-                                        dr. {{ auth()->user()->name }}
-                                    @else
-                                        {{ auth()->user()->name }}
-                                    @endif
-                                </h1>
-
-                                <h5>Tekanan Darah</h5>
-
-                                <hr/>
-
-                                <form action="{{ url('/CatatanKesehatan/new') }}" method="post">
-                                    {{ csrf_field() }}
-                                    <div class="md-form ml-0 mr-0">
-                                      <input type="text" class="form-control form-control-sm validate ml-0" name="nilai" placeholder="Input nilai tekanan darah" required>
-                                      <input type="hidden" name="jenis_catatan" value="3"/>
-                                      <input type="hidden" name="id_user" value="{{ auth()->user()->id }}"/>
-                                    </div>
-
-                                    <div class="text-center mt-4">
-                                      <button type="submit" class="btn btn-cyan mt-1">Add<i class="fas fa-sign-in ml-1"></i></button>
-                                    </div>
-                                </form>
-                              </div>
-
-                            </div>
-                            <!--/.Content-->
-                          </div>
                         </div>
                     </div>
                 </div>

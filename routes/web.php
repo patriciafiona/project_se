@@ -42,6 +42,9 @@ Route::group(['middleware' => 'auth'], function () {
 	//Halaman Catatan Kesehatan
 	Route::get('/CatatanKesehatan', 'CatatanKesehatanController@index')->name('catatanKesehatan');
 	Route::post('/CatatanKesehatan/new', 'CatatanKesehatanController@store');
+	Route::get('/CatatanKesehatan/edit/{id}', 'CatatanKesehatanController@edit');
+	Route::post('/CatatanKesehatan/edit/{id}', 'CatatanKesehatanController@update');
+	Route::delete('/CatatanKesehatan/delete/{id}', 'CatatanKesehatanController@destroy');
 
 });
 

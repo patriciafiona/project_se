@@ -138,7 +138,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('rekamMedis') }}">
+                                <a class="nav-link text-white" href="{{ route('user.index') }}">
                                     <small>{{ __('Rekam Medis') }}</small>
                                 </a>
                             </li>
