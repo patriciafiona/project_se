@@ -16,7 +16,6 @@ class CreateCatatanKesehatansTable extends Migration
         Schema::create('catatan_kesehatans', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('id_user');
-            $table->integer('id_dokter')->nullable();
             $table->integer('jenis_catatan')->comment("1.Massa Tubuh, 2.Gula Darah, 3.Tekanan Darah, 4.Kolestrol");
             $table->double('nilai');
             $table->timestamps();

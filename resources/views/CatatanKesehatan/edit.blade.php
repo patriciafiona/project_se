@@ -19,15 +19,6 @@
                     <form action="{{ url('/CatatanKesehatan/edit/' . $CatatanKesehatan->id) }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    ID Dokter
-                                </div>
-
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" name="id_dokter" value="{{$CatatanKesehatan->id_dokter}}" placeholder="Jika tidak ada biarkan kosong" />
-                                </div>
-                            </div>
                             <br>
                             <div class="row">
                                 <div class="col-md-4">
