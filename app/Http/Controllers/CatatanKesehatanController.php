@@ -17,7 +17,10 @@ class CatatanKesehatanController extends Controller
      */
     public function index()
     {
+
         //query untuk menammpilkan catatan kesehatan yang berbeda
+
+        //KURANG FILTER ID_USER
         $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','1')->orderBy('updated_at', 'DESC')->limit(5)->get();
         $CatatanKesehatan2 = DB::table('catatan_kesehatans')->where('jenis_catatan','2')->orderBy('updated_at', 'DESC')->limit(5)->get();
         $CatatanKesehatan3= DB::table('catatan_kesehatans')->where('jenis_catatan','3')->orderBy('updated_at', 'DESC')->limit(5)->get();
