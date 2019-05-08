@@ -15,7 +15,7 @@
                         <div class="col-lg-3 order-lg-2">
                             <div class="card-profile-image">
                                 <a href="#">
-                                    <img src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                    <img src="/foto/{{ auth()->user()->foto }}" class="rounded-circle">
                                 </a>
                             </div>
                         </div>
@@ -47,20 +47,25 @@
                         </div>
                         <div class="text-center">
                             <h3>
-                                {{ auth()->user()->name }}<span class="font-weight-light">, 27</span>
+                                @if(auth()->user()->jenis_user =='2')         
+                                    dr. {{ auth()->user()->name }}
+                                @else
+                                    {{ auth()->user()->name }}
+                                @endif
+                                <span class="font-weight-light">, 27</span>
                             </h3>
                             <div class="h5 font-weight-300">
-                                <i class="ni location_pin mr-2"></i>{{ __('Bucharest, Romania') }}
+                                <i class="ni location_pin mr-2"></i>
+                                {{ auth()->user()->email }}
                             </div>
                             <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>{{ __('Solution Manager - Creative Tim Officer') }}
+                                <i class="ni business_briefcase-24 mr-2"></i>{{ auth()->user()->alamat }}
                             </div>
                             <div>
-                                <i class="ni education_hat mr-2"></i>{{ __('University of Computer Science') }}
+                                <i class="ni education_hat mr-2"></i>Born in {{ auth()->user()->tanggal_lahir }}
                             </div>
                             <hr class="my-4" />
-                            <p>{{ __('Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.') }}</p>
-                            <a href="#">{{ __('Show more') }}</a>
+                            <p>Contact Number : {{ auth()->user()->no_telp }}</p>
                         </div>
                     </div>
                 </div>

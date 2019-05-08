@@ -23,6 +23,7 @@ Route::post('/register/daftarDokter/new', 'daftarDokterController@store');
 Route::get('/register/daftarPasien', 'daftarPasienController@index')->name('daftarPasien');
 Route::post('/register/daftarPasien/new', 'daftarPasienController@store');
 
+//Hsrus Login dulu baru bisa akses 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
@@ -51,6 +52,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/CatatanKesehatan/edit/{id}', 'CatatanKesehatanController@edit');
 	Route::post('/CatatanKesehatan/edit/{id}', 'CatatanKesehatanController@update');
 	Route::delete('/CatatanKesehatan/delete/{id}', 'CatatanKesehatanController@destroy');
+
+	//Halaman Rekam Medis
+	Route::get('/rekamMedis', 'RekamMedisController@index')->name('rekamMedis');
+
+	//Halaman Dokter - sidebar Pasien (daftar dokter yang tambahin dia ke pasien tetap)
+	Route::get('/Dokter', 'DokterController@index')->name('dokter');
 
 });
 

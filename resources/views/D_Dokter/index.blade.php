@@ -12,18 +12,12 @@
                     <div class="card-header bg-transparent">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h2 class="mb-0">Rekam Medis</h2>
+                                <h2 class="mb-0">Daftar Dokter</h2>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class=""row>
-                            <p>Nama Pasien: </p>
-                            <p>Nama Pasien: </p>
-                        </div>
-
                         <!--Insert CODE HERE-->
-
                     </div>
                 </div>
             </div>

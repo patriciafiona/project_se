@@ -156,7 +156,7 @@
 
                 <li class="nav-item"><h3 class="category_sidebar">Pasien</h3></li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('home') }}">
+                    <a class="nav-link text-white" href="{{ route('rekamMedis') }}">
                         <img src="{{ asset('OneMedical') }}/img/icon/04.png" class="sb_icon"/> {{ __('Cek Rekam Medis') }}
                     </a>
                 </li>
@@ -166,7 +166,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('home') }}">
+                    <a class="nav-link text-white" href="{{ route('dokter') }}">
                         <img src="{{ asset('OneMedical') }}/img/icon/02.png" class="sb_icon"/> {{ __('Dokter') }}
                     </a>
                 </li>
@@ -180,7 +180,7 @@
                 <hr class="my-3">
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('home') }}">
+                    <a class="nav-link text-white" href="{{ route('profile.edit') }}">
                         <img src="{{ asset('OneMedical') }}/img/icon/07.png" class="sb_icon"/> {{ __('User Account') }}
                     </a>
                 </li>
@@ -214,7 +214,7 @@
             <ul class="navbar-nav isi_sb">
                 <li class="nav-item"><a href="{{ route('home') }}"><h3 class="category_sidebar">Pasien</h3></a></li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('home') }}">
+                    <a class="nav-link text-white" href="{{ route('rekamMedis') }}">
                         <img src="{{ asset('OneMedical') }}/img/icon/04.png" class="sb_icon"/> {{ __('Cek Rekam Medis') }}
                     </a>
                 </li>
@@ -224,7 +224,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('home') }}">
+                    <a class="nav-link text-white" href="{{ route('dokter') }}">
                         <img src="{{ asset('OneMedical') }}/img/icon/02.png" class="sb_icon"/> {{ __('Dokter') }}
                     </a>
                 </li>
@@ -238,7 +238,7 @@
                 <hr class="my-3" style="padding:40px 0">
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('home') }}">
+                    <a class="nav-link text-white" href="{{ route('profile.edit') }}">
                         <img src="{{ asset('OneMedical') }}/img/icon/07.png" class="sb_icon"/> {{ __('User Account') }}
                     </a>
                 </li>
