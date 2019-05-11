@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\CatatanKesehatan;
 use App\User;
+use Auth;
 
 class CatatanKesehatanController extends Controller
 {
@@ -17,14 +18,38 @@ class CatatanKesehatanController extends Controller
      */
     public function index()
     {
+        $id = auth()->user()->id;
 
         //query untuk menammpilkan catatan kesehatan yang berbeda
 
         //KURANG FILTER ID_USER
-        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','1')->orderBy('updated_at', 'DESC')->limit(5)->get();
-        $CatatanKesehatan2 = DB::table('catatan_kesehatans')->where('jenis_catatan','2')->orderBy('updated_at', 'DESC')->limit(5)->get();
-        $CatatanKesehatan3= DB::table('catatan_kesehatans')->where('jenis_catatan','3')->orderBy('updated_at', 'DESC')->limit(5)->get();
-        $CatatanKesehatan4= DB::table('catatan_kesehatans')->where('jenis_catatan','4')->orderBy('updated_at', 'DESC')->limit(5)->get();
+        $CatatanKesehatan = DB::table('catatan_kesehatans')
+        ->where('jenis_catatan','1')
+        ->where('id_user',$id)
+        ->orderBy('updated_at', 'DESC')
+        ->limit(5)
+        ->get();
+
+        $CatatanKesehatan2 = DB::table('catatan_kesehatans')
+        ->where('jenis_catatan','2')
+        ->where('id_user',$id)
+        ->orderBy('updated_at', 'DESC')
+        ->limit(5)
+        ->get();
+
+        $CatatanKesehatan3= DB::table('catatan_kesehatans')
+        ->where('jenis_catatan','3')
+        ->where('id_user',$id)
+        ->orderBy('updated_at', 'DESC')
+        ->limit(5)
+        ->get();
+
+        $CatatanKesehatan4= DB::table('catatan_kesehatans')
+        ->where('jenis_catatan','4')
+        ->where('id_user',$id)
+        ->orderBy('updated_at', 'DESC')
+        ->limit(5)
+        ->get();
 
         return view('CatatanKesehatan.index', compact('CatatanKesehatan', 'CatatanKesehatan2', 'CatatanKesehatan3', 'CatatanKesehatan4'));
     }

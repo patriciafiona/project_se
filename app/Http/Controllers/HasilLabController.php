@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\HasilLab;
+use Auth;
 
 class HasilLabController extends Controller
 {
@@ -16,7 +17,13 @@ class HasilLabController extends Controller
      */
     public function index()
     {
-        $HasilLab = HasilLab::all();
+        $id = auth()->user()->id;
+
+        $HasilLab = DB::table('hasil_labs')
+        ->where('id_user',$id)
+        ->orderBy('updated_at', 'DESC')
+        ->get();
+        
         return view('HasilLab.index', compact('HasilLab'));
     }
 

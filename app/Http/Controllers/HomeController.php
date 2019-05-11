@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CatatanKesehatan;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $CatatanKesehatan = DB::table('catatan_kesehatans')->select('nilai')->where('jenis_catatan','1')->orderBy('updated_at', 'DESC')->limit(8)->get()->toArray();
+        $id = auth()->user()->id;
+
+        $CatatanKesehatan = DB::table('catatan_kesehatans')
+        ->select('nilai')
+        ->where('jenis_catatan','1')
+        ->where('id_user',$id)
+        ->orderBy('updated_at', 'DESC')
+        ->limit(8)
+        ->get()
+        ->toArray();
 
         $CatatanKesehatan = array_column($CatatanKesehatan, 'nilai');
 
@@ -32,7 +42,14 @@ class HomeController extends Controller
 
         //-------------------------------------------------------------------------------------------------
 
-        $CatatanKesehatan2 = DB::table('catatan_kesehatans')->select('nilai')->where('jenis_catatan','2')->orderBy('updated_at', 'DESC')->limit(8)->get()->toArray();
+        $CatatanKesehatan2 = DB::table('catatan_kesehatans')
+        ->select('nilai')
+        ->where('jenis_catatan','2')
+        ->where('id_user',$id)
+        ->orderBy('updated_at', 'DESC')
+        ->limit(8)
+        ->get()
+        ->toArray();
 
         $CatatanKesehatan2 = array_column($CatatanKesehatan2, 'nilai');
 
@@ -40,7 +57,14 @@ class HomeController extends Controller
 
         //-------------------------------------------------------------------------------------------------
 
-        $CatatanKesehatan3 = DB::table('catatan_kesehatans')->select('nilai')->where('jenis_catatan','3')->orderBy('updated_at', 'DESC')->limit(8)->get()->toArray();
+        $CatatanKesehatan3 = DB::table('catatan_kesehatans')
+        ->select('nilai')
+        ->where('jenis_catatan','3')
+        ->where('id_user',$id)
+        ->orderBy('updated_at', 'DESC')
+        ->limit(8)
+        ->get()
+        ->toArray();
 
         $CatatanKesehatan3 = array_column($CatatanKesehatan3, 'nilai');
 
@@ -48,7 +72,14 @@ class HomeController extends Controller
 
         //-------------------------------------------------------------------------------------------------
 
-        $CatatanKesehatan4 = DB::table('catatan_kesehatans')->select('nilai')->where('jenis_catatan','4')->orderBy('updated_at', 'DESC')->limit(8)->get()->toArray();
+        $CatatanKesehatan4 = DB::table('catatan_kesehatans')
+        ->select('nilai')
+        ->where('jenis_catatan','4')
+        ->where('id_user',$id)
+        ->orderBy('updated_at', 'DESC')
+        ->limit(8)
+        ->get()
+        ->toArray();
 
         $CatatanKesehatan4 = array_column($CatatanKesehatan4, 'nilai');
 
