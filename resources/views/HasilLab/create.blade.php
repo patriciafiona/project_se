@@ -42,14 +42,27 @@
                             </div>
 
                             <br/>
-                            
+
                             <div class="row">
                                 <div class="col-md-4">
-                                    Foto Hasil Lab
+                                    Tanggal Pemeriksaan
                                 </div>
 
                                 <div class="col-md-8">
-                                    <input type="file" name="foto" required>
+                                    <input type="date" class="form-control" name="tanggal_pemeriksaan" required />
+                                </div>
+                            </div>
+
+                            <br/>
+                            
+                            <div class="row">
+                                <div class="col-md-4">
+                                    File Hasil Lab
+                                </div>
+
+                                <div class="col-md-8">
+                                    <input type="file" name="file" required>
+                                    <p class="red-notes">*Format : (*.pdf), (*.docx), (*.doc), (*.jpg), (*.jpeg), (*.png), (*.svg)</p>
                                 </div>
                             </div>
 

@@ -18,7 +18,8 @@ class CreateHasilLabsTable extends Migration
             $table->integer('id_user');
             $table->integer('id_dokter')->nullable();
             $table->string('judul',100);
-            $table->string('foto',255);
+            $table->string('file',255);
+            $table->date('tanggal_pemeriksaan');
             $table->text('keterangan');
             $table->timestamps();
         });

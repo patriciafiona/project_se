@@ -284,6 +284,11 @@ h5.style_header{
 	margin: 20px 0px 10px;
 }
 
+.red-notes{
+	font-size: 10px;
+	color: red;
+}
+
 /*--------------------------------Bagian rekam medis-----------------------------*/
 
 .box-rm{

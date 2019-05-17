@@ -50,27 +50,28 @@ class HasilLabController extends Controller
             'id_pasien' => 'required',
             'id_dokter' => 'required',
             'judul' => 'required',
-            'foto' => 'image|mimes:jpeg,jpg,png,svg'
+            'file' => 'required|mimes:jpeg,jpg,png,svg,pdf,docx,doc'
         ]);
 
         $tempat_upload = public_path('/CekLab');
-        $foto = $request->file('foto');
+        $file = $request->file('file');
 
         //cek apakah kosong atau tidak fotonya
-        if($foto!=null){
-            $ext = $foto->getClientOriginalExtension();
-            $filename = $request->id_pasien. "_" .$request->id_dokter. "_" .$request->judul. "." .$ext;
-            $foto->move($tempat_upload, $filename);
+        if($file!=null){
+            $ext = $file->getClientOriginalExtension();
+            $filename = $request->id_pasien. "_" .$request->id_dokter. "_" .$request->tanggal_pemeriksaan. "_" .$request->judul. "." .$ext;
+            $file->move($tempat_upload, $filename);
         }else{
             $filename="no_picture.jpg";
         }
         
 
         $HasilLab->judul = $request->judul;
+        $HasilLab->tanggal_pemeriksaan = $request->tanggal_pemeriksaan;
         $HasilLab->keterangan = $request->keterangan;
         $HasilLab->id_user = $request->id_pasien;
         $HasilLab->id_dokter = $request->id_dokter;
-        $HasilLab->foto = $filename;
+        $HasilLab->file = $filename;
         
 
         $HasilLab->save(); 
@@ -129,6 +130,7 @@ class HasilLabController extends Controller
         
         $HasilLab = HasilLab::find($id);
         $HasilLab->judul = $request->judul;
+        $HasilLab->tanggal_pemeriksaan = $request->tanggal_pemeriksaan;
         $HasilLab->keterangan = $request->keterangan;
         $HasilLab->id_user = $request->id_pasien;
         $HasilLab->id_dokter = $request->id_dokter;

@@ -20,14 +20,29 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-12 hasilLab-box">
+                            <div class="col-md-10 hasilLab-box">
                                 @if(!$HasilLab->isEmpty())
                                 @foreach($HasilLab as $hL)
                                 @if(!empty('{{$hL->judul}}'))   
-                                <div class="col-md-8 isi-HL-box padding20px">
+                                <div class="col-md-10 isi-HL-box padding20px">
                                     <div class="row">
                                         <div class="col-md-5">
-                                            <img src="/CekLab/{{$hL->foto}}" class="foto-HCL"/>
+                                            <!--Cek extensionnya apa-->
+                                            <?php
+                                            $file = $hL->file ;
+                                            $ext = File::extension($file);
+                                            $ext = strtolower($ext);
+                                            ?>
+
+                                            <a href="/CekLab/{{$hL->file}}">
+                                                @if($ext=="docx"||$ext=="doc")
+                                                <img src="{{ asset('OneMedical') }}/img/ext/1.png" class="foto-HCL"/>
+                                                @elseif($ext=="pdf")
+                                                <img src="{{ asset('OneMedical') }}/img/ext/2.png" class="foto-HCL"/>
+                                                @else
+                                                <img src="/CekLab/{{$hL->file}}" class="foto-HCL"/>
+                                                @endif
+                                            </a>
                                         </div>
                                         <div class="col-md-7 padding20px">
                                             <h2>{{$hL->judul}}</h2>

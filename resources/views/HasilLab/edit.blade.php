@@ -45,13 +45,28 @@
                             
                             <div class="row">
                                 <div class="col-md-4">
-                                    Foto Hasil Lab
+                                    Tanggal Pemeriksaan
+                                </div>
+
+                                <div class="col-md-8">
+                                    <input type="date" class="form-control" name="tanggal_pemeriksaan" value="{{$HasilLab->tanggal_pemeriksaan}}" />
+                                </div>
+                            </div>
+
+                            <br/>
+
+                            <br/>
+                            
+                            <div class="row">
+                                <div class="col-md-4">
+                                    File Hasil Lab
                                 </div>
 
                                 <div class="col-md-8">
                                     <input type="file" name="foto">
                                     <br/><br/>
-                                    <input type="text" value="{{$HasilLab->foto}}" class="form-control" disabled>
+                                    <input type="text" value="{{$HasilLab->file}}" class="form-control" disabled>
+                                    <p class="red-notes">*Format : (*.pdf), (*.docx), (*.doc), (*.jpg), (*.jpeg), (*.png), (*.svg)</p>
                                 </div>
                             </div>
 
