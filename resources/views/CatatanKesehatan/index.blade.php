@@ -29,6 +29,7 @@
 
                                         <br/><br/>
 
+                                        @if(!$CatatanKesehatan->isEmpty())
                                         <table class="table table-striped">
                                             <tr>
                                                 <th>No.</th>
@@ -54,7 +55,13 @@
                                             <?php $i++;?>
                                             @endforeach
                                         </table>
+
                                         <a href="{{ route('catatanKesehatan_mt') }}" class="link-ct">View Data</a>
+                                        
+                                        @else
+                                            <img alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
+                                        @endif
+                                        
                                     </div>
                                 </div>
 
@@ -69,6 +76,7 @@
 
                                         <br/><br/>
 
+                                        @if(!$CatatanKesehatan2->isEmpty())
                                         <table class="table table-striped">
                                             <tr>
                                                 <th>No.</th>
@@ -94,7 +102,14 @@
                                             <?php $i++;?>
                                             @endforeach
                                         </table>
+
                                         <a href="{{ route('catatanKesehatan_gd') }}" class="link-ct">View Data</a>
+
+                                        @else
+                                            <img alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
+                                        @endif
+
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -110,6 +125,7 @@
 
                                         <br/><br/>
 
+                                        @if(!$CatatanKesehatan3->isEmpty())
                                         <table class="table table-striped">
                                             <tr>
                                                 <th>No.</th>
@@ -135,7 +151,14 @@
                                             <?php $i++;?>
                                             @endforeach
                                         </table>
+
                                         <a href="{{ route('catatanKesehatan_td') }}" class="link-ct">View Data</a>
+
+                                        @else
+                                            <img alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
+                                        @endif
+
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -149,6 +172,7 @@
 
                                         <br/><br/>
 
+                                        @if(!$CatatanKesehatan4->isEmpty())
                                         <table class="table table-striped">
                                             <tr>
                                                 <th>No.</th>
@@ -174,7 +198,13 @@
                                             <?php $i++;?>
                                             @endforeach
                                         </table>
+
                                         <a href="{{ route('catatanKesehatan_k') }}" class="link-ct">View Data</a>
+
+                                        @else
+                                            <img alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
+                                        @endif
+
                                     </div>
                                     <br/><br/>
                                 </div>

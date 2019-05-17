@@ -127,9 +127,29 @@
                                         <div class="form-group">
                                             <label class="form-control-label">{{ __('Jenis Kelamin') }}</label>
                                             <div class="input-group">
-                                                <input type="radio" name="jenis_kelamin" value='L' > Laki-Laki
+                                                <input type="radio" name="jenis_kelamin" value='L' {{ auth()->user()->jenis_kelamin=='L' ? ' checked' : '' }}> Laki-Laki
 
-                                                <input type="radio" name="jenis_kelamin" value='P' style="margin-left: 20px; "> Perempuan
+                                                <input type="radio" name="jenis_kelamin" value='P' style="margin-left: 20px; " {{ auth()->user()->jenis_kelamin=='P' ? ' checked' : '' }}> Perempuan
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-tglLahir">{{ __('Tanggal Lahir') }}</label>
+                                            <input type="date" name="tanggal_lahir" id="input-tglLahir" class="form-control" value="{{ old('tanggal_lahir', auth()->user()->tanggal_lahir) }}" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label">{{ __('Jenis Kelamin') }}</label>
+                                            <div class="input-group">
+                                                <input type="radio" name="jenis_kelamin" value='L' {{ auth()->user()->jenis_kelamin=='L' ? ' checked' : '' }}> Laki-Laki
+
+                                                <input type="radio" name="jenis_kelamin" value='P' style="margin-left: 20px; " {{ auth()->user()->jenis_kelamin=='P' ? ' checked' : '' }}> Perempuan
                                             </div>
                                         </div>
                                     </div>

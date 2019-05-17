@@ -201,6 +201,10 @@ h5.style_header{
 	display: inline-block;
 }
 
+.floatRight{
+	float: right;
+}
+
 .chart-height{
 	height: 300px;
 }
@@ -278,4 +282,27 @@ h5.style_header{
 	font-size: 12px;
 	float: right;
 	margin: 20px 0px 10px;
+}
+
+/*--------------------------------Bagian rekam medis-----------------------------*/
+
+.box-rm{
+	padding: 15px;
+	margin:20px;
+	background-color: #FAF9F9;
+}
+
+.rm-n-dokter{ /*nama dokter*/
+	padding: 0px;
+	margin-bottom: 5px;
+}
+
+.rm-n-tgl{
+	padding: 0px;
+	font-size: 12px;
+}
+
+.rm-f-dokter{
+	width: 80px;
+	height: 80px;
 }

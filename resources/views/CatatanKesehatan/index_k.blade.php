@@ -51,6 +51,10 @@
                         </div>
                         
                     </div>
+
+                    <div class="card-footer">
+                        {{ $CatatanKesehatan->links() }}
+                    </div>
                 </div>
             </div>
         </div>

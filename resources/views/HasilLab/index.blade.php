@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 hasilLab-box">
-
+                                @if(!$HasilLab->isEmpty())
                                 @foreach($HasilLab as $hL)
                                 @if(!empty('{{$hL->judul}}'))   
                                 <div class="col-md-8 isi-HL-box padding20px">
@@ -71,6 +71,9 @@
 
                                 @endif
                                 @endforeach
+                                @else
+                                    <img alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
+                                @endif
 
                             </div>
                         </div>

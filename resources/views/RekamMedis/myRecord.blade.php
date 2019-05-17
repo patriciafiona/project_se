@@ -13,18 +13,10 @@
                         <div class="row align-items-center">
                             <div class="col">
                                 <h2 class="mb-0 inlineBlock">Rekam Medis</h2>
-
-                                    <a href="/rekamMedis/add/{{$pasien[0]->id}}" class="btn btn-md btn-primary inlineBlock floatRight">Tambah Rekam Medis</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class=""row>
-                            <p>Nama Pasien: {{ $pasien[0]->name }}</p>
-                            <p>ID Pasien: {{ $pasien[0]->id }}</p>
-                        </div>
-
-                        <hr/>
 
                         @if(!$rekamMedis->isEmpty())
                         <!--tampilkan rekam medis yang ia punya-->

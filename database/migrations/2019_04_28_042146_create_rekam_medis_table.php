@@ -14,9 +14,8 @@ class CreateRekamMedisTable extends Migration
     public function up()
     {
         Schema::create('rekam_medis', function (Blueprint $table) {
-            $table->bigIncrements('no_rekamMedis');
+            $table->bigIncrements('id');
             $table->string('id_pasien',10);
-            $table->integer('id_rumahSakit');
             $table->integer('id_dokter');
 
             $table->string('jenis_perawatan')->default(1)->comment("1.Rawat jalan, 2.Rawat Inap");
@@ -26,6 +25,7 @@ class CreateRekamMedisTable extends Migration
             $table->string('terapi')->nullable();
             $table->string('pemeriksaan_penunjang')->nullable();
             $table->string('alergi_obat')->nullable();
+            $table->string('resep_obat');
             $table->text('kesimpulan');
             $table->string('kondisi_keluar');
             $table->timestamps(); //create at dan update at

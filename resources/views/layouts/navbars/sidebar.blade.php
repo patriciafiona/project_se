@@ -138,7 +138,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('user.index') }}">
+                                <a class="nav-link text-white" href="" data-toggle="modal" data-target="#modalIdPasien">
                                     <small>{{ __('Rekam Medis') }}</small>
                                 </a>
                             </li>
@@ -156,7 +156,7 @@
 
                 <li class="nav-item"><h3 class="category_sidebar">Pasien</h3></li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('rekamMedis') }}">
+                    <a class="nav-link text-white" href=" {{ route('myRecord') }} ">
                         <img src="{{ asset('OneMedical') }}/img/icon/04.png" class="sb_icon"/> {{ __('Cek Rekam Medis') }}
                     </a>
                 </li>
@@ -214,7 +214,12 @@
             <ul class="navbar-nav isi_sb">
                 <li class="nav-item"><a href="{{ route('home') }}"><h3 class="category_sidebar">Pasien</h3></a></li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('rekamMedis') }}">
+                    <a class="nav-link text-white" href="{{ route('home') }}">
+                        <img src="{{ asset('OneMedical') }}/img/icon/01.png" class="sb_icon"/>{{ __('Home') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href=" {{ route('myRecord') }} ">
                         <img src="{{ asset('OneMedical') }}/img/icon/04.png" class="sb_icon"/> {{ __('Cek Rekam Medis') }}
                     </a>
                 </li>
@@ -252,3 +257,6 @@
         </div>
     </div>
 </nav>
+
+
+

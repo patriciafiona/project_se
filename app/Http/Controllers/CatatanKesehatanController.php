@@ -57,15 +57,14 @@ class CatatanKesehatanController extends Controller
     public function index_mt()
     {
         //query untuk menammpilkan catatan massa tubuh
-        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','1')->orderBy('updated_at', 'DESC')->get();
-
+        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','1')->orderBy('updated_at', 'DESC')->Paginate(5);
         return view('CatatanKesehatan.index_mt', compact('CatatanKesehatan'));
     }
 
      public function index_gd()
     {
         //query untuk menammpilkan catatan gula darah
-        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','2')->orderBy('updated_at', 'DESC')->get();
+        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','2')->orderBy('updated_at', 'DESC')->Paginate(5);
 
         return view('CatatanKesehatan.index_gd', compact('CatatanKesehatan'));
     }
@@ -73,7 +72,7 @@ class CatatanKesehatanController extends Controller
      public function index_td()
     {
         //query untuk menammpilkan catatan tekanan darah
-        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','3')->orderBy('updated_at', 'DESC')->get();
+        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','3')->orderBy('updated_at', 'DESC')->Paginate(5);
 
         return view('CatatanKesehatan.index_td', compact('CatatanKesehatan'));
     }
@@ -81,7 +80,7 @@ class CatatanKesehatanController extends Controller
      public function index_k()
     {
         //query untuk menammpilkan catatan kolestrol
-        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','4')->orderBy('updated_at', 'DESC')->get();
+        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','4')->orderBy('updated_at', 'DESC')->Paginate(5);
 
         return view('CatatanKesehatan.index_k', compact('CatatanKesehatan'));
     }

@@ -37,6 +37,40 @@
             @include('layouts.footers.guest')
         @endguest
 
+        <!--Modal : Menanyakan Id pasien untuk masuk dokter menangani pasien-->
+        <div class="modal fade" id="modalIdPasien" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
+            <!--Content-->
+            <div class="modal-content modal-box">
+              <!--Body-->
+              <div class="modal-body text-center mb-1 ">
+
+                <h1 style="margin: 40px auto 10px">
+                    Tambah Rekam Medis
+                </h1>
+
+                <h5>Id Pasien</h5>
+
+                <hr/>
+
+                <form action="{{ url('/rekamMedis/getPasien') }}" method="post">
+                    {{ csrf_field() }}
+                    <div class="md-form ml-0 mr-0">
+                      <input type="text" class="form-control form-control-sm validate ml-0" name="pasien_id" placeholder="Id Pasien" required>
+                    </div>
+
+                    <div class="text-center mt-4">
+                      <button type="submit" class="btn btn-cyan mt-1">Submit<i class="fas fa-sign-in ml-1"></i></button>
+                    </div>
+                </form>
+              </div>
+
+            </div>
+            <!--/.Content-->
+          </div>
+        </div>
+
         <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
         <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         
