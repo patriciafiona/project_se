@@ -34,7 +34,7 @@
                                             $ext = strtolower($ext);
                                             ?>
 
-                                            <a href="/CekLab/{{$hL->file}}">
+                                            <a href="{{ asset('CekLab') }}/{{$hL->file}}">
                                                 @if($ext=="docx"||$ext=="doc")
                                                 <img src="{{ asset('OneMedical') }}/img/ext/1.png" class="foto-HCL"/>
                                                 @elseif($ext=="pdf")

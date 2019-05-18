@@ -54,13 +54,15 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::delete('/CatatanKesehatan/delete/{id}', 'CatatanKesehatanController@destroy');
 
 	//Halaman Rekam Medis
+	//bagian dokter
 	Route::post('/rekamMedis/getPasien', 'RekamMedisController@getPasien');
-	Route::get('/rekamMedis/{id}', 'RekamMedisController@index')->name('rekamMedis');
+	Route::get('/rekamMedis/{id}', 'RekamMedisController@index_dokter')->name('rekamMedis');
 	Route::get('/rekamMedis/add/{id}', 'RekamMedisController@create');
 	Route::post('/rekamMedis/new', 'RekamMedisController@store');
 
+	//default user bisa ngapain aja
 	Route::get('/rekamMedis/view/{id}', 'RekamMedisController@view');
-	Route::get('/rekamMedis/myRecord', 'RekamMedisController@myRecord')->name('myRecord');
+	Route::get('/rekamMedis', 'RekamMedisController@index')->name('myRecord');
 
 	//Halaman Dokter - sidebar Pasien (daftar dokter yang tambahin dia ke pasien tetap)
 	Route::get('/Dokter', 'DokterController@index')->name('dokter');

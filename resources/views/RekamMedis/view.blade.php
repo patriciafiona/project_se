@@ -270,9 +270,11 @@
                                 <!--Bagian button cancle sama submit-->
                                 <div class="row">
                                     <div class="col-md-10">
-                                        
-                                        <a href="/rekamMedis/{{ $user[0]->id }}" class="btn btn-sm btn-danger inlineBlock floatRight">Cancle</a>
-                                        
+                                        @if(auth()->user()->jenis_user =='2')
+                                            <a href="/rekamMedis/{{ $user[0]->id }}" class="btn btn-sm btn-danger inlineBlock floatRight">Cancle</a>
+                                        @else
+                                            <a href="/rekamMedis" class="btn btn-sm btn-danger inlineBlock floatRight">Cancle</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

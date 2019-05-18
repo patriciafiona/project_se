@@ -45,25 +45,7 @@ class RekamMedisController extends Controller
         return view('RekamMedis.view',compact('rekamMedis','user','years','dokter'));
     }
 
-    public function myRecord()
-    {
-        $pasien_id =  auth()->user()->id ;
-
-        $pasien = DB::table('users')
-        ->where('id', $pasien_id)
-        ->get();
-
-        //rekam medis pasien
-        $rekamMedis = DB::table('rekam_medis')
-        ->where('id_pasien', $pasien_id)
-        ->Paginate(5);
-
-        return view('RekamMedis.myRecord', compact('pasien','rekamMedis'));
-    }
-
-    //end tambahan ----------------------------------------------------------------------------------
-
-    public function index($id)
+    public function index_dokter($id)
     {
         $pasien_id = $id;
 
@@ -76,7 +58,21 @@ class RekamMedisController extends Controller
         ->where('id_pasien', $pasien_id)
         ->Paginate(5);
 
-        return view('RekamMedis.index', compact('pasien','rekamMedis'));
+        return view('RekamMedis.index_pasien', compact('pasien','rekamMedis'));
+    }    
+
+    //end tambahan ----------------------------------------------------------------------------------
+
+    public function index()
+    {
+        $pasien_id =  auth()->user()->id ;
+
+        //rekam medis pasien
+        $rekamMedis = DB::table('rekam_medis')
+        ->where('id_pasien', $pasien_id)
+        ->Paginate(5);
+
+        return view('RekamMedis.myRecord', compact('rekamMedis'));
     }
 
     /**
