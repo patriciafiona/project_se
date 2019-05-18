@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\HasilLab;
 use Auth;
 
+use Carbon\Carbon;
+
 class HasilLabController extends Controller
 {
     /**
@@ -48,7 +50,6 @@ class HasilLabController extends Controller
         $HasilLab = new HasilLab();
         $request->validate([
             'id_pasien' => 'required',
-            'id_dokter' => 'required',
             'judul' => 'required',
             'file' => 'required|mimes:jpeg,jpg,png,svg,pdf,docx,doc'
         ]);
@@ -113,19 +114,18 @@ class HasilLabController extends Controller
     {
         $request->validate([
             'id_pasien' => 'required',
-            'id_dokter' => 'required',
             'judul' => 'required',
-            'foto' => 'image|mimes:jpeg,jpg,png,svg'
+            'file' => 'image|mimes:jpeg,jpg,png,svg'
         ]);
 
         $tempat_upload = public_path('/CekLab');
-        $foto = $request->file('foto');
+        $file = $request->file('file');
 
         //cek apakah kosong atau tidak fotonya
-        if($foto!=null){
-            $ext = $foto->getClientOriginalExtension();
+        if($file!=null){
+            $ext = $file->getClientOriginalExtension();
             $filename = $request->id_pasien. "_" .$request->id_dokter. "_" .$request->judul. "." .$ext;
-            $foto->move($tempat_upload, $filename);
+            $file->move($tempat_upload, $filename);
         }
         
         $HasilLab = HasilLab::find($id);
@@ -135,8 +135,8 @@ class HasilLabController extends Controller
         $HasilLab->id_user = $request->id_pasien;
         $HasilLab->id_dokter = $request->id_dokter;
 
-        if($foto!=null){
-            $HasilLab->foto = $filename;
+        if($file!=null){
+            $HasilLab->file = $filename;
         }
         
 

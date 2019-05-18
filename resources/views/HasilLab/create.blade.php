@@ -37,7 +37,8 @@
                                 </div>
 
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="id_dokter" placeholder="Id dokter" required />
+                                    <input type="text" class="form-control" name="id_dokter" placeholder="Id dokter" />
+                                    <p class="red-notes">*Kosongkan jika tidak ada</p>
                                 </div>
                             </div>
 

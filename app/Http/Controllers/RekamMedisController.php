@@ -55,7 +55,10 @@ class RekamMedisController extends Controller
 
         //rekam medis pasien
         $rekamMedis = DB::table('rekam_medis')
+        ->join('users', 'users.id', '=', 'rekam_medis.id_dokter')
+        ->select('rekam_medis.*', 'users.name','users.foto') //nama dokter
         ->where('id_pasien', $pasien_id)
+        ->orderBy('updated_at', 'DESC')
         ->Paginate(5);
 
         return view('RekamMedis.index_pasien', compact('pasien','rekamMedis'));
@@ -69,7 +72,10 @@ class RekamMedisController extends Controller
 
         //rekam medis pasien
         $rekamMedis = DB::table('rekam_medis')
+        ->join('users', 'users.id', '=', 'rekam_medis.id_dokter')
+        ->select('rekam_medis.*', 'users.name', 'users.foto') //nama dokter
         ->where('id_pasien', $pasien_id)
+        ->orderBy('updated_at', 'DESC')
         ->Paginate(5);
 
         return view('RekamMedis.myRecord', compact('rekamMedis'));

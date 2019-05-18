@@ -25,12 +25,12 @@
                             <div class="row box-rm">
                                 <div class="col-md-2">
                                     <span class="avatar avatar-md rounded-circle rm-f-dokter">
-                                        <img alt="Image placeholder" src="/foto/{{ auth()->user()->foto }}">
+                                        <img alt="Image placeholder" src="/foto/{{ $rm->foto }}">
                                     </span>
                                 </div>
 
                                 <div class="col-md-10">
-                                    <p class="rm-n-dokter inlineBlock">dr. {{ $dokter = DB::table('users')->where(['id' => $rm->id_dokter])->pluck('name') }}</p>
+                                    <p class="rm-n-dokter inlineBlock">dr. {{ $rm->name }}</p>
                                     <a href="/rekamMedis/view/{{ $rm->id }}" style="float: right;">
                                         <img alt="Image placeholder" src="{{ asset('OneMedical') }}/img/icon/11.png">
                                     </a>

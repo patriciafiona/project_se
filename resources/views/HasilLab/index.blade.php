@@ -87,7 +87,7 @@
                                 @endif
                                 @endforeach
                                 @else
-                                    <img alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
+                                    <img class="img-center" alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
                                 @endif
 
                             </div>

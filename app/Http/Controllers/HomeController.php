@@ -91,7 +91,20 @@ class HomeController extends Controller
         //tanggal hari ini
         $today = Carbon::now();
 
-        return view('dashboard', compact('today'))
+        //------------------------------------------------------------------------------------------------
+
+        //untuk rekam medis
+
+        $pasien_id =  auth()->user()->id ;
+
+        $rekamMedis = DB::table('rekam_medis')
+        ->join('users', 'users.id', '=', 'rekam_medis.id_dokter')
+        ->select('rekam_medis.*', 'users.name')
+        ->where('id_pasien', $pasien_id)
+        ->orderBy('updated_at', 'DESC')
+        ->Paginate(1);
+
+        return view('dashboard', compact('today','rekamMedis'))
             ->with('CatatanKesehatan',json_encode($CatatanKesehatan,JSON_NUMERIC_CHECK))
             ->with('CatatanKesehatan2',json_encode($CatatanKesehatan2,JSON_NUMERIC_CHECK))
             ->with('CatatanKesehatan3',json_encode($CatatanKesehatan3,JSON_NUMERIC_CHECK))

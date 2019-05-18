@@ -21,7 +21,28 @@
                         <div class="row">
                             <div class="col-md-7 rekamMedis_box">
                                 <table class="table table-striped">
-                                    <td></td>
+                                @if(!$rekamMedis->isEmpty())
+                                    @foreach ($rekamMedis as $rm)
+                                    <tr>
+                                        <td>
+                                            <div class="col-md-10">
+                                                <p class="rm-n-dokter inlineBlock">dr. {{ $rm->name }}</p>
+                                                <a href="/rekamMedis/view/{{ $rm->id }}" style="float: right;">
+                                                    <img alt="Image placeholder" src="{{ asset('OneMedical') }}/img/icon/11.png">
+                                                </a>
+                                                <p class="rm-n-tgl">{{ $rm->updated_at }}</p>
+                                                <hr style="margin: 5px;" />
+                                               Kesimpulan: {{ $rm->kesimpulan }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    <tr>
+                                        {{ $rekamMedis->links() }}
+                                    </tr>
+                                @else
+                                    <img class="img-center" alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
+                                @endif
                                 </table>
                             </div>
 
@@ -116,8 +137,9 @@
                                         <!-- Chart wrapper -->
                                         <canvas id="chart-MT" class="chart-canvas"></canvas>
                                     </div>
-
+                                    @if(!$rekamMedis->isEmpty())
                                     <a href="{{ route('catatanKesehatan') }}" class="link-ct">View Data</a>
+                                    @endif
 
                                 </div>
                             </div>
@@ -134,7 +156,9 @@
                                     <canvas id="chart-GD" class="chart-canvas"></canvas>
                                 </div>
 
+                                @if(!$rekamMedis->isEmpty())
                                 <a href="{{ route('catatanKesehatan') }}" class="link-ct">View Data</a>
+                                @endif
 
                             </div>
                             <div class="col-md-5 box-gk">
@@ -147,7 +171,9 @@
                                     <canvas id="chart-TD" class="chart-canvas"></canvas>
                                 </div>
 
+                                @if(!$rekamMedis->isEmpty())
                                 <a href="{{ route('catatanKesehatan') }}" class="link-ct">View Data</a>
+                                @endif
                             </div>
                         </div>
 

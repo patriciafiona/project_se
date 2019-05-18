@@ -59,7 +59,7 @@
                                         <a href="{{ route('catatanKesehatan_mt') }}" class="link-ct">View Data</a>
                                         
                                         @else
-                                            <img alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
+                                            <img class="img-center" alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
                                         @endif
                                         
                                     </div>
@@ -106,7 +106,7 @@
                                         <a href="{{ route('catatanKesehatan_gd') }}" class="link-ct">View Data</a>
 
                                         @else
-                                            <img alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
+                                            <img class="img-center" alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
                                         @endif
 
                                         
@@ -155,7 +155,7 @@
                                         <a href="{{ route('catatanKesehatan_td') }}" class="link-ct">View Data</a>
 
                                         @else
-                                            <img alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
+                                            <img class="img-center" alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
                                         @endif
 
                                         
@@ -202,7 +202,7 @@
                                         <a href="{{ route('catatanKesehatan_k') }}" class="link-ct">View Data</a>
 
                                         @else
-                                            <img alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
+                                            <img class="img-center" alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
                                         @endif
 
                                     </div>
