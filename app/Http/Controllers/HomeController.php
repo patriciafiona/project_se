@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CatatanKesehatan;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 use Auth;
 
 class HomeController extends Controller
@@ -85,7 +86,12 @@ class HomeController extends Controller
 
         $CatatanKesehatan4 = array_reverse($CatatanKesehatan4);
 
-        return view('dashboard')
+        //------------------------------------------------------------------------------------------------
+
+        //tanggal hari ini
+        $today = Carbon::now();
+
+        return view('dashboard', compact('today'))
             ->with('CatatanKesehatan',json_encode($CatatanKesehatan,JSON_NUMERIC_CHECK))
             ->with('CatatanKesehatan2',json_encode($CatatanKesehatan2,JSON_NUMERIC_CHECK))
             ->with('CatatanKesehatan3',json_encode($CatatanKesehatan3,JSON_NUMERIC_CHECK))

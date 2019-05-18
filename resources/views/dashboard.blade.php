@@ -27,8 +27,8 @@
 
                             <div class="col-md-4 date_box">
                                 <h3>Date</h3>
-                                <h1 class="text-center date_lg">22</h1>
-                                <h4  class="text-center">Mei 2019</h4>
+                                <h1 class="text-center date_lg">{{ $today->isoFormat('D') }}</h1>
+                                <h4  class="text-center">{{$today->format('F')}} {{ $today->isoFormat('YYYY') }}</h4>
                             </div>
                         </div>
                     </div>
