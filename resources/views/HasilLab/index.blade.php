@@ -46,11 +46,20 @@
                                         </div>
                                         <div class="col-md-7 padding20px">
                                             <h2>{{$hL->judul}}</h2>
+                                            <?php
+                                                //waktu create
+                                                $waktu_c = carbon\Carbon::parse($hL->created_at);
+                                                $waktu_c->timezone = new DateTimeZone('Asia/Jakarta');
+
+                                                //waktu update
+                                                $waktu_u = carbon\Carbon::parse($hL->updated_at);
+                                                $waktu_u->timezone = new DateTimeZone('Asia/Jakarta');
+                                            ?>
                                             <p class="sm-text-12">
-                                               @if('{{$hL->created_at}}' == '{{$hL->updated_at}}')         
-                                                    Created At {{$hL->created_at}}
+                                               @if('{{$waktu_c}}' == '$waktu_u}}')         
+                                                    Created At {{$waktu_c}}
                                                 @else
-                                                    Updated At {{$hL->updated_at}}
+                                                    Updated At {{$waktu_u}}
                                                 @endif
                                             </p>
                                             <hr style="margin: 10px 0px" />

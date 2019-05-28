@@ -17,99 +17,98 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-
+                    <div class="card-body ">
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-md-12 hasilLab-box">
-                                        <h2 class="inlineBlock">Catatan Massa Tubuh</h2>
-                                        
-                                        <button class="btn btnRound btn-primary" data-toggle="modal" data-target="#modalMassaTubuh">+</button>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h2 class="inlineBlock">Catatan Massa Tubuh</h2>
+                                            
+                                            <button class="btn btnRound btn-primary" data-toggle="modal" data-target="#modalMassaTubuh">+</button>
 
-                                        <br/><br/>
+                                            <br/><br/>
 
-                                        @if(!$CatatanKesehatan->isEmpty())
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>Nilai</th>
-                                                <th>Tanggal Menambah Data</th>
-                                                <th>Action</th>
-                                            </tr>
-                                            <?php $i=1;?>
-                                            @foreach($CatatanKesehatan as $CK)
-                                            <tr>
-                                                <td><?php echo $i;?>.</td>
-                                                <td>{{ $CK->nilai }}</td>
-                                                <td>{{ $CK->created_at }}</td>
-                                                <td>
-                                                    <a href="/CatatanKesehatan/edit/{{ $CK->id }}" class="btn btn-warning btn-sm">Edit</a>
-                                                    <form action="/CatatanKesehatan/delete/{{$CK->id}}" method="post">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('Delete') }}
-                                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                            <?php $i++;?>
-                                            @endforeach
-                                        </table>
+                                            @if(!$CatatanKesehatan->isEmpty())
+                                            <table class="table table-striped">
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Nilai</th>
+                                                    <th>Tanggal Menambah Data</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                                <?php $i=1;?>
+                                                @foreach($CatatanKesehatan as $CK)
+                                                <tr>
+                                                    <td><?php echo $i;?>.</td>
+                                                    <td>{{ $CK->nilai }}</td>
+                                                    <td>{{ $CK->created_at }}</td>
+                                                    <td>
+                                                        <a href="/CatatanKesehatan/edit/{{ $CK->id }}" class="btn btn-warning btn-sm">Edit</a>
+                                                        <form action="/CatatanKesehatan/delete/{{$CK->id}}" method="post">
+                                                            {{ csrf_field() }}
+                                                            {{ method_field('Delete') }}
+                                                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                                <?php $i++;?>
+                                                @endforeach
+                                            </table>
 
-                                        <a href="{{ route('catatanKesehatan_mt') }}" class="link-ct">View Data</a>
-                                        
-                                        @else
-                                            <img class="img-center" alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
-                                        @endif
-                                        
+                                            <a href="{{ route('catatanKesehatan_mt') }}" class="link-ct">View Data</a>
+                                            
+                                            @else
+                                                <img class="img-center" alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
+                                            @endif
+                                            
+                                        </div>
                                     </div>
+
                                 </div>
 
-                            </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h2 class="inlineBlock">Catatan Gula Darah</h2>
 
-                            <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-md-12 hasilLab-box">
-                                        <h2 class="inlineBlock">Catatan Gula Darah</h2>
+                                            <button class="btn btnRound btn-primary" data-toggle="modal" data-target="#modalGulaDarah">+</button>
 
-                                        <button class="btn btnRound btn-primary" data-toggle="modal" data-target="#modalGulaDarah">+</button>
+                                            <br/><br/>
 
-                                        <br/><br/>
+                                            @if(!$CatatanKesehatan2->isEmpty())
+                                            <table class="table table-striped">
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Nilai</th>
+                                                    <th>Tanggal Menambah Data</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                                <?php $i=1;?>
+                                                @foreach($CatatanKesehatan2 as $CK2)
+                                                <tr>
+                                                    <td><?php echo $i;?>.</td>
+                                                    <td>{{ $CK2->nilai }}</td>
+                                                    <td>{{ $CK2->created_at }}</td>
+                                                    <td>
+                                                        <a href="/CatatanKesehatan/edit/{{ $CK2->id }}" class="btn btn-warning btn-sm">Edit</a>
+                                                        <form action="/CatatanKesehatan/delete/{{$CK2->id}}" method="post">
+                                                            {{ csrf_field() }}
+                                                            {{ method_field('Delete') }}
+                                                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                                <?php $i++;?>
+                                                @endforeach
+                                            </table>
 
-                                        @if(!$CatatanKesehatan2->isEmpty())
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>Nilai</th>
-                                                <th>Tanggal Menambah Data</th>
-                                                <th>Action</th>
-                                            </tr>
-                                            <?php $i=1;?>
-                                            @foreach($CatatanKesehatan2 as $CK2)
-                                            <tr>
-                                                <td><?php echo $i;?>.</td>
-                                                <td>{{ $CK2->nilai }}</td>
-                                                <td>{{ $CK2->created_at }}</td>
-                                                <td>
-                                                    <a href="/CatatanKesehatan/edit/{{ $CK2->id }}" class="btn btn-warning btn-sm">Edit</a>
-                                                    <form action="/CatatanKesehatan/delete/{{$CK2->id}}" method="post">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('Delete') }}
-                                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                            <?php $i++;?>
-                                            @endforeach
-                                        </table>
+                                            <a href="{{ route('catatanKesehatan_gd') }}" class="link-ct">View Data</a>
 
-                                        <a href="{{ route('catatanKesehatan_gd') }}" class="link-ct">View Data</a>
-
-                                        @else
-                                            <img class="img-center" alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
-                                        @endif
-
-                                        
+                                            @else
+                                                <img class="img-center" alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +117,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="row">
-                                    <div class="col-md-12 hasilLab-box">
+                                    <div class="col-md-12">
                                         <h2 class="inlineBlock">Catatan Tekanan Darah</h2>
 
                                         <button class="btn btnRound btn-primary" data-toggle="modal" data-target="#modalTekananDarah">+</button>
@@ -165,7 +164,7 @@
 
                             <div class="col-md-6">
                                 <div class="row">
-                                    <div class="col-md-12 hasilLab-box">
+                                    <div class="col-md-12">
                                         <h2 class="inlineBlock">Catatan Kolestrol</h2>
 
                                         <button class="btn btnRound btn-primary" data-toggle="modal" data-target="#modalKolestrol">+</button>

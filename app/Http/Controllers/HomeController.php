@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\CatatanKesehatan;
+use App\Model;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Auth;
+use DateTimeZone;
 
 class HomeController extends Controller
 {
@@ -90,6 +92,7 @@ class HomeController extends Controller
 
         //tanggal hari ini
         $today = Carbon::now();
+        $today->timezone = new DateTimeZone('Asia/Jakarta');
 
         //------------------------------------------------------------------------------------------------
 

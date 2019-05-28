@@ -12,12 +12,12 @@
                     <div class="card-header bg-transparent">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h2>Laporan Pemeriksaan</h2>
+                                <h2>Ubah Laporan Pemeriksaan</h2>
                             </div>
                         </div>
                     </div>
 
-                    <form action="{{ url('/rekamMedis/new') }}" method="post">
+                    <form action="{{ url('/rekamMedis/edit/' . $rekamMedis->id) }}" method="post">
                     {{ csrf_field() }}
                     <div class="card-body">
 
@@ -97,9 +97,9 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="input-group">
-                                            <input type="radio" name="jenis_perawatan" value='1' checked> R.jalan
+                                            <input type="radio" name="jenis_perawatan" value='1' {{ $rekamMedis->jenis_perawatan=='1' ? ' checked' : '' }}> R.jalan
 
-                                            <input type="radio" name="jenis_perawatan" value='2' style="margin-left: 20px; "> R.inap
+                                            <input type="radio" name="jenis_perawatan" value='2' {{ $rekamMedis->jenis_perawatan=='2' ? ' checked' : '' }} style="margin-left: 20px; "> R.inap
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +160,7 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="input-group">
-                                            <input class="form-control f-md" type="text" name="diagnosa" required autofocus>
+                                            <input class="form-control f-md" type="text" name="diagnosa" required value="{{$rekamMedis->diagnosa}}">
                                         </div>
                                     </div>
                                 </div>
@@ -171,7 +171,7 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="input-group">
-                                            <textarea class="form-control f-md" name="keluhan" required></textarea>
+                                            <textarea class="form-control f-md" name="keluhan" required>{{$rekamMedis->keluhan}}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -184,7 +184,7 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="input-group">
-                                            <textarea class="form-control f-md" name="pemeriksaan" required></textarea>
+                                            <textarea class="form-control f-md" name="pemeriksaan" value="{{$rekamMedis->pemeriksaan}}" required>{{$rekamMedis->pemeriksaan}}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -197,7 +197,7 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="input-group">
-                                            <textarea class="form-control f-md" name="terapi"></textarea>
+                                            <textarea class="form-control f-md" name="terapi">{{$rekamMedis->terapi}}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -210,7 +210,7 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="input-group">
-                                            <textarea class="form-control f-md" name="pemeriksaan_penunjang"></textarea>
+                                            <textarea class="form-control f-md" name="pemeriksaan_penunjang" >{{$rekamMedis->pemeriksaan_penunjang}}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -223,7 +223,7 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="input-group">
-                                            <textarea class="form-control f-md" name="alergi_obat"></textarea>
+                                            <textarea class="form-control f-md" name="alergi_obat" value="{{$rekamMedis->alergi_obat}}">{{$rekamMedis->alergi_obat}}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -236,7 +236,7 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="input-group">
-                                            <textarea class="form-control f-md" name="resep" required></textarea>
+                                            <textarea class="form-control f-md" name="resep" required>{{$rekamMedis->resep_obat}}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -249,7 +249,7 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="input-group">
-                                            <textarea class="form-control f-md" name="kesimpulan" required></textarea>
+                                            <textarea class="form-control f-md" name="kesimpulan" required>{{$rekamMedis->kesimpulan}}</textarea>
                                             <input type="hidden" value="{{ $user[0]->id }}" name="id_pasien"/>
                                             <input type="hidden" value="{{ auth()->user()->id }}" name="id_dokter"/>
                                         </div>
@@ -264,7 +264,7 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="input-group">
-                                            <textarea class="form-control f-md" name="kondisi_keluar" required></textarea>
+                                            <textarea class="form-control f-md" name="kondisi_keluar" required>{{$rekamMedis->kondisi_keluar}}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -275,7 +275,7 @@
                                 <div class="row">
                                     <div class="col-md-10">
 
-                                        <button type="submit" class="btn btn-sm btn-primary inlineBlock floatRight">Submit</button>
+                                        <button type="submit" class="btn btn-sm btn-primary inlineBlock floatRight">Update</button>
                                         <a href="/rekamMedis/{{ $user[0]->id }}" class="btn btn-sm btn-danger inlineBlock floatRight">Cancle</a>
                                         
                                     </div>

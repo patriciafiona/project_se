@@ -203,6 +203,7 @@ h5.style_header{
 
 .floatRight{
 	float: right;
+	margin-left: 10px;
 }
 
 .chart-height{
@@ -233,7 +234,7 @@ h5.style_header{
 	background-color: #FAF9F9;
 	border-radius: 1px solid #7F7C7C;
 	padding: 10px;
-	margin:10px;
+	margin:0px;
 }
 
 .isi-HL-box{ /*hasil cek lab*/
@@ -310,4 +311,10 @@ h5.style_header{
 .rm-f-dokter{
 	width: 80px;
 	height: 80px;
+}
+
+.rm-red-notes{
+	color: red;
+	float: right; 
+	margin-right: 30px;
 }

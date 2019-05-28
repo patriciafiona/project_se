@@ -41,7 +41,31 @@
                                     <a href="/rekamMedis/view/{{ $rm->id }}" style="float: right;">
                                         <img alt="Image placeholder" src="{{ asset('OneMedical') }}/img/icon/11.png">
                                     </a>
-                                    <p class="rm-n-tgl">{{ $rm->updated_at }}</p>
+
+                                    <?php
+                                        //waktu cek
+                                        $waktuCek = carbon\Carbon::parse($rm->updated_at);
+                                        $waktuCek->timezone = new DateTimeZone('Asia/Jakarta');
+                                    ?>
+
+                                    <!--Jika waktunya sebelum 30 menit dan id dokternya adalah sama kaya dia punya-->
+                                    @if($rm->id_dokter ==  auth()->user()->id )
+                                        <!--Cek waktunya uda lewat 30m atau belum-->
+                                        <?php
+                                        $now = carbon\Carbon::now();
+                                        $now->timezone = new DateTimeZone('Asia/Jakarta');                                        
+                                        ?>
+
+                                        @if($now->diffInMinutes($waktuCek) <= 30) <!--apakah selisihnya kurang dari 30 menit? -->
+                                        <a href="/rekamMedis/edit/{{$rm->id_pasien}}/{{$rm->id}}" style="float: right; margin-right: 30px;">
+                                            Edit
+                                        </a>
+                                        @else
+                                        <p class="rm-red-notes">Final</p>
+                                        @endif
+                                    @endif
+
+                                    <p class="rm-n-tgl">{{ $waktuCek }}</p> <!--sesuai dengan tanggal di jakarta-->
                                     <hr style="margin: 5px;" />
                                    Kesimpulan: {{ $rm->kesimpulan }}
                                 </div>
@@ -65,8 +89,3 @@
 
     
 @endsection
-
-@push('js')
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
-@endpush

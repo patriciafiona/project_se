@@ -23,6 +23,13 @@
                                 <table class="table table-striped">
                                 @if(!$rekamMedis->isEmpty())
                                     @foreach ($rekamMedis as $rm)
+
+                                    <?php
+                                        //waktu cek
+                                        $waktuCek = carbon\Carbon::parse($rm->updated_at);
+                                        $waktuCek->timezone = new DateTimeZone('Asia/Jakarta');
+                                    ?>
+
                                     <tr>
                                         <td>
                                             <div class="col-md-10">
@@ -30,7 +37,7 @@
                                                 <a href="/rekamMedis/view/{{ $rm->id }}" style="float: right;">
                                                     <img alt="Image placeholder" src="{{ asset('OneMedical') }}/img/icon/11.png">
                                                 </a>
-                                                <p class="rm-n-tgl">{{ $rm->updated_at }}</p>
+                                                <p class="rm-n-tgl">{{ $waktuCek }}</p>  <!--Sesuia dengan waktu di jakarta-->
                                                 <hr style="margin: 5px;" />
                                                Kesimpulan: {{ $rm->kesimpulan }}
                                             </div>
@@ -127,9 +134,12 @@
                         </div>
                     </div>
                     <div class="card-body">
+                    <!--Cek apakah data ada atau gak-->
+                    @if(!$rekamMedis->isEmpty())
                         <div class="row">
                             <div class="col-md-10 box-gk">
                                 <div class="card-body">
+
                                     <h1 class="inlineBlock">Catatan Massa Tubuh</h1>
                                                                         <br/><br/>
                                     <!-- Chart -->
@@ -137,7 +147,7 @@
                                         <!-- Chart wrapper -->
                                         <canvas id="chart-MT" class="chart-canvas"></canvas>
                                     </div>
-                                    @if(!$rekamMedis->isEmpty())
+                                    @if($CatatanKesehatan!=null)
                                     <a href="{{ route('catatanKesehatan') }}" class="link-ct">View Data</a>
                                     @endif
 
@@ -156,7 +166,7 @@
                                     <canvas id="chart-GD" class="chart-canvas"></canvas>
                                 </div>
 
-                                @if(!$rekamMedis->isEmpty())
+                                @if($CatatanKesehatan2!=null)
                                 <a href="{{ route('catatanKesehatan') }}" class="link-ct">View Data</a>
                                 @endif
 
@@ -171,7 +181,7 @@
                                     <canvas id="chart-TD" class="chart-canvas"></canvas>
                                 </div>
 
-                                @if(!$rekamMedis->isEmpty())
+                                @if($CatatanKesehatan3!=null)
                                 <a href="{{ route('catatanKesehatan') }}" class="link-ct">View Data</a>
                                 @endif
                             </div>
@@ -190,12 +200,17 @@
                                         <canvas id="chart-K" class="chart-canvas"></canvas>
                                     </div>
 
+                                    @if(!empty($CatatanKesehatan4))
                                     <a href="{{ route('catatanKesehatan') }}" class="link-ct">View Data</a>
+                                    @endif
 
                                 </div>
                             </div>
                         </div>
                         <br/>
+                    @else
+                        <img class="img-center" alt="Image placeholder" src="{{ asset('OneMedical') }}/img/nothing_to_see.png">
+                    @endif
                     </div>
                 </div>
             </div>

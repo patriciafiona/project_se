@@ -174,9 +174,35 @@ class RekamMedisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_pasien,$id)
     {
-        //
+        $rekamMedis=RekamMedis::find($id);
+
+        $user = DB::table('users')
+        ->where('id', $id_pasien)
+        ->get();
+
+        //dapatkan data massa tubuh terbaru
+        $massa_tubuh = DB::table('catatan_kesehatans')
+        ->select('nilai')
+        ->where('jenis_catatan','1')
+        ->where('id_user',$id_pasien)
+        ->orderBy('updated_at', 'DESC')
+        ->limit(1)
+        ->get();
+
+        //tanggal hari ini
+        $today = Carbon::now();
+
+        //dapetin umur pasien saat ini
+        $dateOfBirth = DB::table('users')
+        ->select('tanggal_lahir')
+        ->where('id',$id_pasien)
+        ->get();
+
+        $years = Carbon::parse($dateOfBirth[0]->tanggal_lahir)->age;
+
+        return view('RekamMedis.edit', compact('rekamMedis','user','massa_tubuh','today','years'));
     }
 
     /**
@@ -188,7 +214,35 @@ class RekamMedisController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $RekamMedis = new RekamMedis();
+        $request->validate([
+            'id_pasien' => 'required',
+            'id_dokter' => 'required',
+            'diagnosa' => 'required',
+            'keluhan' => 'required',
+            'pemeriksaan' => 'required',
+            'resep' => 'required',
+            'kesimpulan' => 'required',
+            'kondisi_keluar' => 'required'
+        ]);
+
+        $RekamMedis->id_pasien =$request->id_pasien;
+        $RekamMedis->id_dokter = $request->id_dokter;
+        $RekamMedis->jenis_perawatan = $request->jenis_perawatan;
+        $RekamMedis->diagnosa = $request->diagnosa;
+        $RekamMedis->keluhan = $request->keluhan;
+        $RekamMedis->pemeriksaan = $request->pemeriksaan;
+
+        $RekamMedis->terapi = $request->terapi;
+        $RekamMedis->pemeriksaan_penunjang = $request->pemeriksaan_penunjang;
+        $RekamMedis->alergi_obat = $request->alergi_obat;
+        $RekamMedis->resep_obat = $request->resep;
+        $RekamMedis->kesimpulan = $request->kesimpulan;
+        $RekamMedis->kondisi_keluar = $request->kondisi_keluar;
+
+        $RekamMedis->save(); 
+
+        return redirect('/rekamMedis/'.$request->id_pasien);
     }
 
     /**

@@ -23,7 +23,7 @@ Route::post('/register/daftarDokter/new', 'daftarDokterController@store');
 Route::get('/register/daftarPasien', 'daftarPasienController@index')->name('daftarPasien');
 Route::post('/register/daftarPasien/new', 'daftarPasienController@store');
 
-//Hsrus Login dulu baru bisa akses 
+//Harus Login dulu baru bisa akses 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
@@ -59,6 +59,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/rekamMedis/{id}', 'RekamMedisController@index_dokter')->name('rekamMedis');
 	Route::get('/rekamMedis/add/{id}', 'RekamMedisController@create');
 	Route::post('/rekamMedis/new', 'RekamMedisController@store');
+	Route::get('/rekamMedis/edit/{id_pasien}/{id}', 'RekamMedisController@edit');
+	Route::post('/rekamMedis/edit/{id}', 'RekamMedisController@update');
 
 	//default user bisa ngapain aja
 	Route::get('/rekamMedis/view/{id}', 'RekamMedisController@view');
