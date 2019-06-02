@@ -50,11 +50,11 @@
 
                                         <!--Bagian foto box-->
                                         <div class="col-lg-4 col-md-8 su-d-n-box">
-                                            <img class="rounded-circle display-img-su-d" alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg">
+                                            <img class="rounded-circle display-img-su-d" alt="Image placeholder" src="{{ asset('Foto') }}/default.png" id="output">
 
                                             <br/>
 
-                                            <input style="font-size: 12px; text-align: center;" type="file" name="foto">
+                                            <input style="font-size: 12px; text-align: center;" type="file" name="foto" onchange="loadFile(event)">
                                         </div>
                                     </div><!--End of row-->
 
@@ -186,4 +186,17 @@
         </div>
     </div>
 @endsection
+
+@push('js')
+    <script>
+      var loadFile = function(event) {
+        var reader = new FileReader();
+        reader.onload = function(){
+          var output = document.getElementById('output');
+          output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+      };
+    </script>
+@endpush
 

@@ -64,6 +64,21 @@
                             <div>
                                 <i class="ni education_hat mr-2"></i>Born in {{ auth()->user()->tanggal_lahir }}
                             </div>
+                            <div>
+                                <p>Status : 
+                                    @switch(auth()->user()->jenis_user)
+                                        @case(1)
+                                            Admin
+                                            @break;
+                                        @case(2)
+                                            Dokter
+                                            @break;
+                                        @case(3)
+                                            Pasien
+                                            @break;
+                                    @endswitch
+                                </p>
+                            </div>
                             <hr class="my-4" />
                             <p>Contact Number : {{ auth()->user()->no_telp }}</p>
                         </div>
@@ -119,17 +134,20 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-tglLahir">{{ __('Tanggal Lahir') }}</label>
-                                            <input type="date" name="tanggal_lahir" id="input-tglLahir" class="form-control" value="{{ old('tanggal_lahir', auth()->user()->tanggal_lahir) }}" required>
+                                            <input type="date" name="tanggal_lahir" id="input-tglLahir" class="form-control" value="{{ auth()->user()->tanggal_lahir }}" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label">{{ __('Jenis Kelamin') }}</label>
+                                            <label class="form-control-label">{{ __('Golongan Darah') }}</label>
                                             <div class="input-group">
-                                                <input type="radio" name="jenis_kelamin" value='L' {{ auth()->user()->jenis_kelamin=='L' ? ' checked' : '' }}> Laki-Laki
-
-                                                <input type="radio" name="jenis_kelamin" value='P' style="margin-left: 20px; " {{ auth()->user()->jenis_kelamin=='P' ? ' checked' : '' }}> Perempuan
+                                                <select name="golongan_darah" class="form-control f-lg" >
+                                                    <option value="1">Golongan A</option>
+                                                    <option value="2">Golongan B</option>
+                                                    <option value="3">Golongan O</option>
+                                                    <option value="4">Golongan AB</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -138,8 +156,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="input-tglLahir">{{ __('Tanggal Lahir') }}</label>
-                                            <input type="date" name="tanggal_lahir" id="input-tglLahir" class="form-control" value="{{ old('tanggal_lahir', auth()->user()->tanggal_lahir) }}" required>
+                                            <label class="form-control-label" for="input-no_ktp">{{ __('No. KTP') }}</label>
+                                            <input type="text" name="no_ktp" id="input-no_ktp" class="form-control" value="{{ old('no_ktp', auth()->user()->no_ktp) }}" required>
                                         </div>
                                     </div>
 

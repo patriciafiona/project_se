@@ -185,7 +185,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('home') }}">
+                    <a class="nav-link text-white" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
                         <img src="{{ asset('OneMedical') }}/img/icon/08.png" class="sb_icon"/> {{ __('Logout') }}
                     </a>
                 </li>

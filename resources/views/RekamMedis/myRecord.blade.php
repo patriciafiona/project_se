@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="card-footer">
-                        {{ $rekamMedis->links() }}
+                        {{ $rekamMedis->onEachSide(2)->links() }}
                     </div>
                 </div>
             </div>

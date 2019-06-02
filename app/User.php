@@ -43,8 +43,4 @@ class User extends Authenticatable
         return $this->hasMany('App\CatatanKesehatan');
     }
 
-    public function getTanggalLahirAttribute($value){
-        $date = new DateTime($value);
-        return $date->format('d/m/Y');
-    }
 }

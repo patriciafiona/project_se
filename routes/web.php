@@ -30,6 +30,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 
+
+
+
 	//Halaman hasil cek lab
 	Route::get('/HasilCekLab', 'HasilLabController@index')->name('hasilLab');
 	Route::get('/HasilCekLab/new', 'HasilLabController@create');
@@ -39,6 +42,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/HasilCekLab/edit/{id}', 'HasilLabController@update');
 
 	Route::delete('/HasilCekLab/delete/{id}', 'HasilLabController@destroy');
+
+
+
 
 	//Halaman Catatan Kesehatan
 	Route::get('/CatatanKesehatan', 'CatatanKesehatanController@index')->name('catatanKesehatan');
@@ -53,21 +59,34 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/CatatanKesehatan/edit/{id}', 'CatatanKesehatanController@update');
 	Route::delete('/CatatanKesehatan/delete/{id}', 'CatatanKesehatanController@destroy');
 
+
+
+
 	//Halaman Rekam Medis
 	//bagian dokter
-	Route::post('/rekamMedis/getPasien', 'RekamMedisController@getPasien');
-	Route::get('/rekamMedis/{id}', 'RekamMedisController@index_dokter')->name('rekamMedis');
-	Route::get('/rekamMedis/add/{id}', 'RekamMedisController@create');
-	Route::post('/rekamMedis/new', 'RekamMedisController@store');
-	Route::get('/rekamMedis/edit/{id_pasien}/{id}', 'RekamMedisController@edit');
-	Route::post('/rekamMedis/edit/{id}', 'RekamMedisController@update');
+	Route::post('/pasien/rekamMedis/getPasien', 'RekamMedisController@getPasien');
+	Route::get('/pasien/rekamMedis/{id}', 'RekamMedisController@index_dokter')->name('rekamMedis');
+	Route::get('/pasien/rekamMedis/add/{id}', 'RekamMedisController@create');
+	Route::post('/pasien/rekamMedis/new', 'RekamMedisController@store');
+	Route::get('/pasien/rekamMedis/edit/{id_pasien}/{id}', 'RekamMedisController@edit');
+	Route::post('/pasien/rekamMedis/edit/{id}', 'RekamMedisController@update');
 
 	//default user bisa ngapain aja
 	Route::get('/rekamMedis/view/{id}', 'RekamMedisController@view');
 	Route::get('/rekamMedis', 'RekamMedisController@index')->name('myRecord');
 
+
+
+
 	//Halaman Dokter - sidebar Pasien (daftar dokter yang tambahin dia ke pasien tetap)
 	Route::get('/Dokter', 'DokterController@index')->name('dokter');
+
+
+
+
+	//Halaman Biodata pasien
+	Route::post('/pasien/biodata/getPasien', 'BiodataController@getPasien');
+	Route::get('/pasien/biodata/{id}', 'BiodataController@index')->name('biodata');
 
 });
 

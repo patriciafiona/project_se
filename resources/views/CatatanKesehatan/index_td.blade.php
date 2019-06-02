@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="card-footer">
-                        {{ $CatatanKesehatan->links() }}
+                        {{ $CatatanKesehatan->onEachSide(2)->links() }}
                     </div>
                 </div>
             </div>

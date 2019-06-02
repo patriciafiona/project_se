@@ -45,7 +45,7 @@
                                     </tr>
                                     @endforeach
                                     <tr>
-                                        {{ $rekamMedis->links() }}
+                                        {{ $rekamMedis->onEachSide(2)->links() }}
                                     </tr>
                                 @else
                                     <img class="img-center" alt="Image placeholder" src="{{ asset('OneMedical') }}/img/no_result.png">

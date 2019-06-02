@@ -17,9 +17,18 @@
                         </div>
                     </div>
 
-                    <form action="{{ url('/rekamMedis/edit/' . $rekamMedis->id) }}" method="post">
+                    <form action="{{ url('/pasien/rekamMedis/edit/' . $rekamMedis->id) }}" method="post">
                     {{ csrf_field() }}
                     <div class="card-body">
+
+                        @if (session('status'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ session('status') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
 
                         <!--bagian informasi pasien-->
                         <div class="row">
@@ -276,7 +285,7 @@
                                     <div class="col-md-10">
 
                                         <button type="submit" class="btn btn-sm btn-primary inlineBlock floatRight">Update</button>
-                                        <a href="/rekamMedis/{{ $user[0]->id }}" class="btn btn-sm btn-danger inlineBlock floatRight">Cancle</a>
+                                        <a href="/pasien/rekamMedis/{{ $user[0]->id }}" class="btn btn-sm btn-danger inlineBlock floatRight">Cancle</a>
                                         
                                     </div>
                                 </div>

@@ -13,16 +13,26 @@
                         <div class="row align-items-center">
                             <div class="col">
                                 <h2 class="mb-0 inlineBlock">Rekam Medis</h2>
-
-                                    <a href="/rekamMedis/add/{{$pasien[0]->id}}" class="btn btn-md btn-primary inlineBlock floatRight">Tambah Rekam Medis</a>
+                                @if (!session('status'))
+                                    <a href="/pasien/rekamMedis/add/{{$pasien[0]->id}}" class="btn btn-md btn-primary inlineBlock floatRight">Tambah Rekam Medis</a>
+                                @endif
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ session('status') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @else
                         <div class=""row>
                             <p>Nama Pasien: {{ $pasien[0]->name }}</p>
                             <p>ID Pasien: {{ $pasien[0]->id }}</p>
                         </div>
+                        @endif
 
                         <hr/>
 
@@ -57,7 +67,7 @@
                                         ?>
 
                                         @if($now->diffInMinutes($waktuCek) <= 30) <!--apakah selisihnya kurang dari 30 menit? -->
-                                        <a href="/rekamMedis/edit/{{$rm->id_pasien}}/{{$rm->id}}" style="float: right; margin-right: 30px;">
+                                        <a href="/pasien/rekamMedis/edit/{{$rm->id_pasien}}/{{$rm->id}}" style="float: right; margin-right: 30px;">
                                             Edit
                                         </a>
                                         @else
@@ -78,7 +88,7 @@
                     </div>
 
                     <div class="card-footer">
-                        {{ $rekamMedis->links() }}
+                        {{ $rekamMedis->onEachSide(2)->links() }}
                     </div>
                 </div>
             </div>

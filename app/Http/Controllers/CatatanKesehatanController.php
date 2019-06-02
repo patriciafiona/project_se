@@ -113,6 +113,7 @@ class CatatanKesehatanController extends Controller
         $CatatanKesehatan->id_user =$request->id_user;
         $CatatanKesehatan->jenis_catatan = $request->jenis_catatan;
         $CatatanKesehatan->nilai = $request->nilai;
+        $CatatanKesehatan->nilai2 = $request->nilai2;
 
         $CatatanKesehatan->save(); 
 

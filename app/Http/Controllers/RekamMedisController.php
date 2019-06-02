@@ -25,7 +25,7 @@ class RekamMedisController extends Controller
 
     public function getPasien(Request $request)
     {
-        return redirect('/rekamMedis/'.$request->pasien_id);
+        return redirect('/pasien/rekamMedis/'.$request->pasien_id);
     }
 
     public function view($id)
@@ -48,20 +48,28 @@ class RekamMedisController extends Controller
     public function index_dokter($id)
     {
         $pasien_id = $id;
+        $dokter = auth()->user()->id;
 
-        $pasien = DB::table('users')
-        ->where('id', $pasien_id)
-        ->get();
+        if($pasien_id != $dokter){
 
-        //rekam medis pasien
-        $rekamMedis = DB::table('rekam_medis')
-        ->join('users', 'users.id', '=', 'rekam_medis.id_dokter')
-        ->select('rekam_medis.*', 'users.name','users.foto') //nama dokter
-        ->where('id_pasien', $pasien_id)
-        ->orderBy('updated_at', 'DESC')
-        ->Paginate(5);
+            $pasien = DB::table('users')
+            ->where('id', $pasien_id)
+            ->get();
 
-        return view('RekamMedis.index_pasien', compact('pasien','rekamMedis'));
+            //rekam medis pasien
+            $rekamMedis = DB::table('rekam_medis')
+            ->join('users', 'users.id', '=', 'rekam_medis.id_dokter')
+            ->select('rekam_medis.*', 'users.name','users.foto') //nama dokter
+            ->where('id_pasien', $pasien_id)
+            ->orderBy('updated_at', 'DESC')
+            ->Paginate(5);
+
+            return view('RekamMedis.index_pasien', compact('pasien','rekamMedis'));
+        }else{
+            //dokter sama dengan pasien, gak bisa
+            return back()->withStatus(__('You cant input your Rekam Medis by yourself. Error: You are submit Rekam Medis with your ID.'));
+        }
+        
     }    
 
     //end tambahan ----------------------------------------------------------------------------------
@@ -90,32 +98,38 @@ class RekamMedisController extends Controller
     {
         //dapatkan info data pasien database
         $pasien_id = $id;
+        $dokter = auth()->user()->id;
 
-        $user = DB::table('users')
-        ->where('id', $pasien_id)
-        ->get();
+        if($pasien_id != $dokter){
 
-        //dapatkan data massa tubuh terbaru
-        $massa_tubuh = DB::table('catatan_kesehatans')
-        ->select('nilai')
-        ->where('jenis_catatan','1')
-        ->where('id_user',$pasien_id)
-        ->orderBy('updated_at', 'DESC')
-        ->limit(1)
-        ->get();
+            $user = DB::table('users')
+            ->where('id', $pasien_id)
+            ->get();
 
-        //tanggal hari ini
-        $today = Carbon::now();
+            //dapatkan data massa tubuh terbaru
+            $massa_tubuh = DB::table('catatan_kesehatans')
+            ->select('nilai')
+            ->where('jenis_catatan','1')
+            ->where('id_user',$pasien_id)
+            ->orderBy('updated_at', 'DESC')
+            ->limit(1)
+            ->get();
 
-        //dapetin umur pasien saat ini
-        $dateOfBirth = DB::table('users')
-        ->select('tanggal_lahir')
-        ->where('id',$pasien_id)
-        ->get();
+            //tanggal hari ini
+            $today = Carbon::now();
 
-        $years = Carbon::parse($dateOfBirth[0]->tanggal_lahir)->age;
+            //dapetin umur pasien saat ini
+            $dateOfBirth = DB::table('users')
+            ->select('tanggal_lahir')
+            ->where('id',$pasien_id)
+            ->get();
 
-        return view('RekamMedis.add_RM', compact('user','massa_tubuh','today','years'));
+            $years = Carbon::parse($dateOfBirth[0]->tanggal_lahir)->age;
+
+            return view('RekamMedis.add_RM', compact('user','massa_tubuh','today','years'));
+        }else{
+            return back()->withStatus(__('You cant input your Rekam Medis by yourself. Error: You are submit Rekam Medis with your ID.'));
+        }
     }
 
     /**
@@ -154,7 +168,7 @@ class RekamMedisController extends Controller
 
         $RekamMedis->save(); 
 
-        return redirect('/rekamMedis/'.$request->id_pasien);
+        return redirect('/pasien/rekamMedis/'.$request->id_pasien);
     }
 
     /**
@@ -176,33 +190,39 @@ class RekamMedisController extends Controller
      */
     public function edit($id_pasien,$id)
     {
-        $rekamMedis=RekamMedis::find($id);
+        $dokter = auth()->user()->id;
 
-        $user = DB::table('users')
-        ->where('id', $id_pasien)
-        ->get();
+        if($id_pasien != $dokter){
+            $rekamMedis=RekamMedis::find($id);
 
-        //dapatkan data massa tubuh terbaru
-        $massa_tubuh = DB::table('catatan_kesehatans')
-        ->select('nilai')
-        ->where('jenis_catatan','1')
-        ->where('id_user',$id_pasien)
-        ->orderBy('updated_at', 'DESC')
-        ->limit(1)
-        ->get();
+            $user = DB::table('users')
+            ->where('id', $id_pasien)
+            ->get();
 
-        //tanggal hari ini
-        $today = Carbon::now();
+            //dapatkan data massa tubuh terbaru
+            $massa_tubuh = DB::table('catatan_kesehatans')
+            ->select('nilai')
+            ->where('jenis_catatan','1')
+            ->where('id_user',$id_pasien)
+            ->orderBy('updated_at', 'DESC')
+            ->limit(1)
+            ->get();
 
-        //dapetin umur pasien saat ini
-        $dateOfBirth = DB::table('users')
-        ->select('tanggal_lahir')
-        ->where('id',$id_pasien)
-        ->get();
+            //tanggal hari ini
+            $today = Carbon::now();
 
-        $years = Carbon::parse($dateOfBirth[0]->tanggal_lahir)->age;
+            //dapetin umur pasien saat ini
+            $dateOfBirth = DB::table('users')
+            ->select('tanggal_lahir')
+            ->where('id',$id_pasien)
+            ->get();
 
-        return view('RekamMedis.edit', compact('rekamMedis','user','massa_tubuh','today','years'));
+            $years = Carbon::parse($dateOfBirth[0]->tanggal_lahir)->age;
+
+            return view('RekamMedis.edit', compact('rekamMedis','user','massa_tubuh','today','years'));
+        }else{
+             return back()->withStatus(__('You cant input your Rekam Medis by yourself. Error: You are submit Rekam Medis with your ID.'));
+        }
     }
 
     /**
@@ -242,7 +262,7 @@ class RekamMedisController extends Controller
 
         $RekamMedis->save(); 
 
-        return redirect('/rekamMedis/'.$request->id_pasien);
+        return redirect('/pasien/rekamMedis/'.$request->id_pasien);
     }
 
     /**
