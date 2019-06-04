@@ -43,6 +43,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::delete('/HasilCekLab/delete/{id}', 'HasilLabController@destroy');
 
+	Route::get('/pemeriksaanPasien/HasilCekLab/view/{id}', 'HasilLabController@view');	
+
 
 
 
@@ -64,14 +66,14 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Halaman Rekam Medis
 	//bagian dokter
-	Route::post('/pasien/rekamMedis/getPasien', 'RekamMedisController@getPasien');
-	Route::get('/pasien/rekamMedis/{id}', 'RekamMedisController@index_dokter')->name('rekamMedis');
-	Route::get('/pasien/rekamMedis/add/{id}', 'RekamMedisController@create');
-	Route::post('/pasien/rekamMedis/new', 'RekamMedisController@store');
-	Route::get('/pasien/rekamMedis/edit/{id_pasien}/{id}', 'RekamMedisController@edit');
-	Route::post('/pasien/rekamMedis/edit/{id}', 'RekamMedisController@update');
+	Route::get('/pemeriksaanPasien/rekamMedis/{id}', 'RekamMedisController@index_dokter')->name('rekamMedis');
+	Route::get('/pemeriksaanPasien/rekamMedis/add/{id}', 'RekamMedisController@create');
+	Route::post('/pemeriksaanPasien/rekamMedis/new', 'RekamMedisController@store');
+	Route::get('/pemeriksaanPasien/rekamMedis/edit/{id_pasien}/{id}', 'RekamMedisController@edit');
+	Route::post('/pemeriksaanPasien/rekamMedis/edit/{id}', 'RekamMedisController@update');
 
-	//default user bisa ngapain aja
+
+	//default user bisa ngapain aja (pasien, dokter)
 	Route::get('/rekamMedis/view/{id}', 'RekamMedisController@view');
 	Route::get('/rekamMedis', 'RekamMedisController@index')->name('myRecord');
 
@@ -85,8 +87,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 	//Halaman Biodata pasien
-	Route::post('/pasien/biodata/getPasien', 'BiodataController@getPasien');
 	Route::get('/pasien/biodata/{id}', 'BiodataController@index')->name('biodata');
+
+
+
+	//Halaman Pemerikassan Pasien
+	Route::post('/pemeriksaanPasien/getPasien', 'PemeriksaanPasienController@getPasien');
+	Route::get('/pemeriksaanPasien/{id}', 'PemeriksaanPasienController@index')->name('PemeriksaanPasien');
 
 });
 

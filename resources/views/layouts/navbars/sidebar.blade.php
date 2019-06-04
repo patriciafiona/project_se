@@ -36,7 +36,7 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-1-800x800.jpg">
+                        <img alt="Image placeholder" src="/foto/{{ auth()->user()->foto }}">
                         </span>
                     </div>
                 </a>
@@ -52,16 +52,12 @@
                         <span>{{ __('My profile') }}</span>
                     </a>
                     <a href="#" class="dropdown-item">
+                        <i class="ni ni-calendar-grid-58"></i>
+                        <span>{{ __('Notification') }}</span>
+                    </a>
+                    <a href="#" class="dropdown-item">
                         <i class="ni ni-settings-gear-65"></i>
                         <span>{{ __('Settings') }}</span>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                        <i class="ni ni-calendar-grid-58"></i>
-                        <span>{{ __('Activity') }}</span>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                        <i class="ni ni-support-16"></i>
-                        <span>{{ __('Support') }}</span>
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
@@ -125,30 +121,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                    <a class="nav-link active" href="#" data-toggle="modal" data-target="#modalIdPasien">
                         <img src="{{ asset('OneMedical') }}/img/icon/03.png" class="sb_icon"/>
                         <span class="nav-link-text text-white">{{ __('Lihat Pasien') }}</span>
                     </a>
-
-                    <div class="collapse show" id="navbar-examples">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('profile.edit') }}">
-                                    <small>{{ __('Biodata') }}</small>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="" data-toggle="modal" data-target="#modalIdPasien">
-                                    <small>{{ __('Rekam Medis') }}</small>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('user.index') }}">
-                                    <small>{{ __('Hasil Cek Lab') }}</small>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
 
                 <!-- Divider -->

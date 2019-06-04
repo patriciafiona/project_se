@@ -45,33 +45,6 @@ class RekamMedisController extends Controller
         return view('RekamMedis.view',compact('rekamMedis','user','years','dokter'));
     }
 
-    public function index_dokter($id)
-    {
-        $pasien_id = $id;
-        $dokter = auth()->user()->id;
-
-        if($pasien_id != $dokter){
-
-            $pasien = DB::table('users')
-            ->where('id', $pasien_id)
-            ->get();
-
-            //rekam medis pasien
-            $rekamMedis = DB::table('rekam_medis')
-            ->join('users', 'users.id', '=', 'rekam_medis.id_dokter')
-            ->select('rekam_medis.*', 'users.name','users.foto') //nama dokter
-            ->where('id_pasien', $pasien_id)
-            ->orderBy('updated_at', 'DESC')
-            ->Paginate(5);
-
-            return view('RekamMedis.index_pasien', compact('pasien','rekamMedis'));
-        }else{
-            //dokter sama dengan pasien, gak bisa
-            return back()->withStatus(__('You cant input your Rekam Medis by yourself. Error: You are submit Rekam Medis with your ID.'));
-        }
-        
-    }    
-
     //end tambahan ----------------------------------------------------------------------------------
 
     public function index()
@@ -168,7 +141,7 @@ class RekamMedisController extends Controller
 
         $RekamMedis->save(); 
 
-        return redirect('/pasien/rekamMedis/'.$request->id_pasien);
+        return redirect('/pemeriksaanPasien/'.$request->id_pasien);
     }
 
     /**
@@ -246,6 +219,7 @@ class RekamMedisController extends Controller
             'kondisi_keluar' => 'required'
         ]);
 
+        $RekamMedis = RekamMedis::find($id);
         $RekamMedis->id_pasien =$request->id_pasien;
         $RekamMedis->id_dokter = $request->id_dokter;
         $RekamMedis->jenis_perawatan = $request->jenis_perawatan;
@@ -262,7 +236,7 @@ class RekamMedisController extends Controller
 
         $RekamMedis->save(); 
 
-        return redirect('/pasien/rekamMedis/'.$request->id_pasien);
+        return redirect('/pemeriksaanPasien/'.$request->id_pasien);
     }
 
     /**

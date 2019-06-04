@@ -31,16 +31,16 @@
                             <div class="col">
                                 <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                                     <div>
-                                        <span class="heading">22</span>
-                                        <span class="description">{{ __('Friends') }}</span>
+                                        <span class="heading">0</span>
+                                        <span class="description">{{ __('Following') }}</span>
                                     </div>
                                     <div>
-                                        <span class="heading">10</span>
-                                        <span class="description">{{ __('Photos') }}</span>
+                                        <span class="heading">{{ $jumlah_rm }}</span>
+                                        <span class="description">{{ __('Rekam Medis') }}</span>
                                     </div>
                                     <div>
-                                        <span class="heading">89</span>
-                                        <span class="description">{{ __('Comments') }}</span>
+                                        <span class="heading">{{ $jumlah_hl }}</span>
+                                        <span class="description">{{ __('Hasil Lab') }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                                 @else
                                     {{ auth()->user()->name }}
                                 @endif
-                                <span class="font-weight-light">, 27</span>
+                                <span class="font-weight-light">, {{ $years }}</span>
                             </h3>
                             <div class="h5 font-weight-300">
                                 <i class="ni location_pin mr-2"></i>

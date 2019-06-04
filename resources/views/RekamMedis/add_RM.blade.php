@@ -17,7 +17,7 @@
                         </div>
                     </div>
 
-                    <form action="{{ url('/pasien/rekamMedis/new') }}" method="post">
+                    <form action="{{ url('/pemeriksaanPasien/rekamMedis/new') }}" method="post">
                     {{ csrf_field() }}
                     <div class="card-body">
 
@@ -285,7 +285,7 @@
                                     <div class="col-md-10">
 
                                         <button type="submit" class="btn btn-sm btn-primary inlineBlock floatRight">Submit</button>
-                                        <a href="/pasien/rekamMedis/{{ $user[0]->id }}" class="btn btn-sm btn-danger inlineBlock floatRight">Cancle</a>
+                                        <a href="/pemeriksaanPasien/{{ $user[0]->id }}" class="btn btn-sm btn-danger inlineBlock floatRight">Cancle</a>
                                         
                                     </div>
                                 </div>

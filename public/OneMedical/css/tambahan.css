@@ -319,3 +319,8 @@ h5.style_header{
 	float: right; 
 	margin-right: 30px;
 }
+
+/*--------------------------------Bagian biodata-----------------------------*/
+.box_biodata{
+	margin:80px 50px 50px 250px;
+}

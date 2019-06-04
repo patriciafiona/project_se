@@ -54,7 +54,7 @@
 
                 <hr/>
 
-                <form action="{{ url('/pasien/rekamMedis/getPasien') }}" method="post">
+                <form action="{{ url('/pemeriksaanPasien/getPasien') }}" method="post">
                     {{ csrf_field() }}
                     <div class="md-form ml-0 mr-0">
                       <input type="text" class="form-control form-control-sm validate ml-0" name="pasien_id" placeholder="Id Pasien" required>
