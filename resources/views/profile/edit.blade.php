@@ -14,7 +14,7 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-3 order-lg-2">
                             <div class="card-profile-image">
-                                <a href="#">
+                                <a href="/profile/profilePicture">
                                     <img src="/foto/{{ auth()->user()->foto }}" class="rounded-circle">
                                 </a>
                             </div>
@@ -81,6 +81,8 @@
                             </div>
                             <hr class="my-4" />
                             <p>Contact Number : {{ auth()->user()->no_telp }}</p>
+                            <hr class="my-4" />
+                            <a href="#" data-toggle="modal" data-target="#modalDeleteAccount" class="btn btn-danger btn-sm">Delete Account</a>
                         </div>
                     </div>
                 </div>
@@ -143,10 +145,13 @@
                                             <label class="form-control-label">{{ __('Golongan Darah') }}</label>
                                             <div class="input-group">
                                                 <select name="golongan_darah" class="form-control f-lg" >
-                                                    <option value="1">Golongan A</option>
-                                                    <option value="2">Golongan B</option>
-                                                    <option value="3">Golongan O</option>
-                                                    <option value="4">Golongan AB</option>
+                                                    <option value="1" {{ auth()->user()->golongan_darah=='1' ? ' selected' : '' }}>Golongan A</option>
+
+                                                    <option value="2" {{ auth()->user()->golongan_darah=='2' ? ' selected' : '' }}>Golongan B</option>
+
+                                                    <option value="3" {{ auth()->user()->golongan_darah=='3' ? ' selected' : '' }}>Golongan O</option>
+
+                                                    <option value="4" {{ auth()->user()->golongan_darah=='4' ? ' selected' : '' }}>Golongan AB</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -169,6 +174,23 @@
 
                                                 <input type="radio" name="jenis_kelamin" value='P' style="margin-left: 20px; " {{ auth()->user()->jenis_kelamin=='P' ? ' checked' : '' }}> Perempuan
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-alamat">{{ __('Alamat') }}</label>
+
+                                            <textarea class="form-control f-md" name="alamat" id="input-alamat" required>{{ auth()->user()->alamat }}</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-no_telp">{{ __('No. Telepon') }}</label>
+                                            <input type="text" name="no_telp" id="input-no_telp" class="form-control" value="{{ auth()->user()->no_telp }}" required>
                                         </div>
                                     </div>
                                 </div>

@@ -29,6 +29,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+	Route::delete('/profile/delete/{id}', ['as' => 'profile.destroy', 'uses' => 'ProfileController@destroy']);
+	Route::get('/profile/profilePicture', 'ProfileController@editProfile');
 
 
 
@@ -86,12 +88,20 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
+	//Halaman Pasien tetap - sidebar Dokter (daftar Pasien yang tambahin dia ke pasien tetap)
+	Route::get('/PasienTetap', 'PasienTetapController@index')->name('pasienTetap');
+	Route::get('/PasienTetap/add/{id}', 'PasienTetapController@create');
+	Route::post('/PasienTetap/add/{id}', 'PasienTetapController@store');
+
+
+
+
 	//Halaman Biodata pasien
 	Route::get('/pasien/biodata/{id}', 'BiodataController@index')->name('biodata');
 
 
 
-	//Halaman Pemerikassan Pasien
+	//Halaman Pemerikassan Pasien (halaman index periksa pasien)
 	Route::post('/pemeriksaanPasien/getPasien', 'PemeriksaanPasienController@getPasien');
 	Route::get('/pemeriksaanPasien/{id}', 'PemeriksaanPasienController@index')->name('PemeriksaanPasien');
 

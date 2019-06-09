@@ -291,6 +291,10 @@ h5.style_header{
 	color: red;
 }
 
+.red-notes2{
+	color: red;
+}
+
 /*--------------------------------Bagian rekam medis-----------------------------*/
 
 .box-rm{
@@ -323,4 +327,35 @@ h5.style_header{
 /*--------------------------------Bagian biodata-----------------------------*/
 .box_biodata{
 	margin:80px 50px 50px 250px;
+}
+
+/*--------------------------------Bagian daftar pasien tetap-----------------------------*/
+
+.box_dpt{ /*daftar pasien tetap box*/
+	background-color: #F1F9FF;
+	margin:20px 10px;
+	padding: 20px 10px;
+	text-align: center;
+}
+
+.img-pt{
+	width: 100px;
+}
+
+.text-pt-color{
+	color: #2699FB;
+}
+
+a.text-pt-small{
+	font-size: 8px;
+	color: #2699FB;
+	background-color: white;
+}
+
+#text-pt-since{
+	font-size: 10px;
+}
+
+.crop_image{
+	padding-left: 10px;
 }

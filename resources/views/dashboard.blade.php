@@ -102,22 +102,6 @@
 
         <br/>
 
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="card shadow">
-                    <div class="card-header bg-transparent">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h2 class="mb-0">Jadwal Praktek</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
         @endif
 
         <br/>
@@ -135,7 +119,8 @@
                     </div>
                     <div class="card-body">
                     <!--Cek apakah data ada atau gak-->
-                    @if(!$rekamMedis->isEmpty())
+                    @if(!$CK_ALL->isEmpty())
+                        @if(!$CatatanKesehatan->isEmpty())
                         <div class="row">
                             <div class="col-md-10 box-gk">
                                 <div class="card-body">
@@ -147,15 +132,16 @@
                                         <!-- Chart wrapper -->
                                         <canvas id="chart-MT" class="chart-canvas"></canvas>
                                     </div>
-                                    @if($CatatanKesehatan!=null)
                                     <a href="{{ route('catatanKesehatan') }}" class="link-ct">View Data</a>
-                                    @endif
 
                                 </div>
                             </div>
                         </div>
+                        @endif
                         <br/>
+
                         <div class="row">
+                            @if($CatatanKesehatan2->isEmpty())
                             <div class="col-md-5 box-gk">
                                 <h2 class="inlineBlock">Catatan Gula Darah</h2>
                                 
@@ -166,11 +152,12 @@
                                     <canvas id="chart-GD" class="chart-canvas"></canvas>
                                 </div>
 
-                                @if($CatatanKesehatan2!=null)
                                 <a href="{{ route('catatanKesehatan') }}" class="link-ct">View Data</a>
-                                @endif
 
                             </div>
+                            @endif
+
+                            @if(!$CatatanKesehatan3->isEmpty())
                             <div class="col-md-5 box-gk">
                                 <h2 class="inlineBlock">Catatan Tekanan Darah</h2>
                                 
@@ -181,14 +168,14 @@
                                     <canvas id="chart-TD" class="chart-canvas"></canvas>
                                 </div>
 
-                                @if($CatatanKesehatan3!=null)
                                 <a href="{{ route('catatanKesehatan') }}" class="link-ct">View Data</a>
-                                @endif
                             </div>
+                            @endif
                         </div>
 
                         <br/>
 
+                        @if(!$CatatanKesehatan4->isEmpty())
                         <div class="row">
                             <div class="col-md-10 box-gk">
                                 <div class="card-body">
@@ -200,13 +187,12 @@
                                         <canvas id="chart-K" class="chart-canvas"></canvas>
                                     </div>
 
-                                    @if(!empty($CatatanKesehatan4))
                                     <a href="{{ route('catatanKesehatan') }}" class="link-ct">View Data</a>
-                                    @endif
 
                                 </div>
                             </div>
                         </div>
+                        @endif
                         <br/>
                     @else
                         <img class="img-center" alt="Image placeholder" src="{{ asset('OneMedical') }}/img/nothing_to_see.png">

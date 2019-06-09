@@ -116,12 +116,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('home') }}">
+                    <a class="nav-link text-white" href="{{ route('pasienTetap') }}">
                         <img src="{{ asset('OneMedical') }}/img/icon/02.png" class="sb_icon"/> {{ __('Daftar Pasien Tetap') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#" data-toggle="modal" data-target="#modalIdPasien">
+                    <a class="nav-link text-white" href="#" data-toggle="modal" data-target="#modalIdPasien">
                         <img src="{{ asset('OneMedical') }}/img/icon/03.png" class="sb_icon"/>
                         <span class="nav-link-text text-white">{{ __('Lihat Pasien') }}</span>
                     </a>

@@ -107,7 +107,13 @@ class HomeController extends Controller
         ->orderBy('updated_at', 'DESC')
         ->Paginate(1);
 
-        return view('dashboard', compact('today','rekamMedis'))
+        //------------------------------------------------------------------------------------------------
+        $CK_ALL = DB::table('catatan_kesehatans')
+        ->select('nilai')
+        ->where('id_user',$id)
+        ->get();
+
+        return view('dashboard', compact('today','rekamMedis','CK_ALL'))
             ->with('CatatanKesehatan',json_encode($CatatanKesehatan,JSON_NUMERIC_CHECK))
             ->with('CatatanKesehatan2',json_encode($CatatanKesehatan2,JSON_NUMERIC_CHECK))
             ->with('CatatanKesehatan3',json_encode($CatatanKesehatan3,JSON_NUMERIC_CHECK))
