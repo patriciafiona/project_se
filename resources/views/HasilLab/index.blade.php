@@ -26,7 +26,7 @@
                                 @if(!empty('{{$hL->judul}}'))   
                                 <div class="col-md-10 isi-HL-box padding20px">
                                     <div class="row">
-                                        <div class="col-md-5">
+                                        <div class="col-md-2">
                                             <!--Cek extensionnya apa-->
                                             <?php
                                             $file = $hL->file ;
@@ -44,7 +44,7 @@
                                                 @endif
                                             </a>
                                         </div>
-                                        <div class="col-md-7 padding20px">
+                                        <div class="col-md-10 padding20px">
                                             <h2>{{$hL->judul}}</h2>
                                             <?php
                                                 //waktu create

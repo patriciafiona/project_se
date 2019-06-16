@@ -73,6 +73,19 @@ class HomeController extends Controller
 
         $CatatanKesehatan3 = array_reverse($CatatanKesehatan3);
 
+        $CatatanKesehatan32 = DB::table('catatan_kesehatans')
+        ->select('nilai2')
+        ->where('jenis_catatan','3')
+        ->where('id_user',$id)
+        ->orderBy('updated_at', 'DESC')
+        ->limit(8)
+        ->get()
+        ->toArray();
+
+        $CatatanKesehatan32 = array_column($CatatanKesehatan32, 'nilai2');
+
+        $CatatanKesehatan32 = array_reverse($CatatanKesehatan32);
+
         //-------------------------------------------------------------------------------------------------
 
         $CatatanKesehatan4 = DB::table('catatan_kesehatans')
@@ -112,12 +125,13 @@ class HomeController extends Controller
         ->select('nilai')
         ->where('id_user',$id)
         ->get();
-
-        return view('dashboard', compact('today','rekamMedis','CK_ALL'))
-            ->with('CatatanKesehatan',json_encode($CatatanKesehatan,JSON_NUMERIC_CHECK))
-            ->with('CatatanKesehatan2',json_encode($CatatanKesehatan2,JSON_NUMERIC_CHECK))
-            ->with('CatatanKesehatan3',json_encode($CatatanKesehatan3,JSON_NUMERIC_CHECK))
-            ->with('CatatanKesehatan4',json_encode($CatatanKesehatan4,JSON_NUMERIC_CHECK));
+        // echo $CatatanKesehatan3[0];
+        return view('dashboard', compact('today','rekamMedis','CK_ALL', 'CatatanKesehatan','CatatanKesehatan2','CatatanKesehatan3','CatatanKesehatan4'))
+            ->with('CatatanKesehatanx',json_encode($CatatanKesehatan,JSON_NUMERIC_CHECK))
+            ->with('CatatanKesehatan2x',json_encode($CatatanKesehatan2,JSON_NUMERIC_CHECK))
+            ->with('CatatanKesehatan3x',json_encode($CatatanKesehatan3,JSON_NUMERIC_CHECK))
+            ->with('CatatanKesehatan32x',json_encode($CatatanKesehatan32,JSON_NUMERIC_CHECK))
+            ->with('CatatanKesehatan4x',json_encode($CatatanKesehatan4,JSON_NUMERIC_CHECK));
 
     }
 }

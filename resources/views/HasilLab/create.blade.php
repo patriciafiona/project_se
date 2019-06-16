@@ -37,8 +37,11 @@
                                 </div>
 
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="id_dokter" placeholder="Id dokter" />
-                                    <p class="red-notes">*Kosongkan jika tidak ada</p>
+                                    <select class="js-example-basic-single" name="id_dokter">
+                                        @foreach($users as $us)
+                                        <option value="{{ $us->id }}"> {{$us->email}} | dr. {{ $us->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 
@@ -99,6 +102,10 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
+    <script>
+        // In your Javascript (external .js resource or <script> tag)
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+    </script>
 @endpush

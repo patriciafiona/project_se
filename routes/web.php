@@ -16,6 +16,8 @@ Route::get('/', function () {
 })->name('welcome');
 Auth::routes();
 
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/register/daftarDokter', 'daftarDokterController@index')->name('daftarDokter');
 Route::post('/register/daftarDokter/new', 'daftarDokterController@store');
@@ -31,7 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 	Route::delete('/profile/delete/{id}', ['as' => 'profile.destroy', 'uses' => 'ProfileController@destroy']);
 	Route::get('/profile/profilePicture', 'ProfileController@editProfile');
-
+	Route::post('/profile/crop', 'ProfileController@crop');
 
 
 

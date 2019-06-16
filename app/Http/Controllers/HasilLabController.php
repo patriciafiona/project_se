@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\HasilLab;
+use App\User;
 use Auth;
 
 use Carbon\Carbon;
@@ -37,7 +38,12 @@ class HasilLabController extends Controller
      */
     public function create()
     {
-        return view('HasilLab.create');
+        $users = DB::table('users')
+        ->where('jenis_user',2)
+        ->orderBy('name', 'ASC')
+        ->get();
+
+        return view('HasilLab.create',compact('users'));
     }
 
     /**
@@ -158,5 +164,14 @@ class HasilLabController extends Controller
         $HasilLab->delete();
 
         return redirect('/HasilCekLab');
+    }
+
+    public function loadData(Request $request)
+    {
+        if ($request->has('q')) {
+            $cari = $request->q;
+            $data = DB::table('users')->select('id', 'email')->where('email', 'LIKE', '%$cari%')->get();
+            return response()->json($data);
+        }
     }
 }

@@ -120,7 +120,7 @@
                     <div class="card-body">
                     <!--Cek apakah data ada atau gak-->
                     @if(!$CK_ALL->isEmpty())
-                        @if(!$CatatanKesehatan->isEmpty())
+                        @if(sizeof($CatatanKesehatan)>0)
                         <div class="row">
                             <div class="col-md-10 box-gk">
                                 <div class="card-body">
@@ -141,7 +141,7 @@
                         <br/>
 
                         <div class="row">
-                            @if($CatatanKesehatan2->isEmpty())
+                            @if(sizeof($CatatanKesehatan2)>0)
                             <div class="col-md-5 box-gk">
                                 <h2 class="inlineBlock">Catatan Gula Darah</h2>
                                 
@@ -157,7 +157,7 @@
                             </div>
                             @endif
 
-                            @if(!$CatatanKesehatan3->isEmpty())
+                            @if(sizeof($CatatanKesehatan3)>0)
                             <div class="col-md-5 box-gk">
                                 <h2 class="inlineBlock">Catatan Tekanan Darah</h2>
                                 
@@ -175,7 +175,7 @@
 
                         <br/>
 
-                        @if(!$CatatanKesehatan4->isEmpty())
+                        @if(sizeof($CatatanKesehatan4)>0)
                         <div class="row">
                             <div class="col-md-10 box-gk">
                                 <div class="card-body">
@@ -638,7 +638,7 @@
         //
         // Massa Tubuh
         //
-        var MT = <?php echo $CatatanKesehatan; ?>;
+        var MT = <?php echo $CatatanKesehatanx; ?>;
 
         var MassaTubuh = (function() {
 
@@ -716,7 +716,7 @@
         //
         // Gula Darah
         //
-        var GD = <?php echo $CatatanKesehatan2; ?>;
+        var GD = <?php echo $CatatanKesehatan2x; ?>;
 
         var GulaDarah = (function() {
 
@@ -730,7 +730,7 @@
             function init($chart) {
 
                 var GulaDarah = new Chart($chart, {
-                    type: 'line',
+                     type: 'bar',
                     options: {
                         scales: {
                             yAxes: [{
@@ -794,7 +794,8 @@
         //
         // Tekanan Darah
         //
-        var TD = <?php echo $CatatanKesehatan3; ?>;
+        var TD1 = <?php echo $CatatanKesehatan3x; ?>;
+        var TD2 = <?php echo $CatatanKesehatan32x; ?>;
 
         var TekananDarah = (function() {
 
@@ -808,7 +809,7 @@
             function init($chart) {
 
                 var TekananDarah = new Chart($chart, {
-                    type: 'line',
+                     type: 'bar',
                     options: {
                         scales: {
                             yAxes: [{
@@ -844,10 +845,20 @@
                     },
                     data: {
                         labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                        datasets: [{
-                            label: 'Performance',
-                            data: TD
-                        }]
+                        datasets: 
+                        [
+                          {
+                            label: 'Sistol',
+                            data: TD1,
+                            backgroundColor: 'rgba(0, 129, 214, 0.8)',
+                          },
+                          {
+                            label: 'Diastol',
+                            data: TD2,
+                            type: 'bar',
+                            backgroundColor: 'rgba(0,129, 218, 0.8)',
+                          }
+                        ]
                     }
                 });
 
@@ -871,7 +882,7 @@
         //
         // Kolestrol
         //
-        var K = <?php echo $CatatanKesehatan4; ?>;
+        var K = <?php echo $CatatanKesehatan4x; ?>;
 
         var Kolestrol = (function() {
 

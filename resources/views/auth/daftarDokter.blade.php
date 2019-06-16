@@ -99,13 +99,14 @@
                                                 <div class="col-sm-5">
                                                     <div class="input-group">
 
-                                                        <input type="date" name="tanggal_lahir" class="form-control f-lg" required>
+                                                        <input type="date" name="tanggal_lahir" class="form-control f-lg" id="birth_date" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-sm-2">
                                                     <div class="input-group">
-                                                        <input type="text" name="umur" class="form-control f-lg" value="0 thn" disabled>
+                                                        <input type="text" name="umur" class="form-control f-lg" value="0 thn" id="age" disabled>
+                                                        <p id="age"></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -205,6 +206,7 @@
         };
         reader.readAsDataURL(event.target.files[0]);
       };
+
     </script>
 @endpush
 

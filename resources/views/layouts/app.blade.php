@@ -23,6 +23,10 @@
         <!--Crop Image-->
         <link rel="stylesheet" href="{{ asset('Croppie') }}/croppie.css" />
         <!---->
+
+        <!--Select2-->
+        <link href="{{ asset('select2-4.0.7') }}/dist/css/select2.min.css" rel="stylesheet" />
+        <!---->
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
@@ -110,6 +114,8 @@
         <script src="{{ asset('Croppie') }}/jquery.min.js"></script>  
         <script src="{{ asset('Croppie') }}/bootstrap.min.js"></script>
         <script src="{{ asset('Croppie') }}/croppie.js"></script>
+
+        <script src="{{ asset('select2-4.0.7') }}/dist/js/select2.min.js"></script>
         
         @stack('js')
         

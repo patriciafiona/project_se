@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\User;
 
@@ -18,6 +18,40 @@ class ProfileController extends Controller
      * @return \Illuminate\View\View
      */
 
+    public function crop(Request $request){
+        $data = $_POST["image"];
+
+        $image_array_1 = explode(";", $data);
+
+        $image_array_2 = explode(",", $image_array_1[1]);
+
+        $data = base64_decode($image_array_2[1]);
+
+        $imageName = "../public/foto/". auth()->user()->name  . '.png';
+
+        //hapus file lama
+        if (!isset($imageName) && !unlink($file))
+          {
+            echo ("Error deleting $file");
+          }
+        else
+          {
+            //upload gambarnya ke path
+            file_put_contents($imageName, $data);
+
+            //Coba masukkin ke dalam database img nya
+            $filename = auth()->user()->name  . '.png';
+            $user_id = auth()->user()->id;
+
+            $users = User::find($user_id);
+            $users->foto = $filename;
+
+            $users->save(); 
+
+          }     
+
+    }
+
     public function editProfile()
     {
         $user = DB::table('users')
@@ -25,10 +59,6 @@ class ProfileController extends Controller
         ->get();
 
         return view('profile.profilePicture', compact('user'));
-    }
-
-    public function updateProfile(){
-        return 2;
     }
 
     public function edit()

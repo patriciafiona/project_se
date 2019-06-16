@@ -21,17 +21,10 @@
                             <div class="panel-body" align="center">
                                 <h1>Select Profile Image</h1>
 
-                                @if (session('status'))
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        {{ session('status') }}
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                @endif
-
                                 <br /><br /><br />
-                                <div id="uploaded_image"></div>
+                                <div id="uploaded_image">
+                                    <img src="{{ asset('foto') }}/{{auth()->user()->foto}}" class="rounded-circle" />
+                                </div>
 
                                 <br /><br /><br />
 
@@ -70,6 +63,8 @@
     </div>
 </div>
 
+<input type="hidden" id="id" name="id" value="{{ Auth::id() }}">
+
 @push('js') <!--Ajax-->
 <script>  
     $(document).ready(function(){
@@ -107,13 +102,18 @@
           size: 'viewport'
         }).then(function(response){
           $.ajax({
-            url:"{{ asset('Croppie') }}/upload.php",
+            url:"{{ url('/profile/crop') }}",
             type: "POST",
+            headers: {'X-CSRF-Token':'{{csrf_token()}}'},
             data:{"image": response},
             success:function(data)
             {
               $('#uploadimageModal').modal('hide');
               $('#uploaded_image').html(data);
+                location.reload();
+            },
+            error:function(result){
+                console.log(result);
             }
           });
         })
