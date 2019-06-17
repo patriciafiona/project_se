@@ -76,7 +76,7 @@ class daftarPasienController extends Controller
 
         $users->save(); 
 
-        return redirect('/login');
+        return redirect('/login')->withStatus(__('Sign up Success...!!!'));
     }
 
     /**

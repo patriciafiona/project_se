@@ -29,6 +29,15 @@
                                 <div><a href="{{ route('register') }}"><img src="{{ asset('OneMedical') }}/img/icon/back.png" class="back-btn"/></a></div>
                                 <div class="text-muted text-center mt-2 mb-4"><h1>{{ __('Sign up - Doctor') }}</h1></div>
 
+                                @if (session('status'))
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        {{ session('status') }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
+
                                 <hr/>
                                 <form action="{{ url('register/daftarDokter/new') }}" method="post" enctype="multipart/form-data">
                                     {{ csrf_field() }}
@@ -161,9 +170,13 @@
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="input-group input-group-alternative padding-su-n">
-                                                        <input class="form-control f-md" type="password" name="password" value="12345" required>
+                                                        <input class="form-control f-md" type="password" name="password" value="123456" required>
+
                                                         <input type="hidden" name="jenis_user" value="2"/>
                                                     </div>
+
+                                                    <p class="red-notes">*Min. 6</p>
+
                                                 </div>
                                             </div>
 
@@ -175,7 +188,46 @@
                                         <div class="col-lg-10 col-md-12 su-d-i-box"">
                                             <h1>Document</h1>
 
-                                            <input style="font-size: 12px; text-align: center;" type="file" name="berkas">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <p class="form-text">Ijazah SMA</p>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input style="font-size: 12px; text-align: center;" type="file" name="ijazah_sma" required>
+                                                    <p class="red-notes">*Format : (*.pdf), (*.jpg), (*.jpeg), (*.png), (*.svg)</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <p class="form-text">Ijazah S1 Kedokteran</p>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input style="font-size: 12px; text-align: center;" type="file" name="ijazah_kedokteran" required>
+                                                    <p class="red-notes">*Format : (*.pdf), (*.jpg), (*.jpeg), (*.png), (*.svg)</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <p class="form-text">Foto KTP</p>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input style="font-size: 12px; text-align: center;" type="file" name="foto_ktp" required>
+                                                    <p class="red-notes">*Format : (*.jpg), (*.jpeg), (*.png), (*.svg)</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <p class="form-text">Foto Kartu Keluarga</p>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input style="font-size: 12px; text-align: center;" type="file" name="foto_kk" required>
+                                                    <p class="red-notes">*Format : (*.jpg), (*.jpeg), (*.png), (*.svg)</p>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div><!--End of row-->
                                     <div class="row">

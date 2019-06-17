@@ -30,6 +30,16 @@
                                 <div class="text-muted text-center mt-2 mb-3"><h1>{{ __('Login') }}</h1></div>
                             </div>
                             <div class="card-body px-lg-5 py-lg-5">
+
+                                @if (session('status'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        {{ session('status') }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
+
                                 <form role="form" method="POST" action="{{ route('login') }}">
                                     @csrf
 
