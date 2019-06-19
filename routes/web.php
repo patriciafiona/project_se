@@ -86,6 +86,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Halaman Dokter - sidebar Pasien (daftar dokter yang tambahin dia ke pasien tetap)
 	Route::get('/Dokter', 'DokterController@index')->name('dokter');
+	Route::get('/Dokter/biodata/{id}', 'DokterController@biodata');
+	Route::get('/Dokter/remove/{id}', 'DokterController@validation');
+	Route::post('/Dokter/remove/{id}', 'DokterController@destroy');
 
 
 

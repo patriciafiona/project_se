@@ -22,8 +22,4 @@ class CatatanKesehatan extends Model
     	}
     }
 
-    public function getCreatedAtAttribute($value){
-    	$date = new DateTime($value);
-    	return $date->format('d M Y, H:i:s');
-    }
 }

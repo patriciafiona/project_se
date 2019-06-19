@@ -57,9 +57,9 @@
                                             ?>
                                             <p class="sm-text-12">
                                                @if('{{$waktu_c}}' == '$waktu_u}}')         
-                                                    Created At {{$waktu_c}}
+                                                    Created At {{ $waktu_c->isoFormat('MMM Do YY') }} | {{ $waktu_c->isoFormat('HH:mm') }}
                                                 @else
-                                                    Updated At {{$waktu_u}}
+                                                    Updated At {{ $waktu_u->isoFormat('MMM Do YY') }} | {{ $waktu_u->isoFormat('HH:mm') }}
                                                 @endif
                                             </p>
                                             <hr style="margin: 10px 0px" />

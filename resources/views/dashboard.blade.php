@@ -37,7 +37,7 @@
                                                 <a href="/rekamMedis/view/{{ $rm->id }}" style="float: right;">
                                                     <img alt="Image placeholder" src="{{ asset('OneMedical') }}/img/icon/11.png">
                                                 </a>
-                                                <p class="rm-n-tgl">{{ $waktuCek }}</p>  <!--Sesuia dengan waktu di jakarta-->
+                                                <p class="rm-n-tgl">{{ $waktuCek->isoFormat('MMM Do YY') }} | {{ $waktuCek->isoFormat('HH:mm') }}</p>  <!--Sesuia dengan waktu di jakarta-->
                                                 <hr style="margin: 5px;" />
                                                Kesimpulan: {{ $rm->kesimpulan }}
                                             </div>

@@ -352,10 +352,18 @@ a.text-pt-small{
 	background-color: white;
 }
 
+a.text-pt-small-red{
+	font-size: 8px;
+}
+
 #text-pt-since{
 	font-size: 10px;
 }
 
 .crop_image{
 	padding-left: 10px;
+}
+
+.img-profile{
+	width: 150px;
 }

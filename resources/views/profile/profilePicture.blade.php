@@ -23,7 +23,7 @@
 
                                 <br /><br /><br />
                                 <div id="uploaded_image">
-                                    <img src="{{ asset('foto') }}/{{auth()->user()->foto}}" class="rounded-circle" />
+                                    <img src="{{ asset('foto') }}/{{auth()->user()->foto}}" class="rounded-circle img-profile" />
                                 </div>
 
                                 <br /><br /><br />

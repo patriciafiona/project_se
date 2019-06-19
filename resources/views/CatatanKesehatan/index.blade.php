@@ -35,7 +35,7 @@
                     </ul>
 
                     <!-- Tab panes -->
-                    <div class="tab-content">
+                    <div class="tab-content" style="padding-top: 20px;">
                         <div role="tabpanel" class="tab-pane fade" id="ck1_panel">
                             @include('CatatanKesehatan.view_ck1')
                         </div>

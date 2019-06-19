@@ -22,6 +22,13 @@
                         <!--tampilkan rekam medis yang ia punya-->
                             @inject('dokter','App\User')
                             @foreach ($rekamMedis as $rm)
+
+                            <?php
+                                //waktu cek
+                                $waktuCek = carbon\Carbon::parse($rm->updated_at);
+                                $waktuCek->timezone = new DateTimeZone('Asia/Jakarta');
+                            ?>
+                            
                             <div class="row box-rm">
                                 <div class="col-md-2">
                                     <span class="avatar avatar-md rounded-circle rm-f-dokter">
@@ -34,7 +41,7 @@
                                     <a href="/rekamMedis/view/{{ $rm->id }}" style="float: right;">
                                         <img alt="Image placeholder" src="{{ asset('OneMedical') }}/img/icon/11.png">
                                     </a>
-                                    <p class="rm-n-tgl">{{ $rm->updated_at }}</p>
+                                    <p class="rm-n-tgl">{{ $waktuCek->isoFormat('MMM Do YY') }} | {{ $waktuCek->isoFormat('HH:mm') }}</p>
                                     <hr style="margin: 5px;" />
                                    Kesimpulan: {{ $rm->kesimpulan }}
                                 </div>

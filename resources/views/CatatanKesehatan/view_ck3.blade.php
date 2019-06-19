@@ -11,14 +11,23 @@
             <th>No.</th>
             <th>Tekanan Darah</th>
             <th>Tanggal Menambah Data</th>
+            <th>Waktu Menambah Data</th>
             <th>Action</th>
         </tr>
         <?php $i=1;?>
         @foreach($CatatanKesehatan3 as $CK3)
+
+        <?php
+            //waktu cek
+            $waktuCek = carbon\Carbon::parse($CK3->updated_at);
+            $waktuCek->timezone = new DateTimeZone('Asia/Jakarta');
+        ?>
+        
         <tr>
             <td><?php echo $i;?>.</td>
             <td>{{ $CK3->nilai }}/{{ $CK3->nilai2 }}</td>
-            <td>{{ $CK3->created_at }}</td>
+            <td>{{ $waktuCek->isoFormat('MMM Do YY') }}</td>
+            <td>{{ $waktuCek->isoFormat('HH:mm') }}</td>
             <td>
                 <a href="/CatatanKesehatan/edit/{{ $CK3->id }}" class="btn btn-warning btn-sm">Edit</a>
                 <form action="/CatatanKesehatan/delete/{{$CK3->id}}" method="post">

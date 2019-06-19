@@ -30,6 +30,13 @@
         @if(!$rekamMedis->isEmpty())
         <!--tampilkan rekam medis yang ia punya-->
             @foreach ($rekamMedis as $rm)
+
+            <?php
+                //waktu cek
+                $waktuCek = carbon\Carbon::parse($rm->updated_at);
+                $waktuCek->timezone = new DateTimeZone('Asia/Jakarta');
+            ?>
+
             <div class="row box-rm">
                 <div class="col-md-2">
                     <span class="avatar avatar-md rounded-circle rm-f-dokter">
@@ -42,12 +49,6 @@
                     <a href="/rekamMedis/view/{{ $rm->id }}" style="float: right;">
                         <img alt="Image placeholder" src="{{ asset('OneMedical') }}/img/icon/11.png">
                     </a>
-
-                    <?php
-                        //waktu cek
-                        $waktuCek = carbon\Carbon::parse($rm->updated_at);
-                        $waktuCek->timezone = new DateTimeZone('Asia/Jakarta');
-                    ?>
 
                     <!--Jika waktunya sebelum 30 menit dan id dokternya adalah sama kaya dia punya-->
                     @if($rm->id_dokter ==  auth()->user()->id )
@@ -66,7 +67,7 @@
                         @endif
                     @endif
 
-                    <p class="rm-n-tgl">{{ $waktuCek }}</p> <!--sesuai dengan tanggal di jakarta-->
+                    <p class="rm-n-tgl">{{ $waktuCek->isoFormat('MMM Do YY') }} | {{ $waktuCek->isoFormat('HH:mm') }}</p> <!--sesuai dengan tanggal di jakarta-->
                     <hr style="margin: 5px;" />
                    Kesimpulan: {{ $rm->kesimpulan }}
                 </div>
