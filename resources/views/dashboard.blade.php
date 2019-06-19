@@ -142,7 +142,7 @@
 
                         <div class="row">
                             @if(sizeof($CatatanKesehatan2)>0)
-                            <div class="col-md-5 box-gk">
+                            <div class="col-md-10 box-gk">
                                 <h2 class="inlineBlock">Catatan Gula Darah</h2>
                                 
                                 <br/><br/>
@@ -156,9 +156,13 @@
 
                             </div>
                             @endif
+                        </div>
 
-                            @if(sizeof($CatatanKesehatan3)>0)
-                            <div class="col-md-5 box-gk">
+                        <br/>
+                        
+                        @if(sizeof($CatatanKesehatan3)>0)
+                        <div class="row">
+                            <div class="col-md-10 box-gk">
                                 <h2 class="inlineBlock">Catatan Tekanan Darah</h2>
                                 
                                 <br/><br/>
@@ -170,8 +174,8 @@
 
                                 <a href="{{ route('catatanKesehatan') }}" class="link-ct">View Data</a>
                             </div>
-                            @endif
                         </div>
+                        @endif
 
                         <br/>
 
@@ -193,6 +197,7 @@
                             </div>
                         </div>
                         @endif
+
                         <br/>
                     @else
                         <img class="img-center" alt="Image placeholder" src="{{ asset('OneMedical') }}/img/nothing_to_see.png">
@@ -617,18 +622,6 @@
         })();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         //
         // Charts
         //
@@ -639,6 +632,22 @@
         // Massa Tubuh
         //
         var MT = <?php echo $CatatanKesehatanx; ?>;
+        var tgl1 = <?php echo $tgl_ck1; ?>;
+
+        //buat array tanggalnya
+        var i;
+        var date_MT = [];
+        for (i = 0; i < 8; i++) {
+            if(i>=0 && i<tgl1.length){
+                date_MT[i] = GetFormattedDate(tgl1[i].updated_at);
+            }else{
+                date_MT[i] = " ";
+            }
+          
+        } 
+        //-------------------------------------------------------------
+
+        console.log(date_MT);
 
         var MassaTubuh = (function() {
 
@@ -687,7 +696,7 @@
                         }
                     },
                     data: {
-                        labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        labels: date_MT,
                         datasets: [{
                             label: 'Performance',
                             data: MT
@@ -717,6 +726,19 @@
         // Gula Darah
         //
         var GD = <?php echo $CatatanKesehatan2x; ?>;
+        var tgl2 = <?php echo $tgl_ck2; ?>;
+
+        //buat array tanggalnya
+        var i;
+        var date_GD = [];
+        for (i = 0; i < 8; i++) {
+            if(i>=0 && i<tgl2.length){
+                date_GD[i] = GetFormattedDate(tgl2[i].updated_at);
+            }else{
+                date_GD[i] = " ";
+            }
+          
+        } 
 
         var GulaDarah = (function() {
 
@@ -765,7 +787,7 @@
                         }
                     },
                     data: {
-                        labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        labels: date_GD,
                         datasets: [{
                             label: 'Performance',
                             data: GD
@@ -796,6 +818,20 @@
         //
         var TD1 = <?php echo $CatatanKesehatan3x; ?>;
         var TD2 = <?php echo $CatatanKesehatan32x; ?>;
+
+        var tgl3 = <?php echo $tgl_ck3; ?>;
+
+        //buat array tanggalnya
+        var i;
+        var date_TD = [];
+        for (i = 0; i < 8; i++) {
+            if(i>=0 && i<tgl3.length){
+                date_TD[i] = GetFormattedDate(tgl3[i].updated_at);
+            }else{
+                date_TD[i] = " ";
+            }
+          
+        } 
 
         var TekananDarah = (function() {
 
@@ -844,7 +880,7 @@
                         }
                     },
                     data: {
-                        labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        labels: date_TD,
                         datasets: 
                         [
                           {
@@ -883,6 +919,19 @@
         // Kolestrol
         //
         var K = <?php echo $CatatanKesehatan4x; ?>;
+        var tgl4 = <?php echo $tgl_ck4; ?>;
+
+        //buat array tanggalnya
+        var i;
+        var date_K = [];
+        for (i = 0; i < 8; i++) {
+            if(i>=0 && i<tgl4.length){
+                date_K[i] = GetFormattedDate(tgl4[i].updated_at);
+            }else{
+                date_K[i] = " ";
+            }
+          
+        } 
 
         var Kolestrol = (function() {
 
@@ -931,7 +980,7 @@
                         }
                     },
                     data: {
-                        labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        labels: date_K,
                         datasets: [{
                             label: 'Performance',
                             data: K
@@ -953,5 +1002,31 @@
             }
 
         })();
+
+
+
+
+
+        //function get date formated
+        function GetFormattedDate(dateTime) {
+
+            var today = new Date(dateTime).toLocaleString("en-US", {timeZone: "Asia/Jakarta"}); //timezone
+            today = new Date(today);
+
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+
+            var yyyy = today.getFullYear();
+            if (dd < 10) {
+              dd = '0' + dd;
+            } 
+            if (mm < 10) {
+              mm = '0' + mm;
+            } 
+
+            return dd + '-' + mm + '-' + yyyy;
+
+        }
+
     </script>
 @endpush

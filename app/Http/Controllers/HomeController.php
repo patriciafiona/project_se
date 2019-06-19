@@ -43,6 +43,16 @@ class HomeController extends Controller
 
         $CatatanKesehatan = array_reverse($CatatanKesehatan);
 
+        //tanggal
+        $tgl_ck1 = DB::table('catatan_kesehatans')
+        ->select('updated_at')
+        ->where('jenis_catatan','1')
+        ->where('id_user',$id)
+        ->orderBy('updated_at', 'ASC')
+        ->limit(8)
+        ->get()
+        ->toArray();
+
         //-------------------------------------------------------------------------------------------------
 
         $CatatanKesehatan2 = DB::table('catatan_kesehatans')
@@ -58,8 +68,19 @@ class HomeController extends Controller
 
         $CatatanKesehatan2 = array_reverse($CatatanKesehatan2);
 
+        //tanggal
+        $tgl_ck2 = DB::table('catatan_kesehatans')
+        ->select('updated_at')
+        ->where('jenis_catatan','2')
+        ->where('id_user',$id)
+        ->orderBy('updated_at', 'ASC')
+        ->limit(8)
+        ->get()
+        ->toArray();
+
         //-------------------------------------------------------------------------------------------------
 
+        //sistol
         $CatatanKesehatan3 = DB::table('catatan_kesehatans')
         ->select('nilai')
         ->where('jenis_catatan','3')
@@ -73,6 +94,7 @@ class HomeController extends Controller
 
         $CatatanKesehatan3 = array_reverse($CatatanKesehatan3);
 
+        //diastol
         $CatatanKesehatan32 = DB::table('catatan_kesehatans')
         ->select('nilai2')
         ->where('jenis_catatan','3')
@@ -85,6 +107,16 @@ class HomeController extends Controller
         $CatatanKesehatan32 = array_column($CatatanKesehatan32, 'nilai2');
 
         $CatatanKesehatan32 = array_reverse($CatatanKesehatan32);
+
+        //tanggal
+        $tgl_ck3 = DB::table('catatan_kesehatans')
+        ->select('updated_at')
+        ->where('jenis_catatan','3')
+        ->where('id_user',$id)
+        ->orderBy('updated_at', 'ASC')
+        ->limit(8)
+        ->get()
+        ->toArray();
 
         //-------------------------------------------------------------------------------------------------
 
@@ -100,6 +132,16 @@ class HomeController extends Controller
         $CatatanKesehatan4 = array_column($CatatanKesehatan4, 'nilai');
 
         $CatatanKesehatan4 = array_reverse($CatatanKesehatan4);
+
+        //tanggal
+        $tgl_ck4 = DB::table('catatan_kesehatans')
+        ->select('updated_at')
+        ->where('jenis_catatan','4')
+        ->where('id_user',$id)
+        ->orderBy('updated_at', 'ASC')
+        ->limit(8)
+        ->get()
+        ->toArray();
 
         //------------------------------------------------------------------------------------------------
 
@@ -128,9 +170,13 @@ class HomeController extends Controller
         // echo $CatatanKesehatan3[0];
         return view('dashboard', compact('today','rekamMedis','CK_ALL', 'CatatanKesehatan','CatatanKesehatan2','CatatanKesehatan3','CatatanKesehatan4'))
             ->with('CatatanKesehatanx',json_encode($CatatanKesehatan,JSON_NUMERIC_CHECK))
+            ->with('tgl_ck1',json_encode($tgl_ck1))
             ->with('CatatanKesehatan2x',json_encode($CatatanKesehatan2,JSON_NUMERIC_CHECK))
+            ->with('tgl_ck2',json_encode($tgl_ck2))
             ->with('CatatanKesehatan3x',json_encode($CatatanKesehatan3,JSON_NUMERIC_CHECK))
+            ->with('tgl_ck3',json_encode($tgl_ck3))
             ->with('CatatanKesehatan32x',json_encode($CatatanKesehatan32,JSON_NUMERIC_CHECK))
+            ->with('tgl_ck4',json_encode($tgl_ck4))
             ->with('CatatanKesehatan4x',json_encode($CatatanKesehatan4,JSON_NUMERIC_CHECK));
 
     }
