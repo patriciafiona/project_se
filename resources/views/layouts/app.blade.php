@@ -65,7 +65,12 @@
                 <form action="{{ url('/pemeriksaanPasien/getPasien') }}" method="post">
                     {{ csrf_field() }}
                     <div class="md-form ml-0 mr-0">
-                      <input type="text" class="form-control form-control-sm validate ml-0" name="pasien_id" placeholder="Id Pasien" required>
+                        <div class="col-md-5">
+                            <select id="select_1" name="pasien_id">
+                                <option value="Insert Patient Name or Email Here"></option>
+                            </select>
+                        </div>
+
                     </div>
 
                     <div class="text-center mt-4">
@@ -116,10 +121,13 @@
         <script src="{{ asset('Croppie') }}/croppie.js"></script>
 
         <script src="{{ asset('select2-4.0.7') }}/dist/js/select2.min.js"></script>
+        <script src="{{ asset('OneMedical') }}/js/call_select2.js"></script>
         
         @stack('js')
         
         <!-- Argon JS -->
         <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+
     </body>
 </html>
+

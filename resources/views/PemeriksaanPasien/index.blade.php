@@ -20,6 +20,9 @@
                       <li class="nav-item">
                         <a class="nav-link" href="#hasilLab_panel" role="tab" data-toggle="tab">Hasil Lab</a>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#catatanKesehatan_panel" role="tab" data-toggle="tab">Catatan Kesehatan</a>
+                      </li>
                     </ul>
 
                     <!-- Tab panes -->
@@ -34,6 +37,9 @@
 
                         <div role="tabpanel" class="tab-pane fade" id="hasilLab_panel">
                             @include('HasilLab.view_dokter')
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="catatanKesehatan_panel">
+                            
                         </div>
                     </div>
 

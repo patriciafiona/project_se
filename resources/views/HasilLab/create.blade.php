@@ -37,7 +37,7 @@
                                 </div>
 
                                 <div class="col-md-8">
-                                    <select class="js-example-basic-single" name="id_dokter">
+                                    <select id="select_2" name="id_dokter">
                                         @foreach($users as $us)
                                         <option value="{{ $us->id }}"> {{$us->email}} | dr. {{ $us->name }}</option>
                                         @endforeach
@@ -100,12 +100,3 @@
         @include('layouts.footers.auth')
     </div>
 @endsection
-
-@push('js')
-    <script>
-        // In your Javascript (external .js resource or <script> tag)
-        $(document).ready(function() {
-            $('.js-example-basic-single').select2();
-        });
-    </script>
-@endpush

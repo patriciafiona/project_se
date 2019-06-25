@@ -36,6 +36,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/profile/crop', 'ProfileController@crop');
 
 
+	//Proses hasil select 2
+	Route::get('/search/idPasien', function(){
+		return App\User::where('name','LIKE','%'.request('q').'%')->paginate(10);
+	});
+
 
 	//Halaman hasil cek lab
 	Route::get('/HasilCekLab', 'HasilLabController@index')->name('hasilLab');
@@ -97,6 +102,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/PasienTetap', 'PasienTetapController@index')->name('pasienTetap');
 	Route::get('/PasienTetap/add/{id}', 'PasienTetapController@create');
 	Route::post('/PasienTetap/add/{id}', 'PasienTetapController@store');
+	Route::get('/PasienTetap/remove/{id}', 'PasienTetapController@validation');
+	Route::post('/PasienTetap/remove/{id}', 'PasienTetapController@destroy');
 
 
 

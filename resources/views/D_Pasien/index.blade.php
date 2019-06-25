@@ -43,13 +43,18 @@
                                             $waktuCek = carbon\Carbon::parse($pt->created_at);
                                             $waktuCek->timezone = new DateTimeZone('Asia/Jakarta');
                                         ?>
-                                        <p id="text-pt-since">Since : {{ $waktuCek }}</p>
+                                        <p id="text-pt-since">Since : {{ $waktuCek->isoFormat('MMM Do YY') }} | {{ $waktuCek->isoFormat('HH:mm') }}</p>
 
                                         <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small">Biodata</a>
 
                                         <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small">Rekam Medis</a>
                                 
                                         <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small">Hasil Lab</a>
+
+                                        <br>
+
+                                        <a href="/PasienTetap/remove/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small-red btn-danger">Remove Patient</a>
+
                                     </div>
                                 @elseif($i<=3 && $i!=1)
                                     <div class="col-md-3 box_dpt">
@@ -62,13 +67,17 @@
                                             $waktuCek = carbon\Carbon::parse($pt->created_at);
                                             $waktuCek->timezone = new DateTimeZone('Asia/Jakarta');
                                         ?>
-                                        <p id="text-pt-since">Since : {{ $waktuCek }}</p>
+                                        <p id="text-pt-since">Since : {{ $waktuCek->isoFormat('MMM Do YY') }} | {{ $waktuCek->isoFormat('HH:mm') }}</p>
 
                                         <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small">Biodata</a>
 
                                         <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small">Rekam Medis</a>
                                 
                                         <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small">Hasil Lab</a>
+
+                                        <br>
+
+                                        <a href="/PasienTetap/remove/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small-red btn-danger">Remove Patient</a>
                                     </div>
                                 @elseif($i==4)
                                     <?php $i=1; ?>
@@ -85,13 +94,17 @@
                                             $waktuCek = carbon\Carbon::parse($pt->created_at);
                                             $waktuCek->timezone = new DateTimeZone('Asia/Jakarta');
                                         ?>
-                                        <p id="text-pt-since">Since : {{ $waktuCek }}</p>
+                                        <p id="text-pt-since">Since : {{ $waktuCek->isoFormat('MMM Do YY') }} | {{ $waktuCek->isoFormat('HH:mm') }}</p>
 
                                         <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small">Biodata</a>
 
                                         <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small">Rekam Medis</a>
                                 
                                         <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small">Hasil Lab</a>
+
+                                        <br>
+
+                                        <a href="/PasienTetap/remove/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small-red btn-danger">Remove Patient</a>
                                     </div>
                                 @endif
 
@@ -105,7 +118,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
         @include('layouts.footers.auth')
     </div>
 @endsection

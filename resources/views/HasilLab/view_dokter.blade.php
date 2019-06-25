@@ -16,7 +16,7 @@
                 @if(!empty('{{$hL->judul}}'))   
                 <div class="col-md-10 isi-HL-box padding20px">
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-2">
                             <!--Cek extensionnya apa-->
                             <?php
                             $file = $hL->file ;
@@ -34,7 +34,7 @@
                                 @endif
                             </a>
                         </div>
-                        <div class="col-md-7 padding20px">
+                        <div class="col-md-10 padding20px">
                             <h2>{{$hL->judul}}</h2>
                             <?php
                                 //waktu create
@@ -46,10 +46,10 @@
                                 $waktu_u->timezone = new DateTimeZone('Asia/Jakarta');
                             ?>
                             <p class="sm-text-12">
-                               @if('{{$waktu_c}}' == '$waktu_u}}')         
-                                    Created At {{$waktu_c}}
+                                @if('{{$waktu_c}}' == '$waktu_u}}')         
+                                    Created At {{ $waktu_c->isoFormat('MMM Do YY') }} | {{ $waktu_c->isoFormat('HH:mm') }}
                                 @else
-                                    Updated At {{$waktu_u}}
+                                    Updated At {{ $waktu_u->isoFormat('MMM Do YY') }} | {{ $waktu_u->isoFormat('HH:mm') }}
                                 @endif
                             </p>
                             <hr style="margin: 10px 0px" />

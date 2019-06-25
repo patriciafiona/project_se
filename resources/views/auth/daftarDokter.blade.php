@@ -29,6 +29,8 @@
                                 <div><a href="{{ route('register') }}"><img src="{{ asset('OneMedical') }}/img/icon/back.png" class="back-btn"/></a></div>
                                 <div class="text-muted text-center mt-2 mb-4"><h1>{{ __('Sign up - Doctor') }}</h1></div>
 
+                                <hr/>
+
                                 @if (session('status'))
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                         {{ session('status') }}
@@ -38,7 +40,6 @@
                                     </div>
                                 @endif
 
-                                <hr/>
                                 <form action="{{ url('register/daftarDokter/new') }}" method="post" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <div class="row">
@@ -78,7 +79,7 @@
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="input-group">
-                                                        <input type="radio" name="jenis_kelamin" value='L' > Laki-Laki
+                                                        <input type="radio" name="jenis_kelamin" value='L' checked> Laki-Laki
 
                                                         <input type="radio" name="jenis_kelamin" value='P' style="margin-left: 20px; "> Perempuan
                                                     </div>
@@ -108,14 +109,13 @@
                                                 <div class="col-sm-5">
                                                     <div class="input-group">
 
-                                                        <input type="date" name="tanggal_lahir" class="form-control f-lg" id="birth_date" required>
+                                                        <input id="tgl_lahir" type="date" name="tanggal_lahir" class="form-control f-lg" onchange="hitungUmur()" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-sm-2">
                                                     <div class="input-group">
-                                                        <input type="text" name="umur" class="form-control f-lg" value="0 thn" id="age" disabled>
-                                                        <p id="age"></p>
+                                                        <input id="hasilUmur" type="text" name="umur" class="form-control f-lg" value="0 thn" disabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -170,12 +170,12 @@
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="input-group input-group-alternative padding-su-n">
-                                                        <input class="form-control f-md" type="password" name="password" value="123456" required>
+                                                        <input class="form-control f-md" type="password" name="password" placeholder="Input your password" required>
 
                                                         <input type="hidden" name="jenis_user" value="2"/>
                                                     </div>
 
-                                                    <p class="red-notes">*Min. 6</p>
+                                                    <p class="red-notes">*Min. 5</p>
 
                                                 </div>
                                             </div>
@@ -258,6 +258,15 @@
         };
         reader.readAsDataURL(event.target.files[0]);
       };
+
+    function hitungUmur() {
+        //hitung umur
+        var dob = $('#tgl_lahir').val();
+        dob = new Date(dob);
+        var today = new Date();
+        var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+        document.getElementById("hasilUmur").value = age+' thn';
+    }
 
     </script>
 @endpush

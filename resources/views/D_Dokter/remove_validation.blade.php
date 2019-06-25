@@ -48,7 +48,7 @@
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="input-group">
-                                                <input class="form-control f-md" type="text" name="id_dokter" value="{{$user[0]->name}}" disabled>
+                                                <input class="form-control f-md" type="text" name="nama_dokter" value="{{$user[0]->name}}" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -87,8 +87,3 @@
         @include('layouts.footers.auth')
     </div>
 @endsection
-
-@push('js')
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
-@endpush

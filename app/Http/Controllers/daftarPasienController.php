@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class daftarPasienController extends Controller
 {
@@ -36,47 +37,56 @@ class daftarPasienController extends Controller
      */
     public function store(Request $request)
     {
-        $users = new User();
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'jenis_kelamin' => 'required',
-            'no_ktp' => 'required',
-            'no_telp' => 'required',
-            'golongan_darah' => 'required',
-            'foto' => 'image|mimes:jpeg,jpg,png,svg'
-        ]);
 
-        $tempat_upload = public_path('/foto');
-        $foto = $request->file('foto');
+        try {
+            $users = new User();
 
-        //cek apakah kosong atau tidak fotonya
-        if($foto!=null){
-            $ext = $foto->getClientOriginalExtension();
-            $filename = $request->name. "." . $ext;
-            $foto->move($tempat_upload, $filename);
-        }else{
-            $filename="default.png";
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'password' => 'required|min:5',
+                'jenis_kelamin' => 'required',
+                'no_ktp' => 'required',
+                'no_telp' => 'required',
+                'golongan_darah' => 'required',
+                'foto' => 'image|mimes:jpeg,jpg,png,svg'
+            ]);
+
+            //-------------------------------------------------------------------------------------------------
+
+            $tempat_upload = public_path('/foto');
+            $foto = $request->file('foto');
+
+            //cek apakah kosong atau tidak fotonya
+            if($foto!=null){
+                $ext = $foto->getClientOriginalExtension();
+                $filename = $request->name. "." . $ext;
+                $foto->move($tempat_upload, $filename);
+            }else{
+                $filename="default.png";
+            }
+            
+
+            $users->name = $request->name;
+            $users->email = $request->email;
+            $users->password = Hash::make($request->password);
+            $users->tanggal_lahir = $request->tanggal_lahir;
+            $users->jenis_kelamin = $request->jenis_kelamin;
+            $users->alamat = $request->alamat;
+            $users->no_ktp = $request->no_ktp;
+            $users->no_telp = $request->no_telp;
+            $users->jenis_user = $request->jenis_user;
+            $users->golongan_darah = $request->golongan_darah;
+            $users->foto = $filename;
+            
+
+            $users->save(); 
+
+            return redirect('/login')->withStatus(__('Sign up Success...!!!'));
+
+        }catch(\Exception $e){
+            return back()->withStatus(__('Sign up Failed...!!! Please try again'));
         }
-        
-
-        $users->name = $request->name;
-        $users->email = $request->email;
-        $users->password = Hash::make($request->password);
-        $users->tanggal_lahir = $request->tanggal_lahir;
-        $users->jenis_kelamin = $request->jenis_kelamin;
-        $users->alamat = $request->alamat;
-        $users->no_ktp = $request->no_ktp;
-        $users->no_telp = $request->no_telp;
-        $users->jenis_user = $request->jenis_user;
-        $users->golongan_darah = $request->golongan_darah;
-        $users->foto = $filename;
-        
-
-        $users->save(); 
-
-        return redirect('/login')->withStatus(__('Sign up Success...!!!'));
     }
 
     /**

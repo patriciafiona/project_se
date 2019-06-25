@@ -30,6 +30,16 @@
                                 <div class="text-muted text-center mt-2 mb-4"><h1>{{ __('Sign up - Patient') }}</h1></div>
 
                                 <hr/>
+
+                                @if (session('status'))
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        {{ session('status') }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
+
                                 <form action="{{ url('register/daftarPasien/new') }}" method="post" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <div class="row">
@@ -54,7 +64,8 @@
 
                                             <br/>
 
-                                            <input style="font-size: 12px; text-align: center;" type="file" name="foto" onchange="loadFile(event)">
+                                            <input style="font-size: 12px; text-align: center;" type="file" name="foto" id="upload_image" />
+
                                         </div>
                                     </div><!--End of row-->
 
@@ -69,7 +80,7 @@
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="input-group">
-                                                        <input type="radio" name="jenis_kelamin" value='L' > Laki-Laki
+                                                        <input type="radio" name="jenis_kelamin" value='L' checked > Laki-Laki
 
                                                         <input type="radio" name="jenis_kelamin" value='P' style="margin-left: 20px; "> Perempuan
                                                     </div>
@@ -99,13 +110,13 @@
                                                 <div class="col-sm-5">
                                                     <div class="input-group">
 
-                                                        <input type="date" name="tanggal_lahir" class="form-control f-lg" required>
+                                                        <input id="tgl_lahir" type="date" name="tanggal_lahir" class="form-control f-lg" onchange="hitungUmur()" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-sm-2">
                                                     <div class="input-group">
-                                                        <input type="text" name="umur" class="form-control f-lg" value="0 thn" disabled>
+                                                        <input id="hasilUmur" type="text" name="umur" class="form-control f-lg" value="0 thn" disabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -160,9 +171,10 @@
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="input-group input-group-alternative padding-su-n">
-                                                        <input class="form-control f-md" type="password" name="password" value="12345" required>
+                                                        <input class="form-control f-md" type="password" name="password" placeholder="Input your password" required>
                                                         <input type="hidden" name="jenis_user" value="3"/>
                                                     </div>
+                                                    <p class="red-notes">*Min. 5</p>
                                                 </div>
                                             </div>
 
@@ -187,6 +199,30 @@
     </div>
 @endsection
 
+<div id="uploadimageModal" class="modal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Upload & Crop Image</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-7 text-center">
+                          <div id="image_demo" style="width:350px; margin-top:30px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button class="btn btn-success crop_image">Crop & Upload Image</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="id" name="id" value="{{ Auth::id() }}">
+
 @push('js')
     <script>
       var loadFile = function(event) {
@@ -197,6 +233,74 @@
         };
         reader.readAsDataURL(event.target.files[0]);
       };
+
+
+    //hitung umur
+    function hitungUmur() {
+        //hitung umur
+        var dob = $('#tgl_lahir').val();
+        dob = new Date(dob);
+        var today = new Date();
+        var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+        document.getElementById("hasilUmur").value = age+' thn';
+    }
+
+
+    //profile picture
+    $(document).ready(function(){
+
+        $image_crop = $('#image_demo').croppie({
+        enableExif: true,
+        viewport: {
+          width:200,
+          height:200,
+          type:'square' //circle
+        },
+        boundary:{
+          width:300,
+          height:300
+        }
+      });
+
+      $('#upload_image').on('change', function(){
+        var reader = new FileReader();
+        reader.onload = function (event) {
+          $image_crop.croppie('bind', {
+            url: event.target.result
+          }).then(function(){
+            console.log('jQuery bind complete');
+          });
+        }
+        reader.readAsDataURL(this.files[0]);
+        $('#uploadimageModal').modal('show');
+      });
+
+      $('.crop_image').click(function(event){
+        console.log('Upload Submit Click');
+        $image_crop.croppie('result', {
+          type: 'canvas',
+          size: 'viewport'
+        }).then(function(response){
+          $.ajax({
+            url:"{{ url('/profile/crop') }}",
+            type: "POST",
+            headers: {'X-CSRF-Token':'{{csrf_token()}}'},
+            data:{"image": response},
+            success:function(data)
+            {
+              $('#uploadimageModal').modal('hide');
+              $('#uploaded_image').html(data);
+                location.reload();
+            },
+            error:function(result){
+                console.log(result);
+            }
+          });
+        })
+      });
+
+    });
+
     </script>
 @endpush
 

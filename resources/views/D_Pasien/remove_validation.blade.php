@@ -12,7 +12,7 @@
                     <div class="card-header bg-transparent">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h2 class="mb-0 inlineBlock">Tambah Pasien Tetap</h2>
+                                <h2 class="mb-0 inlineBlock">Remove Patient</h2>
                             </div>
                         </div>
                     </div>
@@ -27,23 +27,28 @@
                             </div>
                         @endif
                         
-                        <form action="{{ url('/PasienTetap/add/ auth()->user()->id') }}" method="post">
+                        <form action="{{ url('Dokter/remove/'. $user[0]->id) }}" method="post">
                             {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-sm-2">
-                                            <p class="form-text">Pasien</p>
+                                            <p class="form-text">ID Pasien</p>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="input-group">
+                                                <input class="form-control f-md" type="text" name="id_pasien" value="{{$user[0]->id}}" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                                <select id="select_2" name="id_pasien">
-                                                    @foreach($users as $us)
-                                                    <option value="{{ $us->id }}"> {{$us->email}} | dr. {{ $us->name }}</option>
-                                                    @endforeach
-                                                </select>
-
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <p class="form-text">Nama Pasien</p>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <input class="form-control f-md" type="text" name="nama_pasien" value="{{$user[0]->name}}" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -51,12 +56,11 @@
                                     <div class="row">
                                         <div class="col-sm-2"></div>
                                         <div class="col-sm-8">
-                                            <div class="input-group">
+                                            <div>
                                                 <h3>Perhatian</h3>
 
-                                                <p>Dengan Meng-submit Form ini:<br><br>Saya telah mengerti segala <a href="">Peraturan</a> yang diberikan oleh pihak One Medical.</p>
+                                                <p>Dengan Meng-submit Form ini:<br><br>Saya telah mengerti segala <a href="" class="red-notes2">Resiko</a> yang akan terjadi.</p>
 
-                                                <p>Saya bersedia menerima <a href="" class="red-notes2">Sanksi</a> sesuai dengan yang tertulis dalam Peraturan jika saya melanggar.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -65,7 +69,7 @@
                                         <div class="col-sm-2"></div>
                                         <div class="col-sm-8">
                                             <div class="input-group">
-                                                <a href="/PasienTetap" class="btn btn-sm btn-danger">Cancle</a>
+                                                <a href="/Dokter" class="btn btn-sm btn-danger">Cancle</a>
 
                                                 <button type="submit" class="btn btn-sm btn-primary inlineBlock floatRight">Submit</button>
                                             </div>
@@ -74,6 +78,7 @@
                                 </div>
                             </div>
                         </form>
+                        
                     </div>
                 </div>
             </div>
@@ -82,8 +87,3 @@
         @include('layouts.footers.auth')
     </div>
 @endsection
-
-@push('js')
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
-@endpush

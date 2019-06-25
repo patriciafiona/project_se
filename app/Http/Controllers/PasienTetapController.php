@@ -36,6 +36,15 @@ class PasienTetapController extends Controller
         return view('D_Pasien.index',compact('pasienTetap','jumlah'));
     }
 
+    public function validation($id)
+    {
+        $user = DB::table('users')
+        ->where('id', $id)
+        ->get();
+
+        return view('D_Pasien.remove_validation',compact('user'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -45,7 +54,12 @@ class PasienTetapController extends Controller
     {
         if((auth()->user()->id) == ($id)){
 
-            return view('D_Pasien.add');
+            $users = DB::table('users')
+            ->where('jenis_user',2)
+            ->orderBy('name', 'ASC')
+            ->get();
+
+            return view('D_Pasien.add',compact('users'));
 
         }else{
             return back()->withStatus(__('Error: You are submit ID Doctor with other ID.'));
@@ -125,6 +139,11 @@ class PasienTetapController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('pasien_tetaps')
+        ->where('id_dokter', auth()->user()->id)
+        ->where('id_pasien',$id)
+        ->delete();
+
+        return $this->index();
     }
 }
