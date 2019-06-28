@@ -36,7 +36,7 @@ class PasienTetapController extends Controller
         return view('D_Pasien.index',compact('pasienTetap','jumlah'));
     }
 
-    public function validation($id)
+    public function validation($id) //halaman validasi hapus
     {
         $user = DB::table('users')
         ->where('id', $id)
@@ -75,26 +75,39 @@ class PasienTetapController extends Controller
     public function store(Request $request)
     {
         try {
-            if((auth()->user()->id) != ($request->id_pasien)){
 
-                $PasienTetap = new PasienTetap();
-                $request->validate([
-                    'id_pasien' => 'required'
-                ]);
+            //cek dulu apakah pasien sudah tersimpan sebagai pasien tetap
+            $cek = DB::table('pasien_tetaps')
+                ->where('id_dokter',auth()->user()->id)
+                ->where('id_pasien',$request->id_pasien)
+                ->get();
 
-                $PasienTetap->id_pasien = $request->id_pasien;
-                $PasienTetap->id_dokter = auth()->user()->id ;
+            if(isset($cek[0]->id)){
+                return back()->withStatus(__('Error: Sudah Terdaftar.'));
+            }else{
+                //kalo dia tidak terdaftar sebagai pasien tetap,baru lanjut
+                if((auth()->user()->id) != ($request->id_pasien)){
 
-                $PasienTetap->save(); 
+                    $PasienTetap = new PasienTetap();
+                    $request->validate([
+                        'id_pasien' => 'required'
+                    ]);
 
-                return redirect('/PasienTetap');
+                    $PasienTetap->id_pasien = $request->id_pasien;
+                    $PasienTetap->id_dokter = auth()->user()->id ;
+
+                    $PasienTetap->save(); 
+
+                    return redirect('/PasienTetap');
 
 
-            }else{ //id pasien sama dengan id dokter
+                }else{ //id pasien sama dengan id dokter
 
-                return back()->withStatus(__('Error: You are submit ID Patient with your ID.'));
+                    return back()->withStatus(__('Error: You are submit ID Patient with your ID.'));
 
+                }
             }
+
         }catch(\Exception $e){
             return back()->withStatus(__('Add Patient Failed...!!! Please try again'));
         }
@@ -143,11 +156,21 @@ class PasienTetapController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('pasien_tetaps')
-        ->where('id_dokter', auth()->user()->id)
-        ->where('id_pasien',$id)
-        ->delete();
 
-        return $this->index();
+        //cari id di tabel pasien tetapnya
+        $cari_id = DB::table('pasien_tetaps')
+                ->where('id_dokter',auth()->user()->id)
+                ->where('id_pasien',$id)
+                ->get();
+
+
+        if(isset($cari_id[0]->id)){
+            $pasien_tetap = PasienTetap::find($cari_id[0]->id);
+            $pasien_tetap->delete();
+
+            return $this->index();
+        }else{
+            return back()->withStatus(__('Error: Hapus Pasien Tetap Gagal.'));
+        }
     }
 }

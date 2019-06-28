@@ -42,7 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
 	});
 
 	Route::get('/search/idDokter', function(){
-		return App\User::where([['email','LIKE','%'.request('q').'%'],['jenis_user','2']])->paginate(10);
+		return App\User::where([['email','LIKE','%'.request('q').'%'],['jenis_user','2'],['id','!=', auth()->user()->id]])->paginate(10);
 	});
 
 

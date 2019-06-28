@@ -90,7 +90,7 @@ $(document).ready(function() {
 
 //tanpa modal (popup) sebagai alasnya -> cari id dokter berdasarkan email
 $(document).ready(function() {
-  $('#select_2').select2({
+  $('#select_3').select2({
       minimumInputLength: 3,
       closeOnSelect: false,
       placeholder: 'Insert Doctor Email Here',

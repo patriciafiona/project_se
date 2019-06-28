@@ -27,7 +27,7 @@
                             </div>
                         @endif
                         
-                        <form action="{{ url('Dokter/remove/'. $user[0]->id) }}" method="post">
+                        <form action="{{ url('PasienTetap/remove/'. $user[0]->id) }}" method="post">
                             {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-md-12">
@@ -69,7 +69,7 @@
                                         <div class="col-sm-2"></div>
                                         <div class="col-sm-8">
                                             <div class="input-group">
-                                                <a href="/Dokter" class="btn btn-sm btn-danger">Cancle</a>
+                                                <a href="/PasienTetap" class="btn btn-sm btn-danger">Cancle</a>
 
                                                 <button type="submit" class="btn btn-sm btn-primary inlineBlock floatRight">Submit</button>
                                             </div>
