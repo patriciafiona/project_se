@@ -95,9 +95,7 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="input-group">
-                                            <input type="radio" name="jenis_perawatan" value='1'  {{ $rekamMedis->jenis_perawatan =='1' ? ' checked' : '' }}> R.jalan
-
-                                            <input type="radio" name="jenis_perawatan" value='2' style="margin-left: 20px; "  {{ $rekamMedis->jenis_perawatan =='2' ? ' checked' : '' }}> R.inap
+                                            <p>{{ $rekamMedis->jenis_perawatan =='1' ? ' R.Jalan' : 'R.Inap' }}</p>
                                         </div>
                                     </div>
                                 </div>

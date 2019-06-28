@@ -58,7 +58,7 @@
                     Lihat Rekam Medis
                 </h1>
 
-                <h5>Id Pasien</h5>
+                <h5>Email Pasien</h5>
 
                 <hr/>
 
@@ -67,7 +67,7 @@
                     <div class="md-form ml-0 mr-0">
                         <div class="col-md-5">
                             <select id="select_1" name="pasien_id">
-                                <option value="Insert Patient Name or Email Here"></option>
+                                <option>Insert Patient Name or Email Here</option>
                             </select>
                         </div>
 

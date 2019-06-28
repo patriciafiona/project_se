@@ -37,8 +37,9 @@
                                 </div>
 
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="id_dokter" value="{{$HasilLab->id_dokter}}" />
-                                    <p class="red-notes">*Kosongkan jika tidak ada</p>
+                                    <select id="select_2" class="form-control" name="id_dokter">
+                                        <option>Insert Doctor Email Here...</option>                   
+                                    </select>
                                 </div>
                             </div>
 

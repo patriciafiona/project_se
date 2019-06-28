@@ -15,7 +15,7 @@ class CreatePasienTetapsTable extends Migration
     {
         Schema::create('pasien_tetaps', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_pasien');
+            $table->integer('id_pasien')->unique();
             $table->integer('id_dokter');
             $table->timestamps();
         });

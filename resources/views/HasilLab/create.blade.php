@@ -37,10 +37,8 @@
                                 </div>
 
                                 <div class="col-md-8">
-                                    <select id="select_2" name="id_dokter">
-                                        @foreach($users as $us)
-                                        <option value="{{ $us->id }}"> {{$us->email}} | dr. {{ $us->name }}</option>
-                                        @endforeach
+                                    <select id="select_2" name="id_dokter" class="form-control">
+                                        <option>Insert Doctor Email Here</option>
                                     </select>
                                 </div>
                             </div>

@@ -38,7 +38,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//Proses hasil select 2
 	Route::get('/search/idPasien', function(){
-		return App\User::where('name','LIKE','%'.request('q').'%')->paginate(10);
+		return App\User::where([['email','LIKE','%'.request('q').'%'],['id','!=', auth()->user()->id]])->paginate(10);
+	});
+
+	Route::get('/search/idDokter', function(){
+		return App\User::where([['email','LIKE','%'.request('q').'%'],['jenis_user','2']])->paginate(10);
 	});
 
 

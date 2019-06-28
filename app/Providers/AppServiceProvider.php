@@ -27,16 +27,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //buat select2 lihat pasien 
-        $lihat_user = DB::table('users')
-        ->where('jenis_user',3)
-        ->orderBy('name', 'ASC')
-        ->get()
-        ->toArray();
-
-        View::share('lihat_user', $lihat_user);
-        //----------------------------------------------
-        
-        Schema::defaultStringLength(191);
+        //
     }
 }

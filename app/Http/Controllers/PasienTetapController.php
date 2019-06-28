@@ -74,25 +74,29 @@ class PasienTetapController extends Controller
      */
     public function store(Request $request)
     {
-        if((auth()->user()->id) != ($request->id_pasien)){
+        try {
+            if((auth()->user()->id) != ($request->id_pasien)){
 
-            $PasienTetap = new PasienTetap();
-            $request->validate([
-                'id_pasien' => 'required'
-            ]);
+                $PasienTetap = new PasienTetap();
+                $request->validate([
+                    'id_pasien' => 'required'
+                ]);
 
-            $PasienTetap->id_pasien = $request->id_pasien;
-            $PasienTetap->id_dokter = auth()->user()->id ;
+                $PasienTetap->id_pasien = $request->id_pasien;
+                $PasienTetap->id_dokter = auth()->user()->id ;
 
-            $PasienTetap->save(); 
+                $PasienTetap->save(); 
 
-            return redirect('/PasienTetap');
+                return redirect('/PasienTetap');
 
 
-        }else{ //id pasien sama dengan id dokter
+            }else{ //id pasien sama dengan id dokter
 
-            return back()->withStatus(__('Error: You are submit ID Patient with your ID.'));
+                return back()->withStatus(__('Error: You are submit ID Patient with your ID.'));
 
+            }
+        }catch(\Exception $e){
+            return back()->withStatus(__('Add Patient Failed...!!! Please try again'));
         }
         
     }

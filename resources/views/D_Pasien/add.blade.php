@@ -33,15 +33,13 @@
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-sm-2">
-                                            <p class="form-text">Pasien</p>
+                                            <p class="form-text">Email Pasien</p>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="input-group">
 
                                                 <select id="select_2" name="id_pasien">
-                                                    @foreach($users as $us)
-                                                    <option value="{{ $us->id }}"> {{$us->email}} | dr. {{ $us->name }}</option>
-                                                    @endforeach
+                                                    <option>Insert Patient Name or Email Here</option>
                                                 </select>
 
                                             </div>
