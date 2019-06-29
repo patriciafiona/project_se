@@ -29,7 +29,7 @@
             <td>{{ $waktuCek->isoFormat('MMM Do YY') }}</td>
             <td>{{ $waktuCek->isoFormat('HH:mm') }}</td>
             <td>
-                <a href="/CatatanKesehatan/edit/{{ $CK3->id }}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="/CatatanKesehatan/edit_td/{{ $CK3->id }}" class="btn btn-warning btn-sm">Edit</a>
                 <form action="/CatatanKesehatan/delete/{{$CK3->id}}" method="post">
                     {{ csrf_field() }}
                     {{ method_field('Delete') }}

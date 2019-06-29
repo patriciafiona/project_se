@@ -71,6 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::post('/CatatanKesehatan/new', 'CatatanKesehatanController@store');
 	Route::get('/CatatanKesehatan/edit/{id}', 'CatatanKesehatanController@edit');
+	Route::get('/CatatanKesehatan/edit_td/{id}', 'CatatanKesehatanController@edit_td');
 	Route::post('/CatatanKesehatan/edit/{id}', 'CatatanKesehatanController@update');
 	Route::delete('/CatatanKesehatan/delete/{id}', 'CatatanKesehatanController@destroy');
 

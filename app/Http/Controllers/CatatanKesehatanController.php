@@ -146,6 +146,12 @@ class CatatanKesehatanController extends Controller
         return view('CatatanKesehatan.edit', compact('CatatanKesehatan'));
     }
 
+    public function edit_td($id)
+    {
+        $CatatanKesehatan = CatatanKesehatan::find($id);
+        return view('CatatanKesehatan.edit_tekananDarah', compact('CatatanKesehatan'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -155,9 +161,15 @@ class CatatanKesehatanController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(isset($request->nilai2)){
+            $CatatanKesehatan = CatatanKesehatan::find($id);
+            $CatatanKesehatan->nilai = $request->nilai;
+            $CatatanKesehatan->nilai2 = $request->nilai2;
+        }else{
+            $CatatanKesehatan = CatatanKesehatan::find($id);
+            $CatatanKesehatan->nilai = $request->nilai;
+        }
         
-        $CatatanKesehatan = CatatanKesehatan::find($id);
-        $CatatanKesehatan->nilai = $request->nilai;
         
 
         $CatatanKesehatan->save(); 
