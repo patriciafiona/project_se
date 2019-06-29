@@ -25,6 +25,8 @@ Route::post('/register/daftarDokter/new', 'daftarDokterController@store');
 Route::get('/register/daftarPasien', 'daftarPasienController@index')->name('daftarPasien');
 Route::post('/register/daftarPasien/new', 'daftarPasienController@store');
 
+Route::post('/register/daftarPasien/foto', 'daftarPasienController@temporary_photo');
+
 //Harus Login dulu baru bisa akses 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);

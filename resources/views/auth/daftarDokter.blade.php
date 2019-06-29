@@ -60,11 +60,11 @@
 
                                         <!--Bagian foto box-->
                                         <div class="col-lg-4 col-md-8 su-d-n-box">
-                                            <img class="rounded-circle display-img-su-d" alt="Image placeholder" src="{{ asset('Foto') }}/default.png" id="output">
+                                            <img class="rounded-circle display-img-su-d" alt="Image placeholder" src="{{ asset('Foto') }}/default.png">
 
                                             <br/>
 
-                                            <input style="font-size: 12px; text-align: center;" type="file" name="foto" onchange="loadFile(event)">
+                                            <input style="font-size: 12px; text-align: center;" type="file" name="foto" id="upload_image">
                                         </div>
                                     </div><!--End of row-->
 
@@ -248,16 +248,32 @@
     </div>
 @endsection
 
+<div id="uploadimageModal" class="modal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Upload & Crop Image</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-7 text-center">
+                          <div id="image_demo" style="width:350px; margin-top:30px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button class="btn btn-success crop_image">Crop & Upload Image</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="id" name="id" value="{{ Auth::id() }}">
+
 @push('js')
     <script>
-      var loadFile = function(event) {
-        var reader = new FileReader();
-        reader.onload = function(){
-          var output = document.getElementById('output');
-          output.src = reader.result;
-        };
-        reader.readAsDataURL(event.target.files[0]);
-      };
 
     function hitungUmur() {
         //hitung umur
@@ -267,6 +283,59 @@
         var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
         document.getElementById("hasilUmur").value = age+' thn';
     }
+
+    //profile picture
+    $(document).ready(function(){
+
+        $image_crop = $('#image_demo').croppie({
+        enableExif: true,
+        viewport: {
+          width:200,
+          height:200,
+          type:'square' //circle
+        },
+        boundary:{
+          width:300,
+          height:300
+        }
+      });
+
+      $('#upload_image').on('change', function(){
+        var reader = new FileReader();
+        reader.onload = function (event) {
+          $image_crop.croppie('bind', {
+            url: event.target.result
+          }).then(function(){
+            console.log('jQuery bind complete');
+          });
+        }
+        reader.readAsDataURL(this.files[0]);
+        $('#uploadimageModal').modal('show');
+      });
+
+      $('.crop_image').click(function(event){
+        console.log('Upload Submit Click');
+        $image_crop.croppie('result', {
+          type: 'canvas',
+          size: 'viewport'
+        }).then(function(response){             //simpan ke folder temporary
+          $.ajax({
+            url:"{{ url('/register/daftarPasien/foto') }}",
+            type: "POST",
+            headers: {'X-CSRF-Token':'{{csrf_token()}}'},
+            data:{"image": response},
+            success:function(data)
+            {
+              $('#uploadimageModal').modal('hide');
+            },
+            error:function(result){
+                console.log(result);
+            }
+          });
+        })
+      });
+
+    });  
 
     </script>
 @endpush

@@ -225,15 +225,6 @@
 
 @push('js')
     <script>
-      var loadFile = function(event) {
-        var reader = new FileReader();
-        reader.onload = function(){
-          var output = document.getElementById('output');
-          output.src = reader.result;
-        };
-        reader.readAsDataURL(event.target.files[0]);
-      };
-
 
     //hitung umur
     function hitungUmur() {
@@ -280,17 +271,15 @@
         $image_crop.croppie('result', {
           type: 'canvas',
           size: 'viewport'
-        }).then(function(response){
+        }).then(function(response){             //simpan ke folder temporary
           $.ajax({
-            url:"{{ url('/profile/crop') }}",
+            url:"{{ url('/register/daftarPasien/foto') }}",
             type: "POST",
             headers: {'X-CSRF-Token':'{{csrf_token()}}'},
             data:{"image": response},
             success:function(data)
             {
               $('#uploadimageModal').modal('hide');
-              $('#uploaded_image').html(data);
-                location.reload();
             },
             error:function(result){
                 console.log(result);
@@ -299,7 +288,7 @@
         })
       });
 
-    });
+    });  
 
     </script>
 @endpush
