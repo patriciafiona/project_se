@@ -13,8 +13,9 @@
                         <div class="row align-items-center">
                             <div class="col">
                                 <h2 class="inlineBlock">Catatan Tekanan Darah</h2>
-                                <button class="btn btnRound btn-primary" data-toggle="modal" data-target="#modalTekananDarah">+</button>
                                 <br/>
+                                <p>Nama Pasien   : {{ $pasien[0]->name }}</p>
+                                <p>Email Pasien  : {{ $pasien[0]->email }}</p>
                             </div>
                         </div>
                     </div>
@@ -28,7 +29,6 @@
                                         <th>Sistol/Diastol</th>
                                         <th>Tanggal Menambah Data</th>
                                         <th>Waktu Menambah Data</th>
-                                        <th>Action</th>
                                     </tr>
                                     <?php $i=1;?>
                                     @foreach($CatatanKesehatan as $CK)
@@ -45,14 +45,6 @@
                                         <td>{{ $CK->nilai }}/{{ $CK->nilai2 }}</td>
                                         <td>{{ $waktuCek->isoFormat('MMM Do YY') }}</td>
                                         <td>{{ $waktuCek->isoFormat('HH:mm') }}</td>
-                                        <td>
-                                            <a href="/CatatanKesehatan/edit/{{ $CK->id }}" class="btn btn-warning btn-sm">Edit</a>
-                                            <form action="/CatatanKesehatan/delete/{{$CK->id}}" method="post">
-                                                {{ csrf_field() }}
-                                                {{ method_field('Delete') }}
-                                                <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                            </form>
-                                        </td>
                                     </tr>
                                     <?php $i++;?>
                                     @endforeach

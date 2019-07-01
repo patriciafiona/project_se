@@ -39,7 +39,7 @@
                                             <div class="input-group">
 
                                                 <select id="select_2" name="id_pasien">
-                                                    <option>Insert Patient Name or Email Here</option>
+                                                    <option>Insert Patient Email Here</option>
                                                 </select>
 
                                             </div>

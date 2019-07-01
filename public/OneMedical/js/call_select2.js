@@ -45,7 +45,7 @@ $(document).ready(function() {
 });
 
 
-//tanpa modal (popup) sebagai alasnya -> cari id pasien berdasarkan email
+//tanpa modal (popup) sebagai alasnya -> cari id pasien berdasarkan email (yang sudah terdaftar sebagai pasien tetap gak usah ditampilin)
 $(document).ready(function() {
   $('#select_2').select2({
       minimumInputLength: 3,
@@ -53,7 +53,7 @@ $(document).ready(function() {
       placeholder: 'Insert Patient Email Here',
         ajax: {
               dataType: 'json',
-              url: '/search/idPasien',
+              url: '/search/idPasien2',
               delay: 300,
               data: function(params) {
                 return {

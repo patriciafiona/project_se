@@ -20,8 +20,8 @@
             </div>
         @else
         <div class=""row>
-            <p>Nama Pasien: {{ $pasien[0]->name }}</p>
-            <p>ID Pasien: {{ $pasien[0]->id }}</p>
+            <p>Nama Pasien : {{ $pasien[0]->name }}</p>
+            <p>Email Pasien: {{ $pasien[0]->email }}</p>
         </div>
         @endif
 

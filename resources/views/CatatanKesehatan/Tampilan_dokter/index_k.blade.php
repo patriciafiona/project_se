@@ -12,9 +12,10 @@
                     <div class="card-header bg-transparent">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h2 class="inlineBlock">Catatan Tekanan Darah</h2>
-                                <button class="btn btnRound btn-primary" data-toggle="modal" data-target="#modalTekananDarah">+</button>
+                                <h2 class="inlineBlock">Catatan Massa Tubuh</h2>
                                 <br/>
+                                <p>Nama Pasien   : {{ $pasien[0]->name }}</p>
+                                <p>Email Pasien  : {{ $pasien[0]->email }}</p>
                             </div>
                         </div>
                     </div>
@@ -25,10 +26,9 @@
                                 <table class="table table-striped">
                                     <tr>
                                         <th>No.</th>
-                                        <th>Sistol/Diastol</th>
+                                        <th>Nilai</th>
                                         <th>Tanggal Menambah Data</th>
                                         <th>Waktu Menambah Data</th>
-                                        <th>Action</th>
                                     </tr>
                                     <?php $i=1;?>
                                     @foreach($CatatanKesehatan as $CK)
@@ -42,17 +42,9 @@
 
                                     <tr>
                                         <td><?php echo $i;?>.</td>
-                                        <td>{{ $CK->nilai }}/{{ $CK->nilai2 }}</td>
+                                        <td>{{ $CK->nilai }}</td>
                                         <td>{{ $waktuCek->isoFormat('MMM Do YY') }}</td>
                                         <td>{{ $waktuCek->isoFormat('HH:mm') }}</td>
-                                        <td>
-                                            <a href="/CatatanKesehatan/edit/{{ $CK->id }}" class="btn btn-warning btn-sm">Edit</a>
-                                            <form action="/CatatanKesehatan/delete/{{$CK->id}}" method="post">
-                                                {{ csrf_field() }}
-                                                {{ method_field('Delete') }}
-                                                <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                            </form>
-                                        </td>
                                     </tr>
                                     <?php $i++;?>
                                     @endforeach
@@ -69,11 +61,8 @@
             </div>
         </div>
 
-
-
-
-        <!--Modal 3: tekanan darah Form-->
-        <div class="modal fade" id="modalTekananDarah" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        <!--Modal 1: Masa Tubuh Form-->
+        <div class="modal fade" id="modalKolestrol" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
           aria-hidden="true">
           <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
             <!--Content-->
@@ -89,15 +78,15 @@
                     @endif
                 </h1>
 
-                <h5>Tekanan Darah</h5>
+                <h5>Kolestrol</h5>
 
                 <hr/>
 
                 <form action="{{ url('/CatatanKesehatan/new') }}" method="post">
                     {{ csrf_field() }}
                     <div class="md-form ml-0 mr-0">
-                      <input type="text" class="form-control form-control-sm validate ml-0" name="nilai" placeholder="Input nilai tekanan darah" required>
-                      <input type="hidden" name="jenis_catatan" value="3"/>
+                      <input type="text" class="form-control form-control-sm validate ml-0" name="nilai" placeholder="Input kadar kolestrol" required>
+                      <input type="hidden" name="jenis_catatan" value="4"/>
                       <input type="hidden" name="id_user" value="{{ auth()->user()->id }}"/>
                     </div>
 

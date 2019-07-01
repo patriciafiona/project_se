@@ -82,7 +82,39 @@ class PemeriksaanPasienController extends Controller
         //end of hasil lab pasien ----------------------------------------------------------------------------------
 
 
-        return view('PemeriksaanPasien.index', compact('pasien','rekamMedis','user','years','jumlah_rm','jumlah_hl','HasilLab'));
+        //bagian catatan kesehatan ---------------------------------------------------------------------------------
+
+        $CatatanKesehatan = DB::table('catatan_kesehatans')
+        ->where('jenis_catatan','1')
+        ->where('id_user',$id)
+        ->orderBy('updated_at', 'DESC')
+        ->limit(5)
+        ->get();
+
+        $CatatanKesehatan2 = DB::table('catatan_kesehatans')
+        ->where('jenis_catatan','2')
+        ->where('id_user',$id)
+        ->orderBy('updated_at', 'DESC')
+        ->limit(5)
+        ->get();
+
+        $CatatanKesehatan3= DB::table('catatan_kesehatans')
+        ->where('jenis_catatan','3')
+        ->where('id_user',$id)
+        ->orderBy('updated_at', 'DESC')
+        ->limit(5)
+        ->get();
+
+        $CatatanKesehatan4= DB::table('catatan_kesehatans')
+        ->where('jenis_catatan','4')
+        ->where('id_user',$id)
+        ->orderBy('updated_at', 'DESC')
+        ->limit(5)
+        ->get();
+
+        //end of catatan kesehatan ----------------------------------------------------------------------------------
+
+        return view('PemeriksaanPasien.index', compact('pasien','rekamMedis','user','years','jumlah_rm','jumlah_hl','HasilLab','CatatanKesehatan', 'CatatanKesehatan2', 'CatatanKesehatan3', 'CatatanKesehatan4'));
     }
 
     /**

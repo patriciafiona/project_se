@@ -43,6 +43,14 @@ Route::group(['middleware' => 'auth'], function () {
 		return App\User::where([['email','LIKE','%'.request('q').'%'],['id','!=', auth()->user()->id]])->paginate(10);
 	});
 
+	//khusus pasien tetap
+	Route::get('/search/idPasien2', function(){
+		return App\User::where([['email','LIKE','%'.request('q').'%'],
+			['id','!=', auth()->user()->id]])
+			->whereNotIn('id',App\PasienTetap::select('id_pasien')->where('id_dokter',auth()->user()->id)->get())
+			->paginate(10);
+	});
+
 	Route::get('/search/idDokter', function(){
 		return App\User::where([['email','LIKE','%'.request('q').'%'],['jenis_user','2'],['id','!=', auth()->user()->id]])->paginate(10);
 	});
@@ -77,7 +85,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/CatatanKesehatan/edit/{id}', 'CatatanKesehatanController@update');
 	Route::delete('/CatatanKesehatan/delete/{id}', 'CatatanKesehatanController@destroy');
 
-
+	//tampilan catatan kesehatan detail untuk dokter
+	Route::get('/CatatanKesehatan/view/mt/{id}', 'CatatanKesehatanController@index_d_mt');
+	Route::get('/CatatanKesehatan/view/gd/{id}', 'CatatanKesehatanController@index_d_gd');
+	Route::get('/CatatanKesehatan/view/td/{id}', 'CatatanKesehatanController@index_d_td');
+	Route::get('/CatatanKesehatan/view/k/{id}', 'CatatanKesehatanController@index_d_k');
 
 
 	//Halaman Rekam Medis

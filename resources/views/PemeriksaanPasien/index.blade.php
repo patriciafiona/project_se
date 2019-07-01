@@ -39,7 +39,7 @@
                             @include('HasilLab.view_dokter')
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="catatanKesehatan_panel">
-                            
+                            @include('CatatanKesehatan.view_dokter')
                         </div>
                     </div>
 
