@@ -5,6 +5,8 @@
             <div class="col">
                 <h2 class="mb-0">Daftar Catatan Kesehatan</h2>
                 <br/>
+                <p>Nama Pasien : {{ $pasien[0]->name }}</p>
+                <p>Email Pasien: {{ $pasien[0]->email }}</p>
             </div>
         </div>
     </div>

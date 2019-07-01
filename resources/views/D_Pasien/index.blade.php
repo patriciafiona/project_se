@@ -45,13 +45,15 @@
                                         ?>
                                         <p id="text-pt-since">Since : {{ $waktuCek->isoFormat('MMM Do YY') }} | {{ $waktuCek->isoFormat('HH:mm') }}</p>
 
-                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small">Biodata</a>
+                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small" onclick="klikBio()">Biodata</a>
 
-                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small">Rekam Medis</a>
+                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small" onclick="klikRM()">Rekam Medis</a>
                                 
-                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small">Hasil Lab</a>
+                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small" onclick="klikHL()">Hasil Lab</a>
 
                                         <br>
+
+                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small" onclick="klikCK()">Catatan Kesehatan</a>
 
                                         <a href="/PasienTetap/remove/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small-red btn-danger">Remove Patient</a>
 
@@ -69,13 +71,15 @@
                                         ?>
                                         <p id="text-pt-since">Since : {{ $waktuCek->isoFormat('MMM Do YY') }} | {{ $waktuCek->isoFormat('HH:mm') }}</p>
 
-                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small">Biodata</a>
+                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small" onclick="klikBio()">Biodata</a>
 
-                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small">Rekam Medis</a>
+                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small" onclick="klikRM()">Rekam Medis</a>
                                 
-                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small">Hasil Lab</a>
+                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small" onclick="klikHL()">Hasil Lab</a>
 
                                         <br>
+
+                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small" onclick="klikCK()">Catatan Kesehatan</a>
 
                                         <a href="/PasienTetap/remove/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small-red btn-danger">Remove Patient</a>
                                     </div>
@@ -96,13 +100,15 @@
                                         ?>
                                         <p id="text-pt-since">Since : {{ $waktuCek->isoFormat('MMM Do YY') }} | {{ $waktuCek->isoFormat('HH:mm') }}</p>
 
-                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small">Biodata</a>
+                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small" onclick="klikBio()">Biodata</a>
 
-                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small">Rekam Medis</a>
+                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small" onclick="klikRM()">Rekam Medis</a>
                                 
-                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small">Hasil Lab</a>
+                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small" onclick="klikHL()">Hasil Lab</a>
 
                                         <br>
+
+                                        <a href="/pemeriksaanPasien/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small" onclick="klikCK()">Catatan Kesehatan</a>
 
                                         <a href="/PasienTetap/remove/{{ $pt->id_pasien }}" class="btn btn-sm text-pt-small-red btn-danger">Remove Patient</a>
                                     </div>
@@ -124,6 +130,27 @@
 @endsection
 
 @push('js')
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
+    <script>
+
+    function klikBio(){
+        console.log("masuk fungsi klik bio");
+        localStorage.setItem("ganti_tab", "biodata");
+    }
+
+    function klikRM(){
+        console.log("masuk fungsi klik bio");
+        localStorage.setItem("ganti_tab", "rekam_medis");
+    }
+
+    function klikHL(){
+        console.log("masuk fungsi klik bio");
+        localStorage.setItem("ganti_tab", "hasil_lab");
+    }
+
+    function klikCK(){
+        console.log("masuk fungsi klik bio");
+        localStorage.setItem("ganti_tab", "catatan_kesehatan");
+    }
+
+    </script>
 @endpush

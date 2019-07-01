@@ -4,6 +4,8 @@
         <div class="row align-items-center">
             <div class="col">
                 <h2 class="mb-0">Daftar Cek Laboratorium</h2>
+                <p>Nama Pasien : {{ $pasien[0]->name }}</p>
+                <p>Email Pasien: {{ $pasien[0]->email }}</p>
                 <br/>
             </div>
         </div>

@@ -19,10 +19,8 @@
                 </button>
             </div>
         @else
-        <div class=""row>
             <p>Nama Pasien : {{ $pasien[0]->name }}</p>
             <p>Email Pasien: {{ $pasien[0]->email }}</p>
-        </div>
         @endif
 
         <hr/>
