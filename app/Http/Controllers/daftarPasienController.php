@@ -116,7 +116,7 @@ class daftarPasienController extends Controller
             }
 
         }catch(\Exception $e){
-            return back()->withStatus(__('Sign up Failed...!!! Please try again '.$e));
+            return back()->withStatus(__('Sign up Failed...!!! Please try again '));
         }
     }
 
