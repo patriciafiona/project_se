@@ -139,7 +139,7 @@
                                             @else
                                             placeholder="???"
                                             @endif
-                                            autofocus disabled>
+                                            disabled>
                                         </div>
                                     </div>
                                     <div class="col-sm-5">Kg</div>
@@ -193,7 +193,11 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="input-group">
+                                            @if($rekamMedis->terapi!=null)
                                             <p>{{ $rekamMedis->terapi }}</p>
+                                            @else
+                                            <p>-</p>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -206,7 +210,11 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="input-group">
+                                            @if($rekamMedis->pemeriksaan_penunjang!=null)
                                             <p>{{ $rekamMedis->pemeriksaan_penunjang }}</p>
+                                            @else
+                                            <p>-</p>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -219,7 +227,11 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <div class="input-group">
+                                            @if($rekamMedis->alergi_obat!=null)
                                             <p>{{ $rekamMedis->alergi_obat }}</p>
+                                            @else
+                                            <p>-</p>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

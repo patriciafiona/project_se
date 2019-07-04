@@ -69,6 +69,8 @@
                                 $('.nav-tabs a[href="#hasilLab_panel"]').removeClass('active');
                                 $('.nav-tabs a[href="#catatanKesehatan_panel"]').removeClass('active');
 
+                                $('.nav-tabs a[href="#biodata_panel"]').tab('show');
+
                                 break;
                 case "rekam_medis" :
                                 console.log("masuk rekam medis");
@@ -77,6 +79,8 @@
                                 $('.nav-tabs a[href="#biodata_panel"]').removeClass('active');
                                 $('.nav-tabs a[href="#hasilLab_panel"]').removeClass('active');
                                 $('.nav-tabs a[href="#catatanKesehatan_panel"]').removeClass('active');
+
+                                $('.nav-tabs a[href="#rekamMedis_panel"]').tab('show');
 
                                 break;
                 case "hasil_lab" :
@@ -87,6 +91,8 @@
                                 $('.nav-tabs a[href="#biodata_panel"]').removeClass('active');
                                 $('.nav-tabs a[href="#catatanKesehatan_panel"]').removeClass('active');
 
+                                $('.nav-tabs a[href="#hasilLab_panel"]').tab('show');
+
                                 break;
                 case "catatan_kesehatan" :
                                 console.log("masuk catatan_kesehatan");
@@ -96,6 +102,8 @@
                                 $('.nav-tabs a[href="#hasilLab_panel"]').removeClass('active');
                                 $('.nav-tabs a[href="#rekamMedis_panel"]').removeClass('active');
 
+                                $('.nav-tabs a[href="#catatanKesehatan_panel"]').tab('show');
+
                                 break;
                 default:
                                 console.log("masuk bio");
@@ -104,6 +112,9 @@
                                 $('.nav-tabs a[href="#rekamMedis_panel"]').removeClass('active');
                                 $('.nav-tabs a[href="#hasilLab_panel"]').removeClass('active');
                                 $('.nav-tabs a[href="#catatanKesehatan_panel"]').removeClass('active');
+
+                                $('.nav-tabs a[href="#biodata_panel"]').tab('show');
+                                
                                 break;
             }
         }

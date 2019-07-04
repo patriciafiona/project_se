@@ -106,8 +106,10 @@ class HasilLabController extends Controller
      */
     public function edit($id)
     {
-        $HasilLab=HasilLab::find($id);
-        return view('HasilLab.edit', compact('HasilLab'));
+        $HasilLab = HasilLab::find($id);
+        $user = User::find($HasilLab->id_dokter);
+
+        return view('HasilLab.edit', compact('HasilLab','user'));
     }
 
     /**
@@ -121,12 +123,11 @@ class HasilLabController extends Controller
     {
         $request->validate([
             'id_pasien' => 'required',
-            'judul' => 'required',
-            'file' => 'image|mimes:jpeg,jpg,png,svg'
+            'judul' => 'required'
         ]);
 
         $tempat_upload = public_path('/CekLab');
-        $file = $request->file('file');
+        $file = $request->file('foto');
 
         //cek apakah kosong atau tidak fotonya
         if($file!=null){

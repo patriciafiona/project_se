@@ -34,7 +34,7 @@ class HomeController extends Controller
         ->select('nilai')
         ->where('jenis_catatan','1')
         ->where('id_user',$id)
-        ->orderBy('updated_at', 'DESC')
+        ->orderBy('created_at', 'DESC')
         ->limit(8)
         ->get()
         ->toArray();
@@ -48,7 +48,7 @@ class HomeController extends Controller
         ->select('updated_at')
         ->where('jenis_catatan','1')
         ->where('id_user',$id)
-        ->orderBy('updated_at', 'ASC')
+        ->orderBy('created_at', 'ASC')
         ->limit(8)
         ->get()
         ->toArray();
@@ -59,7 +59,7 @@ class HomeController extends Controller
         ->select('nilai')
         ->where('jenis_catatan','2')
         ->where('id_user',$id)
-        ->orderBy('updated_at', 'DESC')
+        ->orderBy('created_at', 'DESC')
         ->limit(8)
         ->get()
         ->toArray();
@@ -73,7 +73,7 @@ class HomeController extends Controller
         ->select('updated_at')
         ->where('jenis_catatan','2')
         ->where('id_user',$id)
-        ->orderBy('updated_at', 'ASC')
+        ->orderBy('created_at', 'ASC')
         ->limit(8)
         ->get()
         ->toArray();
@@ -85,7 +85,7 @@ class HomeController extends Controller
         ->select('nilai')
         ->where('jenis_catatan','3')
         ->where('id_user',$id)
-        ->orderBy('updated_at', 'DESC')
+        ->orderBy('created_at', 'DESC')
         ->limit(8)
         ->get()
         ->toArray();
@@ -99,7 +99,7 @@ class HomeController extends Controller
         ->select('nilai2')
         ->where('jenis_catatan','3')
         ->where('id_user',$id)
-        ->orderBy('updated_at', 'DESC')
+        ->orderBy('created_at', 'DESC')
         ->limit(8)
         ->get()
         ->toArray();
@@ -113,7 +113,7 @@ class HomeController extends Controller
         ->select('updated_at')
         ->where('jenis_catatan','3')
         ->where('id_user',$id)
-        ->orderBy('updated_at', 'ASC')
+        ->orderBy('created_at', 'ASC')
         ->limit(8)
         ->get()
         ->toArray();
@@ -124,7 +124,7 @@ class HomeController extends Controller
         ->select('nilai')
         ->where('jenis_catatan','4')
         ->where('id_user',$id)
-        ->orderBy('updated_at', 'DESC')
+        ->orderBy('created_at', 'DESC')
         ->limit(8)
         ->get()
         ->toArray();
@@ -138,7 +138,7 @@ class HomeController extends Controller
         ->select('updated_at')
         ->where('jenis_catatan','4')
         ->where('id_user',$id)
-        ->orderBy('updated_at', 'ASC')
+        ->orderBy('created_at', 'ASC')
         ->limit(8)
         ->get()
         ->toArray();
@@ -159,7 +159,7 @@ class HomeController extends Controller
         ->join('users', 'users.id', '=', 'rekam_medis.id_dokter')
         ->select('rekam_medis.*', 'users.name')
         ->where('id_pasien', $pasien_id)
-        ->orderBy('updated_at', 'DESC')
+        ->orderBy('created_at', 'DESC')
         ->Paginate(1);
 
         //------------------------------------------------------------------------------------------------

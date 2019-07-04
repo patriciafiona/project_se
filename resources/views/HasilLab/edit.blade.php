@@ -37,9 +37,8 @@
                                 </div>
 
                                 <div class="col-md-8">
-                                    <select id="select_2" class="form-control" name="id_dokter">
-                                        <option>Insert Doctor Email Here...</option>                   
-                                    </select>
+                                    <input class="form-control" type="text" value="dr. {{$user->name}}" disabled>
+                                    <input type="hidden" name="id_dokter" value="{{$HasilLab->id_dokter}}">
                                 </div>
                             </div>
 
@@ -66,9 +65,8 @@
 
                                 <div class="col-md-8">
                                     <input type="file" name="foto">
-                                    <br/><br/>
+                                    <p class="red-notes">*Biarkan kosong jika tidak ingin di ubah <br/>*Format : (*.pdf), (*.docx), (*.doc), (*.jpg), (*.jpeg), (*.png), (*.svg)</p>
                                     <input type="text" value="{{$HasilLab->file}}" class="form-control" disabled>
-                                    <p class="red-notes">*Format : (*.pdf), (*.docx), (*.doc), (*.jpg), (*.jpeg), (*.png), (*.svg)</p>
                                 </div>
                             </div>
 
@@ -102,8 +100,3 @@
         @include('layouts.footers.auth')
     </div>
 @endsection
-
-@push('js')
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
-@endpush

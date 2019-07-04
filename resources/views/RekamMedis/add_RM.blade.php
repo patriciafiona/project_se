@@ -152,7 +152,7 @@
                                             @else
                                             placeholder="???"
                                             @endif
-                                            autofocus>
+                                            disabled>
                                         </div>
                                     </div>
                                     <div class="col-sm-5">Kg</div>
@@ -208,6 +208,7 @@
                                         <div class="input-group">
                                             <textarea class="form-control f-md" name="terapi"></textarea>
                                         </div>
+                                        <p class="red-notes">*Boleh dikosongkan</p>
                                     </div>
                                 </div>
 
@@ -221,6 +222,7 @@
                                         <div class="input-group">
                                             <textarea class="form-control f-md" name="pemeriksaan_penunjang"></textarea>
                                         </div>
+                                        <p class="red-notes">*Boleh dikosongkan</p>
                                     </div>
                                 </div>
 
@@ -234,6 +236,7 @@
                                         <div class="input-group">
                                             <textarea class="form-control f-md" name="alergi_obat"></textarea>
                                         </div>
+                                        <p class="red-notes">*Boleh dikosongkan</p>
                                     </div>
                                 </div>
 

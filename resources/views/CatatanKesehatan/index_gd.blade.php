@@ -35,7 +35,7 @@
 
                                     <?php
                                         //waktu cek
-                                        $waktuCek = carbon\Carbon::parse($CK->updated_at);
+                                        $waktuCek = carbon\Carbon::parse($CK->created_at);
                                         $waktuCek->timezone = new DateTimeZone('Asia/Jakarta');
                                     ?>
 
@@ -113,8 +113,3 @@
         @include('layouts.footers.auth')
     </div>
 @endsection
-
-@push('js')
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
-@endpush

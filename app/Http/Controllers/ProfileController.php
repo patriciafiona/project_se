@@ -137,10 +137,10 @@ class ProfileController extends Controller
 
     public function destroy($id)
     {
-        $CatatanKesehatan = CatatanKesehatan::find($id);
-        $CatatanKesehatan->delete();
+        $user = User::find($id);
+        $user->delete();
 
-        return redirect('/CatatanKesehatan');
+        return redirect('/login');
     }
     
 }

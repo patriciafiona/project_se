@@ -3,7 +3,6 @@
 //dengan modal (popup) sebagai alasnya -> cari id pasien berdasarkan email
 $(document).ready(function() {
     $('#select_1').select2({
-      minimumInputLength: 3,
 	  	closeOnSelect: false,
 	  	dropdownParent: $("#modalIdPasien"),
       placeholder: 'Insert Patient Email Here',
@@ -28,7 +27,7 @@ $(document).ready(function() {
 	             };	
             }
         },
-        minimumInputLength : 1,
+        minimumInputLength : 3,
         templateResult : function (repo){
         	if(repo.loading) return repo.name;
 
@@ -48,7 +47,6 @@ $(document).ready(function() {
 //tanpa modal (popup) sebagai alasnya -> cari id pasien berdasarkan email (yang sudah terdaftar sebagai pasien tetap gak usah ditampilin)
 $(document).ready(function() {
   $('#select_2').select2({
-      minimumInputLength: 3,
       closeOnSelect: false,
       placeholder: 'Insert Patient Email Here',
         ajax: {
@@ -72,7 +70,7 @@ $(document).ready(function() {
                }; 
             }
         },
-        minimumInputLength : 1,
+        minimumInputLength : 3,
         templateResult : function (repo){
           if(repo.loading) return repo.name;
 
@@ -91,7 +89,6 @@ $(document).ready(function() {
 //tanpa modal (popup) sebagai alasnya -> cari id dokter berdasarkan email
 $(document).ready(function() {
   $('#select_3').select2({
-      minimumInputLength: 3,
       closeOnSelect: false,
       placeholder: 'Insert Doctor Email Here',
         ajax: {
@@ -115,7 +112,7 @@ $(document).ready(function() {
                }; 
             }
         },
-        minimumInputLength : 1,
+        minimumInputLength : 3,
         templateResult : function (repo){
           if(repo.loading) return repo.name;
 
@@ -130,3 +127,4 @@ $(document).ready(function() {
         escapeMarkup : function(markup){ return markup;}
   });
 });
+

@@ -28,28 +28,28 @@ class CatatanKesehatanController extends Controller
         $CatatanKesehatan = DB::table('catatan_kesehatans')
         ->where('jenis_catatan','1')
         ->where('id_user',$id)
-        ->orderBy('updated_at', 'DESC')
+        ->orderBy('created_at', 'DESC')
         ->limit(5)
         ->get();
 
         $CatatanKesehatan2 = DB::table('catatan_kesehatans')
         ->where('jenis_catatan','2')
         ->where('id_user',$id)
-        ->orderBy('updated_at', 'DESC')
+        ->orderBy('created_at', 'DESC')
         ->limit(5)
         ->get();
 
         $CatatanKesehatan3= DB::table('catatan_kesehatans')
         ->where('jenis_catatan','3')
         ->where('id_user',$id)
-        ->orderBy('updated_at', 'DESC')
+        ->orderBy('created_at', 'DESC')
         ->limit(5)
         ->get();
 
         $CatatanKesehatan4= DB::table('catatan_kesehatans')
         ->where('jenis_catatan','4')
         ->where('id_user',$id)
-        ->orderBy('updated_at', 'DESC')
+        ->orderBy('created_at', 'DESC')
         ->limit(5)
         ->get();
 
@@ -62,8 +62,10 @@ class CatatanKesehatanController extends Controller
 
     public function index_mt()
     {
+        $id = auth()->user()->id;
+        
         //query untuk menammpilkan catatan massa tubuh
-        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','1')->where('id_user',$id)->orderBy('updated_at', 'DESC')->Paginate(5);
+        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','1')->where('id_user',$id)->orderBy('created_at', 'DESC')->Paginate(5);
         return view('CatatanKesehatan.index_mt', compact('CatatanKesehatan'));
     }
 
@@ -72,7 +74,7 @@ class CatatanKesehatanController extends Controller
         $id = auth()->user()->id;
 
         //query untuk menammpilkan catatan gula darah
-        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','2')->where('id_user',$id)->orderBy('updated_at', 'DESC')->Paginate(5);
+        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','2')->where('id_user',$id)->orderBy('created_at', 'DESC')->Paginate(5);
 
         return view('CatatanKesehatan.index_gd', compact('CatatanKesehatan'));
     }
@@ -82,7 +84,7 @@ class CatatanKesehatanController extends Controller
         $id = auth()->user()->id;
 
         //query untuk menammpilkan catatan tekanan darah
-        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','3')->where('id_user',$id)->orderBy('updated_at', 'DESC')->Paginate(5);
+        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','3')->where('id_user',$id)->orderBy('created_at', 'DESC')->Paginate(5);
 
         return view('CatatanKesehatan.index_td', compact('CatatanKesehatan'));
     }
@@ -92,7 +94,7 @@ class CatatanKesehatanController extends Controller
         $id = auth()->user()->id;
 
         //query untuk menammpilkan catatan kolestrol
-        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','4')->where('id_user',$id)->orderBy('updated_at', 'DESC')->Paginate(5);
+        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','4')->where('id_user',$id)->orderBy('created_at', 'DESC')->Paginate(5);
 
         return view('CatatanKesehatan.index_k', compact('CatatanKesehatan'));
     }
@@ -114,7 +116,7 @@ class CatatanKesehatanController extends Controller
         ->get();
 
         //query untuk menammpilkan catatan massa tubuh
-        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','1')->where('id_user',$id)->orderBy('updated_at', 'DESC')->Paginate(5);
+        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','1')->where('id_user',$id)->orderBy('created_at', 'DESC')->Paginate(5);
         return view('CatatanKesehatan.Tampilan_dokter.index_mt', compact('CatatanKesehatan','pasien'));
     }
 
@@ -125,7 +127,7 @@ class CatatanKesehatanController extends Controller
         ->get();
 
         //query untuk menammpilkan catatan gula darah
-        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','2')->where('id_user',$id)->orderBy('updated_at', 'DESC')->Paginate(5);
+        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','2')->where('id_user',$id)->orderBy('created_at', 'DESC')->Paginate(5);
 
         return view('CatatanKesehatan.Tampilan_dokter.index_gd', compact('CatatanKesehatan','pasien'));
     }
@@ -137,7 +139,7 @@ class CatatanKesehatanController extends Controller
         ->get();
 
         //query untuk menammpilkan catatan tekanan darah
-        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','3')->where('id_user',$id)->orderBy('updated_at', 'DESC')->Paginate(5);
+        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','3')->where('id_user',$id)->orderBy('created_at', 'DESC')->Paginate(5);
 
         return view('CatatanKesehatan.Tampilan_dokter.index_td', compact('CatatanKesehatan','pasien'));
     }
@@ -149,7 +151,7 @@ class CatatanKesehatanController extends Controller
         ->get();
 
         //query untuk menammpilkan catatan kolestrol
-        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','4')->where('id_user',$id)->orderBy('updated_at', 'DESC')->Paginate(5);
+        $CatatanKesehatan = DB::table('catatan_kesehatans')->where('jenis_catatan','4')->where('id_user',$id)->orderBy('created_at', 'DESC')->Paginate(5);
 
         return view('CatatanKesehatan.Tampilan_dokter.index_k', compact('CatatanKesehatan','pasien'));
     }

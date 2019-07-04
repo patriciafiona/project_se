@@ -28,7 +28,7 @@ class RekamMedisController extends Controller
         return redirect('/pasien/rekamMedis/'.$request->pasien_id);
     }
 
-    public function view($id)
+    public function view($id) //id nya rekam medis
     {
         $rekamMedis = RekamMedis::find($id);
 
@@ -36,13 +36,21 @@ class RekamMedisController extends Controller
         ->where('id', $rekamMedis->id_pasien)
         ->get();
 
+        $massa_tubuh = DB::table('catatan_kesehatans')
+            ->select('nilai')
+            ->where('jenis_catatan','1')
+            ->where('id_user', $rekamMedis->id_pasien)
+            ->orderBy('updated_at', 'DESC')
+            ->limit(1)
+            ->get();
+
         $years = Carbon::parse($user[0]->tanggal_lahir)->age;
 
         $dokter = DB::table('users')
         ->where('id', $rekamMedis->id_dokter)
         ->get();
 
-        return view('RekamMedis.view',compact('rekamMedis','user','years','dokter'));
+        return view('RekamMedis.view',compact('rekamMedis','user','years','dokter','massa_tubuh'));
     }
 
     //end tambahan ----------------------------------------------------------------------------------

@@ -38,7 +38,7 @@
                                         <div class="col-sm-8">
                                             <div class="input-group">
 
-                                                <select id="select_2" name="id_pasien">
+                                                <select id="select_2" name="id_pasien" class="form-control">
                                                     <option>Insert Patient Email Here</option>
                                                 </select>
 
@@ -52,9 +52,9 @@
                                             <div class="input-group">
                                                 <h3>Perhatian</h3>
 
-                                                <p>Dengan Meng-submit Form ini:<br><br>Saya telah mengerti segala <a href="">Peraturan</a> yang diberikan oleh pihak One Medical.</p>
+                                                <p>Dengan Meng-submit Form ini:<br><br>Saya telah mengerti segala <a href="" data-toggle="modal" data-target="#modalPeraturan">Peraturan</a> yang diberikan oleh pihak One Medical.</p>
 
-                                                <p>Saya bersedia menerima <a href="" class="red-notes2">Sanksi</a> sesuai dengan yang tertulis dalam Peraturan jika saya melanggar.</p>
+                                                <p>Saya bersedia menerima <a href="" class="red-notes2" data-toggle="modal" data-target="#modalSanksi">Sanksi</a> sesuai dengan yang tertulis dalam Peraturan jika saya melanggar.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -79,9 +79,76 @@
 
         @include('layouts.footers.auth')
     </div>
+
+
+    <!--Modal 1: Peraturan-->
+        <div class="modal fade" id="modalPeraturan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
+            <!--Content-->
+            <div class="modal-content modal-box">
+              <!--Body-->
+                <div class="modal-header" style="padding-bottom: 0px; ">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+              <div class="modal-body">
+                <div class="text-center mb-1">
+                    <h1 style="margin: 10px auto 10px">Peraturan</h1>
+                    <h5>Penambahan Pasien Tetap One Medical</h5>
+                </div>
+                
+                <hr/>
+                <p style="font-size: 10px; text-align: justify;">
+                    1. Dokter harus memberitahukan terlebih dahulu kepada pasien bersangkutan.
+                    <br/><br/>
+                    2. Tidak boleh ada paksaan dalam menambahkan pasien ke dalam pasien tetap
+                    <br/><br/>
+                    3. Pasien berhak menghapus dirinya dari daftar pasien tetap yang telah ditambahkan sebelumnya
+                    <br/><br/>
+                </p>
+              </div>
+
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+
+    <!--Modal 2: Sanksi-->
+        <div class="modal fade" id="modalSanksi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
+            <!--Content-->
+            <div class="modal-content modal-box">
+              <!--Body-->
+                <div class="modal-header" style="padding-bottom: 0px; ">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+              <div class="modal-body">
+                <div class="text-center mb-1">
+                    <h1 style="margin: 10px auto 10px">Sanksi</h1>
+                    <h5>Pelanggaran Penambahan Pasien Tetap One Medical</h5>
+                </div>
+                
+                <hr/>
+                <p style="font-size: 10px; text-align: justify;">
+                    1. Denda sebesar Rp.500.000,-
+                    <br/><br/>
+                    2. Penempuhan jalur hukum
+                    <br/><br/>
+                    3. PEmblokiran akun One Medical.
+                    <br/><br/>
+                </p>
+              </div>
+
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+
+
+
+
 @endsection
 
-@push('js')
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
-@endpush

@@ -84,35 +84,6 @@
           </div>
         </div>
 
-        <!--Modal 2 : Validasi delete account-->
-        <div class="modal fade" id="modalDeleteAccount" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
-            <!--Content-->
-            <div class="modal-content modal-box">
-              <!--Body-->
-              <div class="modal-body text-center mb-1 ">
-
-                <h1 style="margin: 40px auto 10px">
-                    Delete Account
-                </h1>
-
-                <hr/>
-
-                <h5>Are you sure you want to delete this Account?</h5>
-                <br/>
-                <form method="post" action="{{ url('/profile/delete/auth()->user()->id') }} autocomplete="off">
-                @csrf
-                    <a href="" class="btn btn-primary">Cancle</a>
-                    <button type="submit" class="btn btn-danger">{{ __('Delete Account') }}</button>
-                </form>
-              </div>
-
-            </div>
-            <!--/.Content-->
-          </div>
-        </div>
-
         <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
         <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 

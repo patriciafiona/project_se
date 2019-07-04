@@ -87,28 +87,28 @@ class PemeriksaanPasienController extends Controller
         $CatatanKesehatan = DB::table('catatan_kesehatans')
         ->where('jenis_catatan','1')
         ->where('id_user',$id)
-        ->orderBy('updated_at', 'DESC')
+        ->orderBy('created_at', 'DESC')
         ->limit(5)
         ->get();
 
         $CatatanKesehatan2 = DB::table('catatan_kesehatans')
         ->where('jenis_catatan','2')
         ->where('id_user',$id)
-        ->orderBy('updated_at', 'DESC')
+        ->orderBy('created_at', 'DESC')
         ->limit(5)
         ->get();
 
         $CatatanKesehatan3= DB::table('catatan_kesehatans')
         ->where('jenis_catatan','3')
         ->where('id_user',$id)
-        ->orderBy('updated_at', 'DESC')
+        ->orderBy('created_at', 'DESC')
         ->limit(5)
         ->get();
 
         $CatatanKesehatan4= DB::table('catatan_kesehatans')
         ->where('jenis_catatan','4')
         ->where('id_user',$id)
-        ->orderBy('updated_at', 'DESC')
+        ->orderBy('created_at', 'DESC')
         ->limit(5)
         ->get();
 

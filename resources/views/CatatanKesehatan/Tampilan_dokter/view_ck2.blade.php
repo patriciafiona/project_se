@@ -16,7 +16,7 @@
 
         <?php
             //waktu cek
-            $waktuCek = carbon\Carbon::parse($CK2->updated_at);
+            $waktuCek = carbon\Carbon::parse($CK2->created_at);
             $waktuCek->timezone = new DateTimeZone('Asia/Jakarta');
         ?>
         
