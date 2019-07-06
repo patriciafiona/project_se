@@ -15,9 +15,8 @@ class CreateRekamMedisTable extends Migration
     {
         Schema::create('rekam_medis', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('id_pasien',10);
+            $table->integer('id_pasien');
             $table->integer('id_dokter');
-
             $table->integer('jenis_perawatan')->default(1)->comment("1.Rawat jalan, 2.Rawat Inap");
             $table->string('diagnosa');
             $table->string('keluhan');
