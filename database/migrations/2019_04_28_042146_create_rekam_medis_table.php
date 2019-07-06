@@ -18,7 +18,7 @@ class CreateRekamMedisTable extends Migration
             $table->string('id_pasien',10);
             $table->integer('id_dokter');
 
-            $table->string('jenis_perawatan')->default(1)->comment("1.Rawat jalan, 2.Rawat Inap");
+            $table->integer('jenis_perawatan')->default(1)->comment("1.Rawat jalan, 2.Rawat Inap");
             $table->string('diagnosa');
             $table->string('keluhan');
             $table->text('pemeriksaan');
