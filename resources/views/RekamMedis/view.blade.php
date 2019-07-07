@@ -281,9 +281,9 @@
                                 <div class="row">
                                     <div class="col-md-10">
                                         @if(auth()->user()->jenis_user =='2')
-                                            <a href="/pemeriksaanPasien/{{ $user[0]->id }}" class="btn btn-sm btn-danger inlineBlock floatRight">Cancle</a>
+                                            <a href="/pemeriksaanPasien/{{ $user[0]->id }}" class="btn btn-sm btn-danger inlineBlock floatRight">Cancel</a>
                                         @else
-                                            <a href="/rekamMedis" class="btn btn-sm btn-danger inlineBlock floatRight">Cancle</a>
+                                            <a href="/rekamMedis" class="btn btn-sm btn-danger inlineBlock floatRight">Cancel</a>
                                         @endif
                                     </div>
                                 </div>

@@ -69,7 +69,7 @@
                                         <div class="col-sm-2"></div>
                                         <div class="col-sm-8">
                                             <div class="input-group">
-                                                <a href="/Dokter" class="btn btn-sm btn-danger">Cancle</a>
+                                                <a href="/Dokter" class="btn btn-sm btn-danger">Cancel</a>
 
                                                 <button type="submit" class="btn btn-sm btn-primary inlineBlock floatRight">Submit</button>
                                             </div>
